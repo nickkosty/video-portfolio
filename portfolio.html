@@ -107,6 +107,9 @@
   .acct .h{font-size:18px;font-weight:600}
   .acct .s{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:4px;letter-spacing:.02em}
   .acct .go{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .acct-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+  .acct-grid .acct{margin-bottom:0}
+  .subhead{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:36px 0 16px}
 
   /* ===== stats ===== */
   .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:30px}
@@ -156,7 +159,7 @@
   <div class="tabs rv" role="tablist" aria-label="Sections" style="animation-delay:.40s">
     <button class="tab" id="tab-videos"   role="tab" aria-controls="p-videos"   aria-selected="true"  onclick="showTab('videos')">Videos<span class="ct">6</span></button>
     <button class="tab" id="tab-accounts" role="tab" aria-controls="p-accounts" aria-selected="false" onclick="showTab('accounts')">Accounts<span class="ct">2</span></button>
-    <button class="tab" id="tab-creators" role="tab" aria-controls="p-creators" aria-selected="false" onclick="showTab('creators')">Creators</button>
+    <button class="tab" id="tab-creators" role="tab" aria-controls="p-creators" aria-selected="false" onclick="showTab('creators')">Creators<span class="ct">7</span></button>
     <button class="tab" id="tab-stats"    role="tab" aria-controls="p-stats"    aria-selected="false" onclick="showTab('stats')">Stats</button>
   </div>
 
@@ -239,11 +242,48 @@
   <!-- ===== CREATORS PANEL ===== -->
   <section class="panel" id="p-creators" role="tabpanel" aria-labelledby="tab-creators" hidden>
     <h2 class="phead">Creators I work with</h2>
-    <p class="psub">I also help manage and give creative direction to UGC creators. A few of their videos are doing well right now.</p>
+    <p class="psub">I help manage and give creative direction to a roster of UGC creators. Same proven format, run across creators at volume. A few of their best below.</p>
     <div class="row">
-      <!-- TODO add creator videos here: copy a .vid block from the Videos panel,
-           set data-type + data-url + views + note. The embed script handles the rest. -->
-      <div class="empty" style="flex:1;min-width:280px">Adding the best creator videos here.</div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">1.8M</span><span class="vid-plat">Instagram</span></div>
+        <p class="vid-eng">113K likes</p>
+        <p class="vid-note">Bennett (@bennettslocked). UGC style with a plug for the app at the end.</p>
+        <div class="embed" data-type="instagram" data-url="https://www.instagram.com/reel/DZlY3z_Nufh/">
+          <div class="embed-fallback"><a href="https://www.instagram.com/reel/DZlY3z_Nufh/" target="_blank" rel="noopener">Open on Instagram</a><span class="small">Loading preview...</span></div>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">364K</span><span class="vid-plat">Instagram</span></div>
+        <p class="vid-note">Ryan (@lockinwryan). Same format, doubled down.</p>
+        <div class="embed" data-type="instagram" data-url="https://www.instagram.com/reel/DZq7KKwRP19/">
+          <div class="embed-fallback"><a href="https://www.instagram.com/reel/DZq7KKwRP19/" target="_blank" rel="noopener">Open on Instagram</a><span class="small">Loading preview...</span></div>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">188K</span><span class="vid-plat">Instagram</span></div>
+        <p class="vid-note">Ryan (@lockinwryan). Another one in the same format.</p>
+        <div class="embed" data-type="instagram" data-url="https://www.instagram.com/reel/DZtX6zHOApq/">
+          <div class="embed-fallback"><a href="https://www.instagram.com/reel/DZtX6zHOApq/" target="_blank" rel="noopener">Open on Instagram</a><span class="small">Loading preview...</span></div>
+        </div>
+      </div>
+
+      <!-- TODO add more creator videos: copy a .vid block above, swap views + note + data-url. -->
+
+    </div>
+
+    <p class="subhead">The roster</p>
+    <p class="psub" style="margin-top:-6px">The creators I direct. They post on Instagram and repost the same videos across TikTok, YouTube, and Facebook.</p>
+    <div class="acct-grid">
+      <a class="acct" href="https://www.instagram.com/bennettslocked/reels/" target="_blank" rel="noopener"><div><div class="h">@bennettslocked</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/lockinwryan/reels/" target="_blank" rel="noopener"><div><div class="h">@lockinwryan</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/damon.lockin/reels/" target="_blank" rel="noopener"><div><div class="h">@damon.lockin</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/oishi.focus/reels/" target="_blank" rel="noopener"><div><div class="h">@oishi.focus</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/lockinwithxavier/reels/" target="_blank" rel="noopener"><div><div class="h">@lockinwithxavier</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/sofiafocus3/reels/" target="_blank" rel="noopener"><div><div class="h">@sofiafocus3</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/maria.lockin/reels/" target="_blank" rel="noopener"><div><div class="h">@maria.lockin</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
     </div>
   </section>
 
@@ -267,7 +307,8 @@
   <section class="approach">
     <p class="label">How I approach it</p>
     <p>I don't try to reinvent the wheel. I look at what's already working, then replicate it and improve it a bit. Sometimes that means combining a couple of ideas into something <em>new</em>.</p>
-    <p>A lot of it is just paying attention. Figuring out why a video works, then applying that to whatever I'm marketing, and testing a lot until something lands.</p>
+    <p>The whole game is testing, with speed. Once something works, you double down, rinse and repeat, and keep <em>iterating</em>.</p>
+    <p>A lot of it is just paying attention. Figuring out why a video works, then applying that to whatever I'm marketing.</p>
   </section>
 
   <!-- ===== FOOTER ===== -->
