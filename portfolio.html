@@ -178,11 +178,9 @@
         <div class="vid-head"><span class="vid-views">1.6M</span><span class="vid-plat">Facebook</span></div>
         <p class="vid-eng">14.5K likes &middot; 4K saves &middot; 603 comments</p>
         <p class="vid-note">A UGC-style video. This kind of content is more mass producible than founder-led video, and this one did the numbers.</p>
-        <a class="embed embed-card" href="https://www.facebook.com/reel/1599459981197906" target="_blank" rel="noopener">
-          <span class="play">&#9654;</span>
-          <span class="ec-plat">Facebook Reel</span>
-          <span class="ec-go">Watch on Facebook</span>
-        </a>
+        <div class="embed" data-type="facebook" data-url="https://www.facebook.com/reel/1599459981197906">
+          <div class="embed-fallback"><a href="https://www.facebook.com/reel/1599459981197906" target="_blank" rel="noopener">Open on Facebook</a><span class="small">Loading preview...</span></div>
+        </div>
       </div>
 
       <div class="vid">
@@ -326,12 +324,18 @@
     document.querySelectorAll('.embed[data-type="facebook"]').forEach(function(b){
       if(b.dataset.built) return;
       b.dataset.built='1';
+      b.innerHTML='';
       var d = document.createElement('div');
       d.className='fb-video';
       d.setAttribute('data-href', b.dataset.url);
-      d.setAttribute('data-width','330');
+      d.setAttribute('data-width','320');
       d.setAttribute('data-show-text','false');
-      b.innerHTML=''; b.appendChild(d);
+      b.appendChild(d);
+      // fallback link in case the FB plugin does not render (reels often will not)
+      var fb = document.createElement('div');
+      fb.className='embed-fallback';
+      fb.innerHTML='<a href="'+b.dataset.url+'" target="_blank" rel="noopener">Watch on Facebook</a>';
+      b.appendChild(fb);
     });
   }
 
