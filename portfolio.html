@@ -73,8 +73,10 @@
   /* ===== video row ===== */
   .row{
     display:flex;gap:18px;overflow-x:auto;padding:2px 0 22px;
-    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;
   }
+  .vid .player{transition:transform .25s ease,border-color .25s ease}
+  .vid:hover .player{transform:translateY(-3px);border-color:var(--line2)}
   .row::-webkit-scrollbar{height:7px}
   .row::-webkit-scrollbar-track{background:transparent}
   .row::-webkit-scrollbar-thumb{background:var(--line2);border-radius:99px}
@@ -151,6 +153,7 @@
 
   /* ===== footer ===== */
   footer{border-top:1px solid var(--line);padding:34px 0 70px}
+  .signoff{color:var(--muted);font-size:14.5px;margin:0 0 18px}
   .contact{display:flex;gap:22px;flex-wrap:wrap}
   .contact a{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--text);text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:2px;transition:color .2s,border-color .2s}
   .contact a:hover{color:var(--accent);border-color:var(--accent)}
@@ -170,8 +173,8 @@
   <header>
     <p class="eyebrow rv" style="animation-delay:.05s">Organic marketing</p>
     <h1 class="rv" style="animation-delay:.12s">Nick</h1>
-    <p class="lede rv" style="animation-delay:.22s">I've been doing organic marketing, mostly short-form video, for the past <strong>2 to 3 years</strong>. Below is some of what I've made, with the numbers behind it.</p>
-    <p class="lede rv" style="animation-delay:.30s">I work hard, I show up every day, and I want to keep learning and getting better.</p>
+    <p class="lede rv" style="animation-delay:.22s">For the last <strong>2 to 3 years</strong> I've been doing organic marketing, mostly short-form video. Below is some of what I've made, and the numbers behind it.</p>
+    <p class="lede rv" style="animation-delay:.30s">I'm young and I don't claim to know everything yet. What I can promise is that I outwork it. I show up every day, I move fast, and I would rather prove something than just talk about it.</p>
   </header>
 
   <!-- ===== TABS ===== -->
@@ -410,6 +413,7 @@
 
   <!-- ===== FOOTER ===== -->
   <footer>
+    <p class="signoff">Thanks for taking a look. Best way to reach me:</p>
     <div class="contact">
       <a href="mailto:nickolaskostyu@gmail.com">Email</a>
       <a href="https://www.instagram.com/therewired.app/" target="_blank" rel="noopener">Instagram</a>
