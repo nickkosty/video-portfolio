@@ -108,10 +108,6 @@
   .subhead{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:36px 0 16px}
 
   /* ===== stats ===== */
-  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:30px}
-  .tile{border:1px solid var(--line);border-radius:14px;padding:22px 20px;background:var(--bg2)}
-  .tile .n{font-family:var(--mono);font-size:30px;color:var(--accent);letter-spacing:-.02em;line-height:1}
-  .tile .l{color:var(--muted);font-size:13px;margin-top:10px;line-height:1.4}
   .shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;max-width:620px}
   .shot img{display:block;width:100%;height:auto}
   .cap{color:var(--faint);font-size:13px;margin:14px 0 0;max-width:60ch;line-height:1.55}
@@ -166,7 +162,7 @@
     <button class="tab" id="tab-videos"   role="tab" aria-controls="p-videos"   aria-selected="true"  onclick="showTab('videos')">Videos<span class="ct">6</span></button>
     <button class="tab" id="tab-accounts" role="tab" aria-controls="p-accounts" aria-selected="false" onclick="showTab('accounts')">Accounts<span class="ct">2</span></button>
     <button class="tab" id="tab-creators" role="tab" aria-controls="p-creators" aria-selected="false" onclick="showTab('creators')">Creators<span class="ct">7</span></button>
-    <button class="tab" id="tab-stats"    role="tab" aria-controls="p-stats"    aria-selected="false" onclick="showTab('stats')">Stats</button>
+    <button class="tab" id="tab-stats"    role="tab" aria-controls="p-stats"    aria-selected="false" onclick="showTab('stats')">Audience</button>
   </div>
 
   <!-- ===== VIDEOS PANEL ===== -->
@@ -174,16 +170,6 @@
     <h2 class="phead">Some of my work</h2>
     <p class="psub">A few videos I made, with what they did. Scroll sideways for more.</p>
     <div class="row">
-
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">2.3M</span><span class="vid-plat">TikTok</span></div>
-        <p class="vid-note">My own product, RawLyfe batana oil. This is the video behind the sales in the Stats tab.</p>
-        <div class="player">
-          <video class="pv" poster="videos/own-rawlyfe-23m.jpg" src="videos/own-rawlyfe-23m.mp4" muted loop playsinline preload="none"></video>
-          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
-          <a class="ext" href="https://www.tiktok.com/t/ZTBWgdw74/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
-        </div>
-      </div>
 
       <div class="vid">
         <div class="vid-head"><span class="vid-views">1.6M</span><span class="vid-plat">Facebook</span></div>
@@ -207,6 +193,16 @@
       </div>
 
       <div class="vid">
+        <div class="vid-head"><span class="vid-views">2.3M</span><span class="vid-plat">TikTok</span></div>
+        <p class="vid-note">My own product, RawLyfe batana oil. The video behind those sales numbers.</p>
+        <div class="player">
+          <video class="pv" poster="videos/own-rawlyfe-23m.jpg" src="videos/own-rawlyfe-23m.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.tiktok.com/t/ZTBWgdw74/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
         <div class="vid-head"><span class="vid-views">80K</span><span class="vid-plat">Facebook</span></div>
         <p class="vid-note">Another UGC-style video. The app is the main focus, and it converted well.</p>
         <div class="player">
@@ -217,22 +213,22 @@
       </div>
 
       <div class="vid">
-        <div class="vid-head"><span class="vid-views">32K</span><span class="vid-plat">Instagram</span></div>
-        <p class="vid-note">Lower views, higher quality. Converted well organically, and also worked as a paid ad at around $20 CPA.</p>
-        <div class="player">
-          <video class="pv" poster="videos/own-rewired-32k.jpg" src="videos/own-rewired-32k.mp4" muted loop playsinline preload="none"></video>
-          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
-          <a class="ext" href="https://www.instagram.com/therewired.app/reel/DVHhjiyjphF/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
-        </div>
-      </div>
-
-      <div class="vid">
         <div class="vid-head"><span class="vid-views">214K</span><span class="vid-plat">Instagram</span></div>
         <p class="vid-note">Another one for Rewired.</p>
         <div class="player">
           <video class="pv" poster="videos/own-rewired-214k.jpg" src="videos/own-rewired-214k.mp4" muted loop playsinline preload="none"></video>
           <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
           <a class="ext" href="https://www.instagram.com/therewired.app/reel/DVUR8Z4DnIy/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">32K</span><span class="vid-plat">Instagram</span></div>
+        <p class="vid-note">Lower views, higher quality. Converted well organically, and also worked as a paid ad at around $20 CPA.</p>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-32k.jpg" src="videos/own-rewired-32k.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.instagram.com/therewired.app/reel/DVHhjiyjphF/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
@@ -264,6 +260,16 @@
     <div class="row">
 
       <div class="vid">
+        <div class="vid-head"><span class="vid-views">364K</span><span class="vid-plat">Instagram</span></div>
+        <p class="vid-note">Ryan (@lockinwryan). Same format, doubled down.</p>
+        <div class="player">
+          <video class="pv" poster="videos/creator-ryan-364k.jpg" src="videos/creator-ryan-364k.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.instagram.com/reel/DZq7KKwRP19/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
         <div class="vid-head"><span class="vid-views">1.8M</span><span class="vid-plat">Instagram</span></div>
         <p class="vid-eng">113K likes</p>
         <p class="vid-note">Bennett (@bennettslocked). UGC style with a plug for the app at the end.</p>
@@ -275,12 +281,12 @@
       </div>
 
       <div class="vid">
-        <div class="vid-head"><span class="vid-views">364K</span><span class="vid-plat">Instagram</span></div>
-        <p class="vid-note">Ryan (@lockinwryan). Same format, doubled down.</p>
+        <div class="vid-head"><span class="vid-views">10K</span><span class="vid-plat">TikTok</span></div>
+        <p class="vid-note">Oishi (@oishi.focus). A newer creator, same format starting to pick up.</p>
         <div class="player">
-          <video class="pv" poster="videos/creator-ryan-364k.jpg" src="videos/creator-ryan-364k.mp4" muted loop playsinline preload="none"></video>
+          <video class="pv" poster="videos/creator-oishi-10k.jpg" src="videos/creator-oishi-10k.mp4" muted loop playsinline preload="none"></video>
           <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
-          <a class="ext" href="https://www.instagram.com/reel/DZq7KKwRP19/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+          <a class="ext" href="https://www.tiktok.com/@oishi.focus/video/7652920824294296852" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
@@ -291,16 +297,6 @@
           <video class="pv" poster="videos/creator-ryan-188k.jpg" src="videos/creator-ryan-188k.mp4" muted loop playsinline preload="none"></video>
           <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
           <a class="ext" href="https://www.instagram.com/reel/DZtX6zHOApq/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
-        </div>
-      </div>
-
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">10K</span><span class="vid-plat">TikTok</span></div>
-        <p class="vid-note">Oishi (@oishi.focus). A newer creator, same format starting to pick up.</p>
-        <div class="player">
-          <video class="pv" poster="videos/creator-oishi-10k.jpg" src="videos/creator-oishi-10k.mp4" muted loop playsinline preload="none"></video>
-          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
-          <a class="ext" href="https://www.tiktok.com/@oishi.focus/video/7652920824294296852" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
@@ -323,18 +319,8 @@
 
   <!-- ===== STATS PANEL ===== -->
   <section class="panel" id="p-stats" role="tabpanel" aria-labelledby="tab-stats" hidden>
-    <h2 class="phead">Stats</h2>
-    <p class="psub">The numbers behind the work.</p>
-    <div class="tiles">
-      <div class="tile"><div class="n">2.3M</div><div class="l">Peak views on a single video</div></div>
-      <div class="tile"><div class="n">$21K+</div><div class="l">Tracked GMV from that one product</div></div>
-      <div class="tile"><div class="n">31K</div><div class="l">Followers on @kostywitshop</div></div>
-      <div class="tile"><div class="n">~$20</div><div class="l">CPA on a Rewired paid ad</div></div>
-    </div>
-    <div class="shot"><img src="results.png" alt="TikTok Shop affiliate GMV for @kostywitshop: $21,074.38, 97.69% of total GMV, 31.04K followers" loading="lazy"></div>
-    <p class="cap">Sales from my own brand on TikTok Shop, tracked through the 2.3M view video. The real number runs a bit higher, since TikTok only shows about two months of single-video revenue.</p>
-    <p class="subhead" style="margin-top:42px">Audience</p>
-    <p class="psub" style="margin-top:-6px">Straight from TikTok and Instagram analytics. Depending on the account and the content, I can reach a younger audience or an older one.</p>
+    <h2 class="phead">Audience</h2>
+    <p class="psub">Straight from TikTok and Instagram analytics. Depending on the account and the content, I can reach a younger audience or an older one.</p>
     <div class="aud-grid">
 
       <div class="aud">
@@ -385,6 +371,11 @@
       </div>
 
     </div>
+
+    <p class="subhead">Sales</p>
+    <p class="psub" style="margin-top:-6px">One example: my own TikTok Shop brand, RawLyfe, tracked through the 2.3M view video.</p>
+    <div class="shot"><img src="results.png" alt="TikTok Shop affiliate GMV for @kostywitshop: $21,074.38, 97.69% of total GMV, 31.04K followers" loading="lazy"></div>
+    <p class="cap">The real number runs a bit higher, since TikTok only shows about two months of single-video revenue.</p>
   </section>
 
   <!-- ===== APPROACH ===== -->
