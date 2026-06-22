@@ -331,11 +331,13 @@
       d.setAttribute('data-width','320');
       d.setAttribute('data-show-text','false');
       b.appendChild(d);
-      // fallback link in case the FB plugin does not render (reels often will not)
+      // hidden fallback: only revealed if the FB plugin never renders an iframe
       var fb = document.createElement('div');
       fb.className='embed-fallback';
+      fb.style.display='none';
       fb.innerHTML='<a href="'+b.dataset.url+'" target="_blank" rel="noopener">Watch on Facebook</a>';
       b.appendChild(fb);
+      setTimeout(function(){ if(!b.querySelector('iframe')){ fb.style.display='flex'; } }, 4000);
     });
   }
 
