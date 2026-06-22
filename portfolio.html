@@ -90,6 +90,12 @@
   .instagram-media{margin:0 auto !important;min-width:0 !important;border-radius:14px !important}
   .tiktok-embed{margin:0 auto !important;min-width:0 !important;max-width:100% !important}
   .scrollhint{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:2px}
+  .vid-eng{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--faint);margin:0 0 8px}
+  .embed-card{flex-direction:column;gap:14px;text-decoration:none;color:var(--text);cursor:pointer;padding:24px;transition:border-color .2s,background .2s,transform .2s}
+  .embed-card:hover{border-color:var(--line2);background:var(--bg3);transform:translateY(-2px)}
+  .embed-card .play{width:60px;height:60px;border-radius:50%;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:18px;padding-left:3px}
+  .embed-card .ec-plat{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+  .embed-card .ec-go{font-family:var(--mono);font-size:13px;color:var(--accent)}
 
   /* ===== accounts ===== */
   .acct{
@@ -148,7 +154,7 @@
 
   <!-- ===== TABS ===== -->
   <div class="tabs rv" role="tablist" aria-label="Sections" style="animation-delay:.40s">
-    <button class="tab" id="tab-videos"   role="tab" aria-controls="p-videos"   aria-selected="true"  onclick="showTab('videos')">Videos<span class="ct">4</span></button>
+    <button class="tab" id="tab-videos"   role="tab" aria-controls="p-videos"   aria-selected="true"  onclick="showTab('videos')">Videos<span class="ct">5</span></button>
     <button class="tab" id="tab-accounts" role="tab" aria-controls="p-accounts" aria-selected="false" onclick="showTab('accounts')">Accounts<span class="ct">2</span></button>
     <button class="tab" id="tab-creators" role="tab" aria-controls="p-creators" aria-selected="false" onclick="showTab('creators')">Creators</button>
     <button class="tab" id="tab-stats"    role="tab" aria-controls="p-stats"    aria-selected="false" onclick="showTab('stats')">Stats</button>
@@ -166,6 +172,17 @@
         <div class="embed" data-type="tiktok" data-url="https://www.tiktok.com/t/ZTBWgdw74/">
           <div class="embed-fallback"><a href="https://www.tiktok.com/t/ZTBWgdw74/" target="_blank" rel="noopener">Open on TikTok</a><span class="small">Loading preview...</span></div>
         </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">1.6M</span><span class="vid-plat">Facebook</span></div>
+        <p class="vid-eng">14.5K likes &middot; 4K saves &middot; 603 comments</p>
+        <p class="vid-note">A UGC-style video. This kind of content is more mass producible than founder-led video, and this one did the numbers.</p>
+        <a class="embed embed-card" href="https://www.facebook.com/reel/1599459981197906" target="_blank" rel="noopener">
+          <span class="play">&#9654;</span>
+          <span class="ec-plat">Facebook Reel</span>
+          <span class="ec-go">Watch on Facebook</span>
+        </a>
       </div>
 
       <div class="vid">
