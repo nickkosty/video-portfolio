@@ -96,6 +96,12 @@
   .embed-card .play{width:60px;height:60px;border-radius:50%;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:18px;padding-left:3px}
   .embed-card .ec-plat{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
   .embed-card .ec-go{font-family:var(--mono);font-size:13px;color:var(--accent)}
+  .player{position:relative;width:100%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line)}
+  .player video.pv{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer}
+  .player .snd{position:absolute;bottom:11px;right:11px;width:34px;height:34px;border-radius:50%;border:0;cursor:pointer;background:rgba(0,0,0,.55);color:#fff;font-size:15px;line-height:1;padding:0;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(5px);transition:background .2s}
+  .player .snd:hover{background:rgba(0,0,0,.8)}
+  .player .ext{position:absolute;top:11px;right:11px;width:30px;height:30px;border-radius:9px;background:rgba(0,0,0,.5);color:#fff;text-decoration:none;font-size:14px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(5px);transition:background .2s}
+  .player .ext:hover{background:rgba(0,0,0,.8)}
 
   /* ===== accounts ===== */
   .acct{
@@ -172,8 +178,10 @@
       <div class="vid">
         <div class="vid-head"><span class="vid-views">2.3M</span><span class="vid-plat">TikTok</span></div>
         <p class="vid-note">My own product, RawLyfe batana oil. This is the video behind the sales in the Stats tab.</p>
-        <div class="embed" data-type="tiktok" data-url="https://www.tiktok.com/t/ZTBWgdw74/">
-          <div class="embed-fallback"><a href="https://www.tiktok.com/t/ZTBWgdw74/" target="_blank" rel="noopener">Open on TikTok</a><span class="small">Loading preview...</span></div>
+        <div class="player">
+          <video class="pv" poster="videos/own-rawlyfe-23m.jpg" src="videos/own-rawlyfe-23m.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.tiktok.com/t/ZTBWgdw74/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
@@ -181,40 +189,50 @@
         <div class="vid-head"><span class="vid-views">1.6M</span><span class="vid-plat">Facebook</span></div>
         <p class="vid-eng">14.5K likes &middot; 4K saves &middot; 603 comments</p>
         <p class="vid-note">A UGC-style video. This kind of content is more mass producible than founder-led video, and this one did the numbers.</p>
-        <div class="embed" data-type="facebook" data-url="https://www.facebook.com/reel/1599459981197906">
-          <div class="embed-fallback"><a href="https://www.facebook.com/reel/1599459981197906" target="_blank" rel="noopener">Open on Facebook</a><span class="small">Loading preview...</span></div>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-fb-16m.jpg" src="videos/own-rewired-fb-16m.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.facebook.com/reel/1599459981197906" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
       <div class="vid">
         <div class="vid-head"><span class="vid-views">137K</span><span class="vid-plat">TikTok</span></div>
         <p class="vid-note">Made for my app, Rewired. The whole video was about the app, and it converted well.</p>
-        <div class="embed" data-type="tiktok" data-url="https://www.tiktok.com/t/ZTBWpuVL2/">
-          <div class="embed-fallback"><a href="https://www.tiktok.com/t/ZTBWpuVL2/" target="_blank" rel="noopener">Open on TikTok</a><span class="small">Loading preview...</span></div>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-137k.jpg" src="videos/own-rewired-137k.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.tiktok.com/t/ZTBWpuVL2/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
       <div class="vid">
         <div class="vid-head"><span class="vid-views">80K</span><span class="vid-plat">Facebook</span></div>
         <p class="vid-note">Another UGC-style video. The app is the main focus, and it converted well.</p>
-        <div class="embed" data-type="facebook" data-url="https://www.facebook.com/reel/1258501942905444">
-          <div class="embed-fallback"><a href="https://www.facebook.com/reel/1258501942905444" target="_blank" rel="noopener">Open on Facebook</a><span class="small">Loading preview...</span></div>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-fb-80k.jpg" src="videos/own-rewired-fb-80k.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.facebook.com/reel/1258501942905444" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
       <div class="vid">
         <div class="vid-head"><span class="vid-views">32K</span><span class="vid-plat">Instagram</span></div>
         <p class="vid-note">Lower views, higher quality. Converted well organically, and also worked as a paid ad at around $20 CPA.</p>
-        <div class="embed" data-type="instagram" data-url="https://www.instagram.com/therewired.app/reel/DVHhjiyjphF/">
-          <div class="embed-fallback"><a href="https://www.instagram.com/therewired.app/reel/DVHhjiyjphF/" target="_blank" rel="noopener">Open on Instagram</a><span class="small">Loading preview...</span></div>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-32k.jpg" src="videos/own-rewired-32k.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.instagram.com/therewired.app/reel/DVHhjiyjphF/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
       <div class="vid">
         <div class="vid-head"><span class="vid-views">214K</span><span class="vid-plat">Instagram</span></div>
         <p class="vid-note">Another one for Rewired.</p>
-        <div class="embed" data-type="instagram" data-url="https://www.instagram.com/therewired.app/reel/DVUR8Z4DnIy/">
-          <div class="embed-fallback"><a href="https://www.instagram.com/therewired.app/reel/DVUR8Z4DnIy/" target="_blank" rel="noopener">Open on Instagram</a><span class="small">Loading preview...</span></div>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-214k.jpg" src="videos/own-rewired-214k.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.instagram.com/therewired.app/reel/DVUR8Z4DnIy/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
@@ -249,24 +267,30 @@
         <div class="vid-head"><span class="vid-views">1.8M</span><span class="vid-plat">Instagram</span></div>
         <p class="vid-eng">113K likes</p>
         <p class="vid-note">Bennett (@bennettslocked). UGC style with a plug for the app at the end.</p>
-        <div class="embed" data-type="instagram" data-url="https://www.instagram.com/reel/DZlY3z_Nufh/">
-          <div class="embed-fallback"><a href="https://www.instagram.com/reel/DZlY3z_Nufh/" target="_blank" rel="noopener">Open on Instagram</a><span class="small">Loading preview...</span></div>
+        <div class="player">
+          <video class="pv" poster="videos/creator-bennett-18m.jpg" src="videos/creator-bennett-18m.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.instagram.com/reel/DZlY3z_Nufh/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
       <div class="vid">
         <div class="vid-head"><span class="vid-views">364K</span><span class="vid-plat">Instagram</span></div>
         <p class="vid-note">Ryan (@lockinwryan). Same format, doubled down.</p>
-        <div class="embed" data-type="instagram" data-url="https://www.instagram.com/reel/DZq7KKwRP19/">
-          <div class="embed-fallback"><a href="https://www.instagram.com/reel/DZq7KKwRP19/" target="_blank" rel="noopener">Open on Instagram</a><span class="small">Loading preview...</span></div>
+        <div class="player">
+          <video class="pv" poster="videos/creator-ryan-364k.jpg" src="videos/creator-ryan-364k.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.instagram.com/reel/DZq7KKwRP19/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
       <div class="vid">
         <div class="vid-head"><span class="vid-views">188K</span><span class="vid-plat">Instagram</span></div>
         <p class="vid-note">Ryan (@lockinwryan). Another one in the same format.</p>
-        <div class="embed" data-type="instagram" data-url="https://www.instagram.com/reel/DZtX6zHOApq/">
-          <div class="embed-fallback"><a href="https://www.instagram.com/reel/DZtX6zHOApq/" target="_blank" rel="noopener">Open on Instagram</a><span class="small">Loading preview...</span></div>
+        <div class="player">
+          <video class="pv" poster="videos/creator-ryan-188k.jpg" src="videos/creator-ryan-188k.mp4" muted loop playsinline preload="none"></video>
+          <button class="snd" type="button" aria-label="Toggle sound">&#128263;</button>
+          <a class="ext" href="https://www.instagram.com/reel/DZtX6zHOApq/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
         </div>
       </div>
 
@@ -324,100 +348,61 @@
 </div>
 
 <script>
+  var vids = Array.prototype.slice.call(document.querySelectorAll('video.pv'));
+
   // ---- tab switching ----
   function showTab(name){
-    var tabs = document.querySelectorAll('.tab');
-    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.id === 'tab-'+name ? 'true' : 'false'); });
+    document.querySelectorAll('.tab').forEach(function(t){ t.setAttribute('aria-selected', t.id === 'tab-'+name ? 'true' : 'false'); });
     document.querySelectorAll('.panel').forEach(function(p){
       var on = p.id === 'p-'+name;
       p.classList.toggle('on', on);
       if(on){ p.removeAttribute('hidden'); } else { p.setAttribute('hidden',''); }
     });
-    // re-render embeds that may live in a just-revealed panel
-    reprocessEmbeds();
+    setTimeout(playInView, 80); // nudge videos in the newly shown panel
   }
 
-  // ---- embeds ----
-  var igLoaded = false, ttLoaded = false;
-
-  function buildInstagram(){
-    document.querySelectorAll('.embed[data-type="instagram"]').forEach(function(b){
-      if(b.dataset.built) return;
-      b.dataset.built = '1';
-      var m = b.dataset.url.match(/\/(reel|reels|p|tv)\/([A-Za-z0-9_-]+)/);
-      var permalink = m ? ('https://www.instagram.com/' + (m[1]==='reels'?'reel':m[1]) + '/' + m[2] + '/') : b.dataset.url;
-      var bq = document.createElement('blockquote');
-      bq.className = 'instagram-media';
-      bq.setAttribute('data-instgrm-permalink', permalink);
-      bq.setAttribute('data-instgrm-version','14');
-      bq.style.cssText = 'background:#fff;border:0;margin:0 auto;max-width:100%;width:100%';
-      var a = document.createElement('a');
-      a.href = permalink; a.target='_blank'; a.rel='noopener'; a.textContent='View on Instagram';
-      bq.appendChild(a);
-      b.innerHTML=''; b.appendChild(bq);
+  // ---- autoplay videos while they are in view ----
+  function tryPlay(v){ var p = v.play(); if(p && p.catch){ p.catch(function(){}); } }
+  function playInView(){
+    vids.forEach(function(v){
+      var r = v.getBoundingClientRect();
+      var onScreen = v.offsetParent !== null &&
+        r.bottom > 0 && r.top < window.innerHeight &&
+        r.right > 0 && r.left < window.innerWidth;
+      if(onScreen){ tryPlay(v); } else { v.pause(); }
     });
   }
-
-  function buildTikTok(){
-    var ttBlocks = Array.prototype.slice.call(document.querySelectorAll('.embed[data-type="tiktok"]'));
-    return Promise.all(ttBlocks.map(function(b){
-      if(b.dataset.built) return Promise.resolve();
-      return fetch('https://www.tiktok.com/oembed?url=' + encodeURIComponent(b.dataset.url))
-        .then(function(r){return r.json();})
-        .then(function(data){ if(data && data.html){ b.dataset.built='1'; b.innerHTML = data.html; } })
-        .catch(function(){});
-    }));
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ tryPlay(e.target); } else { e.target.pause(); } });
+    }, {threshold:0.4});
+    vids.forEach(function(v){ io.observe(v); });
+  } else {
+    window.addEventListener('scroll', playInView, {passive:true});
   }
+  document.querySelectorAll('.row').forEach(function(r){ r.addEventListener('scroll', function(){ playInView(); }, {passive:true}); });
 
-  function buildFacebook(){
-    document.querySelectorAll('.embed[data-type="facebook"]').forEach(function(b){
-      if(b.dataset.built) return;
-      b.dataset.built='1';
-      b.innerHTML='';
-      var d = document.createElement('div');
-      d.className='fb-video';
-      d.setAttribute('data-href', b.dataset.url);
-      d.setAttribute('data-width','320');
-      d.setAttribute('data-show-text','false');
-      b.appendChild(d);
-      // hidden fallback: only revealed if the FB plugin never renders an iframe
-      var fb = document.createElement('div');
-      fb.className='embed-fallback';
-      fb.style.display='none';
-      fb.innerHTML='<a href="'+b.dataset.url+'" target="_blank" rel="noopener">Watch on Facebook</a>';
-      b.appendChild(fb);
-      setTimeout(function(){ if(!b.querySelector('iframe')){ fb.style.display='flex'; } }, 4000);
-    });
+  // ---- sound toggle (only one unmuted at a time) ----
+  function setMuted(v, m){
+    v.muted = m;
+    var b = v.parentNode.querySelector('.snd');
+    if(b) b.innerHTML = m ? '&#128263;' : '&#128266;';
   }
-
-  function loadScript(src, onload){
-    var s=document.createElement('script'); s.async=true; s.src=src; if(onload)s.onload=onload; document.body.appendChild(s);
-  }
-
-  function reprocessEmbeds(){
-    buildInstagram();
-    if(window.instgrm && window.instgrm.Embeds){ window.instgrm.Embeds.process(); }
-    else if(!igLoaded && document.querySelector('.embed[data-type="instagram"]')){
-      igLoaded=true; loadScript('https://www.instagram.com/embed.js', function(){ if(window.instgrm) window.instgrm.Embeds.process(); });
+  document.querySelectorAll('.player').forEach(function(pl){
+    var v = pl.querySelector('video.pv');
+    var b = pl.querySelector('.snd');
+    function toggle(e){
+      e.preventDefault();
+      var willUnmute = v.muted;
+      if(willUnmute){ vids.forEach(function(o){ if(o !== v) setMuted(o, true); }); }
+      setMuted(v, !v.muted);
+      if(!v.muted) tryPlay(v);
     }
-    buildTikTok().then(function(){
-      if(document.querySelector('.tiktok-embed')){
-        // re-inject TikTok script so newly added blockquotes render
-        loadScript('https://www.tiktok.com/embed.js');
-      }
-    });
-    if(document.querySelector('.embed[data-type="facebook"]')){
-      buildFacebook();
-      if(window.FB && window.FB.XFBML){ window.FB.XFBML.parse(); }
-      else if(!window._fbLoading){
-        window._fbLoading=true;
-        var root=document.createElement('div'); root.id='fb-root'; document.body.appendChild(root);
-        loadScript('https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0');
-      }
-    }
-  }
+    if(b) b.addEventListener('click', toggle);
+    v.addEventListener('click', toggle);
+  });
 
-  reprocessEmbeds();
+  playInView();
 </script>
 </body>
 </html>
