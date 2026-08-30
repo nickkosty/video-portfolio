@@ -4,430 +4,391 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>Auré Organic Growth Plan | Nick's Update for Michael</title>
-  <meta name="description" content="A private strategy update on Auré's organic marketing system, pre-launch plan, launch evolution, and content decisions for Michael.">
+  <title>Auré Organic Growth: Pre-launch to Launch</title>
+  <meta name="description" content="Nick Kosty's clear organic growth plan for Auré: master scalable slideshows before launch, then test conversion-focused UGC and product-demo formats.">
   <style>
     :root{
-      --aure:#8FA7DF;
-      --aure-deep:#6F88C8;
-      --aure-soft:#E9EEFB;
-      --aure-pale:#F3F6FD;
-      --ink:#171B25;
-      --copy:#454D5F;
-      --muted:#667085;
-      --faint:#9298A6;
-      --line:#E5E8F0;
-      --paper:#FFFFFF;
-      --canvas:#F8F9FC;
-      --warm:#F7F4F1;
-      --hold:#A26F48;
-      --safe:#637A68;
-      --radius-xl:34px;
-      --radius-lg:24px;
-      --radius-md:18px;
-      --shadow:0 24px 70px rgba(39,51,85,.10);
-      --shadow-soft:0 10px 35px rgba(39,51,85,.07);
+      --paper:#f4f4f1;
+      --sheet:#ffffff;
+      --ink:#121418;
+      --muted:#5d626b;
+      --line:#cfd2d7;
+      --soft:#e8e9eb;
+      --blue:#6f88c8;
+      --blue-dark:#405a99;
+      --blue-wash:#edf1fb;
+      --black:#101216;
+      --green:#496e59;
+      --amber:#9b6c22;
       --max:1180px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;color:var(--ink);background:var(--canvas);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-    button{font:inherit}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
     img{display:block;max-width:100%}
-    .container{width:min(calc(100% - 40px),var(--max));margin:0 auto}
-    .progress{position:fixed;inset:0 auto auto 0;width:0;height:3px;background:linear-gradient(90deg,var(--aure-deep),#B6C5EC);z-index:200}
-    .site-header{position:sticky;top:0;z-index:100;background:rgba(248,249,252,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(229,232,240,.76)}
-    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{font-size:25px;font-weight:680;letter-spacing:-.04em}
-    .brand-note{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.11em;margin-left:12px;vertical-align:middle}
-    .nav-links{display:flex;align-items:center;gap:24px;color:#4C5568;font-size:14px}
-    .nav-links a{padding:8px 0;transition:.2s ease}
-    .nav-links a:hover{color:var(--ink)}
-    .nav-action{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 17px;border-radius:999px;background:var(--ink);color:#fff;font-weight:650;font-size:13px}
-    .menu{display:none;width:42px;height:42px;border:0;background:transparent;border-radius:12px}
-    .menu span{display:block;width:21px;height:1.5px;background:var(--ink);margin:5px auto}
-    .section{padding:110px 0;scroll-margin-top:78px}
-    .section-sm{padding:80px 0;scroll-margin-top:78px}
-    .white{background:var(--paper)}
-    .soft{background:var(--aure-pale)}
-    .warm{background:var(--warm)}
-    .dark{background:#171B25;color:#fff}
-    .eyebrow{margin:0 0 14px;font-size:12px;line-height:1.2;letter-spacing:.14em;text-transform:uppercase;font-weight:750;color:var(--aure-deep)}
-    .dark .eyebrow{color:#BFD0F7}
-    h1,h2,h3,p{margin-top:0}
-    h1,h2,h3{letter-spacing:-.035em;line-height:1.08}
-    h1{font-size:clamp(50px,7.4vw,90px);font-weight:650;margin-bottom:28px}
-    h2{font-size:clamp(37px,4.7vw,60px);font-weight:620;margin-bottom:22px}
-    h3{font-size:22px;font-weight:650;margin-bottom:12px}
-    .lede{font-size:clamp(19px,2vw,23px);color:var(--copy);max-width:790px}
-    .dark .lede{color:rgba(255,255,255,.74)}
-    .small{font-size:13px;color:var(--muted)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid transparent;font-weight:650;font-size:14px;cursor:pointer;transition:.2s ease}
-    .btn:hover{transform:translateY(-1px)}
-    .btn-dark{background:var(--ink);color:#fff}
-    .btn-light{background:#fff;color:var(--ink);border-color:var(--line)}
-    .btn-blue{background:var(--aure);color:#17203A}
-    .hero{padding:80px 0 88px;overflow:hidden}
-    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:65px;align-items:center;min-height:660px}
-    .hero .lede{max-width:720px;margin-bottom:30px}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 25px}
-    .status-line{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14px}
-    .status-dot{width:8px;height:8px;background:var(--aure);border-radius:50%;box-shadow:0 0 0 5px rgba(143,167,223,.18)}
-    .hero-visual{position:relative;min-height:560px;display:grid;place-items:center}
-    .halo{position:absolute;width:510px;height:510px;border-radius:50%;background:radial-gradient(circle,rgba(143,167,223,.30) 0,rgba(143,167,223,.12) 38%,rgba(143,167,223,0) 72%);filter:blur(7px)}
-    .orb{width:285px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.98) 0 7%,rgba(220,231,255,.94) 13%,rgba(143,167,223,.95) 43%,rgba(111,136,200,.9) 69%,rgba(92,108,163,.92) 100%);box-shadow:inset -28px -34px 58px rgba(50,63,105,.18),inset 24px 20px 45px rgba(255,255,255,.40),0 28px 90px rgba(101,126,190,.34)}
-    .brief-card{width:min(350px,84%);position:absolute;right:0;bottom:28px;padding:24px;background:rgba(255,255,255,.89);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.9);border-radius:30px;box-shadow:var(--shadow)}
-    .brief-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-    .mini-orb{width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 32% 28%,white,#B9C8F0 38%,#7891D0 78%);box-shadow:0 8px 22px rgba(111,136,200,.28)}
-    .brief-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--aure-deep);font-weight:750}
-    .brief-card h3{font-size:21px;margin-bottom:14px}
-    .brief-list{display:grid;gap:9px}
-    .brief-list span{display:flex;align-items:center;gap:9px;font-size:13px;color:#566076}
-    .brief-list i{display:block;width:6px;height:6px;border-radius:50%;background:var(--aure)}
-    .metric-band{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .metrics{display:grid;grid-template-columns:repeat(4,1fr)}
-    .metric{padding:32px 28px;border-right:1px solid var(--line)}
-    .metric:first-child{padding-left:0}
-    .metric:last-child{border-right:0}
-    .metric strong{display:block;font-size:31px;letter-spacing:-.04em;margin-bottom:5px}
-    .metric span{font-size:13px;color:var(--muted)}
-    .section-head{max-width:820px;margin-bottom:52px}
-    .section-head.center{text-align:center;margin-left:auto;margin-right:auto}
-    .thesis{display:grid;grid-template-columns:.78fr 1.22fr;gap:80px;align-items:start}
-    .thesis-sticky{position:sticky;top:118px}
-    .thesis-copy{display:grid;gap:42px}
-    .thesis-point{padding-bottom:38px;border-bottom:1px solid var(--line)}
-    .thesis-point:last-child{border-bottom:0}
-    .thesis-num{display:block;color:var(--aure-deep);font-size:12px;letter-spacing:.12em;font-weight:750;margin-bottom:12px}
-    .thesis-point p{color:var(--muted);font-size:17px;margin:0;max-width:630px}
-    .account-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:42px}
-    .account{border-radius:28px;padding:36px;min-height:315px;position:relative;overflow:hidden}
-    .account.maria{background:linear-gradient(145deg,#EAF0FD,#FAFBFF);border:1px solid #DDE5F5}
-    .account.official{background:linear-gradient(145deg,#F8F4F1,#FFFFFF);border:1px solid #ECE5DF}
-    .account-tag{display:inline-block;margin-bottom:58px;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.75);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5E687D}
-    .account p{color:var(--muted);max-width:480px;margin:0}
-    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
-    .flow-step{background:#fff;border:1px solid var(--line);border-radius:22px;padding:25px;min-height:205px}
-    .flow-step b{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--aure-soft);color:#5269A8;font-size:13px;margin-bottom:24px}
-    .flow-step p{font-size:14px;color:var(--muted);margin:0}
-    .division{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
-    .division-card{border-radius:26px;padding:34px;background:#fff;border:1px solid var(--line)}
-    .division-card.blue{background:linear-gradient(145deg,#EDF2FD,#FFFFFF);border-color:#DDE5F5}
-    .division-card h3{font-size:26px}
-    .division-card ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px;color:var(--muted)}
-    .division-card li{padding-left:19px;position:relative}
-    .division-card li:before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--aure)}
-    .evidence-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
-    .owned-panel{background:#fff;border:1px solid var(--line);border-radius:30px;padding:38px;box-shadow:var(--shadow-soft)}
-    .owned-total{font-size:58px;line-height:1;letter-spacing:-.05em;margin:10px 0 12px}
-    .owned-panel>p{color:var(--muted)}
-    .bar-group{margin-top:32px;display:grid;gap:20px}
-    .bar-row{display:grid;grid-template-columns:110px 1fr 78px;gap:14px;align-items:center;font-size:13px}
-    .bar-track{height:10px;background:#EEF1F6;border-radius:99px;overflow:hidden}
-    .bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--aure-deep),#B7C6ED)}
-    .audit-copy p{color:var(--muted);font-size:17px}
-    .family-list{display:grid;gap:0;margin-top:30px;border-top:1px solid var(--line)}
-    .family{display:grid;grid-template-columns:1fr auto;gap:25px;padding:18px 0;border-bottom:1px solid var(--line);align-items:center}
-    .family strong{display:block;margin-bottom:4px}
-    .family span{font-size:13px;color:var(--muted)}
-    .family b{color:var(--aure-deep);font-size:14px;white-space:nowrap}
-    .audit-figure{margin-top:58px;display:grid;grid-template-columns:.72fr 1.28fr;gap:40px;align-items:center}
-    .image-window{height:580px;border-radius:30px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-soft)}
-    .image-window img{width:100%;height:100%;object-fit:cover;object-position:top}
-    .audit-notes{display:grid;gap:22px}
-    .audit-note{padding-bottom:22px;border-bottom:1px solid var(--line)}
-    .audit-note:last-child{border-bottom:0}
-    .audit-note strong{display:block;margin-bottom:7px}
-    .audit-note p{margin:0;color:var(--muted)}
-    .risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .risk-panel{border-radius:30px;padding:38px;background:#fff;border:1px solid var(--line)}
-    .risk-panel.safe{border-color:#DDE8E0}
-    .risk-panel.hold{border-color:#EADFD6}
-    .risk-title{display:flex;align-items:center;gap:12px;margin-bottom:28px}
-    .risk-dot{width:12px;height:12px;border-radius:50%}
-    .safe .risk-dot{background:var(--safe)}
-    .hold .risk-dot{background:var(--hold)}
-    .risk-list{display:grid;gap:18px}
-    .risk-item{padding-bottom:18px;border-bottom:1px solid var(--line)}
-    .risk-item:last-child{padding-bottom:0;border-bottom:0}
-    .risk-item strong{display:block;margin-bottom:5px}
-    .risk-item p{margin:0;color:var(--muted);font-size:14px}
-    .timeline{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:46px}
-    .phase{border-radius:30px;padding:42px;min-height:520px}
-    .phase.now{background:linear-gradient(145deg,#EAF0FD,#FAFBFF);border:1px solid #DDE5F5}
-    .phase.launch{background:#171B25;color:#fff}
-    .phase-tag{display:inline-block;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.72);font-size:11px;text-transform:uppercase;letter-spacing:.09em;margin-bottom:52px;color:#5E6E9A}
-    .launch .phase-tag{background:rgba(255,255,255,.1);color:#C9D5F3}
-    .phase h3{font-size:31px;max-width:430px}
-    .phase p{color:var(--muted)}
-    .launch p{color:rgba(255,255,255,.65)}
-    .phase ul{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
-    .phase li{padding-left:21px;position:relative;color:#4F596D}
-    .launch li{color:rgba(255,255,255,.72)}
-    .phase li:before{content:"";position:absolute;left:0;top:.68em;width:7px;height:7px;border-radius:50%;background:var(--aure)}
-    .loop{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:44px}
-    .loop-node{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 16px;min-height:145px}
-    .loop-node b{font-size:12px;color:var(--aure-deep);display:block;margin-bottom:13px}
-    .loop-node span{font-size:13px;color:var(--muted)}
-    .caveat{margin-top:26px;padding:18px 21px;background:#fff;border:1px solid var(--line);border-radius:17px;color:var(--muted);font-size:14px}
-    .decision-intro{display:grid;grid-template-columns:1fr .75fr;gap:55px;align-items:end;margin-bottom:45px}
-    .decision-help{color:var(--muted);font-size:15px}
-    .decision-list{display:grid;gap:14px}
-    .decision{background:#fff;border:1px solid var(--line);border-radius:25px;padding:28px;transition:.2s ease}
-    .decision:focus-within{border-color:#C4D0EC;box-shadow:var(--shadow-soft)}
-    .decision-top{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
-    .decision-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--aure-deep);font-weight:750;margin-bottom:8px}
-    .decision h3{font-size:23px;margin-bottom:8px}
-    .decision p{color:var(--muted);font-size:14px;max-width:760px;margin-bottom:0}
-    .source-link{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border:1px solid var(--line);border-radius:999px;font-size:12px;font-weight:650;color:#505A70;white-space:nowrap}
-    .source-link:hover{border-color:#C7CFE0;background:var(--aure-pale)}
-    .choices{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
-    .choice-btn{min-height:39px;padding:0 14px;border:1px solid var(--line);background:#fff;border-radius:999px;color:#626B7D;font-size:12px;font-weight:650;cursor:pointer;transition:.16s ease}
-    .choice-btn:hover{border-color:#C9D3EA}
-    .choice-btn.selected{background:var(--aure-soft);color:#354C88;border-color:#BFCDEC}
-    .choice-btn[data-value="Hold"].selected{background:#F4EBE5;color:#815535;border-color:#E5CDBD}
-    .copy-panel{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px 28px;background:#171B25;color:#fff;border-radius:24px}
-    .copy-panel p{margin:4px 0 0;color:rgba(255,255,255,.62);font-size:13px}
-    .copy-status{font-size:12px;color:#BFD0F7;margin-left:12px}
-    .asks{display:grid;grid-template-columns:.82fr 1.18fr;gap:75px;align-items:start}
-    .ask-list{display:grid;gap:0;border-top:1px solid rgba(255,255,255,.12)}
-    .ask{display:grid;grid-template-columns:42px 1fr;gap:18px;padding:25px 0;border-bottom:1px solid rgba(255,255,255,.12)}
-    .ask b{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:rgba(143,167,223,.18);color:#C6D5F7;font-size:12px}
-    .ask strong{display:block;margin-bottom:5px}
-    .ask p{margin:0;color:rgba(255,255,255,.62);font-size:14px}
-    footer{padding:38px 0;background:#10131A;color:rgba(255,255,255,.5);font-size:12px}
-    .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
-    .footer-row strong{color:#fff;font-size:18px}
-    .reveal{opacity:1;transform:none}
-    @media(max-width:1040px){
-      .nav-links{display:none}.menu{display:block}.nav.open{align-items:flex-start;padding:17px 0;flex-wrap:wrap}.nav.open .nav-links{order:3;width:100%;display:grid;gap:0}.nav.open .nav-links a{padding:10px 0}
-      .hero-grid,.thesis,.evidence-grid,.audit-figure,.asks{grid-template-columns:1fr}.hero-grid{gap:20px}.thesis-sticky{position:static}.hero-visual{min-height:480px}.metrics{grid-template-columns:1fr 1fr}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.metric:nth-child(3){padding-left:0}
-      .flow{grid-template-columns:1fr 1fr}.loop{grid-template-columns:repeat(3,1fr)}.decision-intro{grid-template-columns:1fr}.image-window{height:520px;max-width:530px}.decision-top{grid-template-columns:1fr}.source-link{justify-self:start}
+    .page{width:min(var(--max),calc(100% - 48px));margin:0 auto}
+    .masthead{background:var(--black);color:#fff;border-bottom:7px solid var(--blue)}
+    .masthead-inner{width:min(var(--max),calc(100% - 48px));margin:0 auto;min-height:64px;display:grid;grid-template-columns:1fr auto auto;gap:28px;align-items:center;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+    .masthead strong{font-size:14px;letter-spacing:.02em;text-transform:none}
+    .masthead .quiet{color:#aeb4c0}
+    .hero{padding:86px 0 72px;border-bottom:1px solid var(--line)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.45fr);gap:72px;align-items:end}
+    .eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 24px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark)}
+    .eyebrow:before{content:"";width:38px;height:3px;background:var(--blue)}
+    h1,h2,.big-idea{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-weight:500;letter-spacing:-.045em;line-height:.98;text-wrap:balance}
+    h1{font-size:clamp(58px,8.4vw,108px);margin:0;max-width:950px}
+    .hero-dek{font-size:clamp(20px,2.3vw,29px);line-height:1.35;max-width:820px;margin:32px 0 0;color:#313640;letter-spacing:-.015em}
+    .hero-side{border-top:5px solid var(--ink);padding-top:18px}
+    .hero-side .label{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero-side p{font-size:16px;margin:10px 0 0}
+    .hero-side strong{color:var(--blue-dark)}
+    .thesis{margin-top:54px;background:var(--blue);color:#fff;padding:24px 30px;display:grid;grid-template-columns:170px 1fr;gap:28px;align-items:start}
+    .thesis-label{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding-top:5px}
+    .thesis p{margin:0;font-size:clamp(20px,2.2vw,28px);line-height:1.32;font-weight:650;letter-spacing:-.02em}
+    section{padding:82px 0;border-bottom:1px solid var(--line)}
+    .section-grid{display:grid;grid-template-columns:225px minmax(0,1fr);gap:55px}
+    .section-index{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark)}
+    .section-index span{display:block;color:var(--muted);margin-top:7px;font-weight:600;letter-spacing:.07em}
+    h2{font-size:clamp(40px,5.2vw,70px);margin:0 0 28px;max-width:900px}
+    h3{font-size:21px;line-height:1.25;letter-spacing:-.02em;margin:0}
+    p.lead{font-size:21px;line-height:1.5;color:#393e47;max-width:880px;margin:0 0 40px}
+    .brief{border-top:5px solid var(--ink)}
+    .brief-row{display:grid;grid-template-columns:48px 190px 1fr;gap:20px;padding:23px 0;border-bottom:1px solid var(--line);align-items:start}
+    .brief-row .num{font-family:Georgia,serif;font-size:24px;color:var(--blue-dark)}
+    .brief-row strong{font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding-top:5px}
+    .brief-row p{font-size:18px;margin:0;color:#353a43}
+    .metric-ledger{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--line);margin:42px 0}
+    .metric{padding:20px;border-right:1px solid var(--line);border-bottom:1px solid var(--ink);background:var(--sheet)}
+    .metric .value{font-family:Georgia,serif;font-size:34px;line-height:1;color:var(--blue-dark)}
+    .metric .name{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:750;margin-top:11px;color:var(--muted)}
+    .definition{font-size:14px;color:var(--muted);background:var(--blue-wash);border-top:1px solid var(--blue);border-bottom:1px solid var(--blue);padding:13px 16px;margin:28px 0 0}
+    .flow{border-top:5px solid var(--ink)}
+    .flow-row{display:grid;grid-template-columns:72px 190px 1fr 94px;gap:20px;align-items:start;padding:22px 0;border-bottom:1px solid var(--line)}
+    .flow-row .step{font-family:Georgia,serif;font-size:27px;color:var(--blue-dark)}
+    .flow-row p{margin:0;color:#3f444d}
+    .status{justify-self:end;padding:5px 8px;border:1px solid currentColor;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+    .status.now{color:var(--green)}
+    .status.manual{color:var(--amber)}
+    .status.planned{color:var(--blue-dark)}
+    .exhibit{margin:46px 0 0;border:1px solid var(--ink);background:var(--sheet)}
+    .exhibit-head{display:grid;grid-template-columns:120px 1fr auto;gap:18px;padding:14px 17px;border-bottom:1px solid var(--ink);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    .exhibit-head span:last-child{color:var(--muted)}
+    .exhibit img{width:100%;max-height:560px;object-fit:cover;object-position:top}
+    .exhibit figcaption{padding:15px 17px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+    .evidence-table{margin-top:32px;border-top:5px solid var(--ink)}
+    .evidence-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);align-items:center}
+    .evidence-row.head{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:12px 0}
+    .evidence-row strong{font-size:17px}
+    .evidence-row .views{font-family:Georgia,serif;font-size:20px;color:var(--blue-dark)}
+    .conclusion{margin-top:38px;padding:28px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-family:Georgia,serif;font-size:clamp(25px,3vw,38px);line-height:1.25;letter-spacing:-.025em}
+    .strategy-line{border-top:5px solid var(--ink)}
+    .strategy-row{display:grid;grid-template-columns:125px 1fr 1fr;gap:30px;padding:25px 0;border-bottom:1px solid var(--line)}
+    .strategy-row .when{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-dark)}
+    .strategy-row p{margin:7px 0 0;color:#434851}
+    .not-now{margin-top:32px;background:#e9e9e6;padding:24px 28px;display:grid;grid-template-columns:160px 1fr;gap:24px}
+    .not-now strong{font-size:11px;letter-spacing:.11em;text-transform:uppercase}
+    .not-now p{margin:0;font-size:17px}
+    .format-list{border-top:5px solid var(--ink)}
+    .format{display:grid;grid-template-columns:92px 220px 1fr;gap:28px;padding:25px 0;border-bottom:1px solid var(--line)}
+    .format .phase{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--blue-dark)}
+    .format p{margin:8px 0 0;color:#424750}
+    .format .proof{font-size:13px;color:var(--muted);padding-top:3px}
+    .format .proof strong{display:block;color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+    .research-ledger{margin-top:42px;border-top:1px solid var(--ink)}
+    .research-title{display:grid;grid-template-columns:160px 1fr;gap:20px;padding:16px 0;border-bottom:5px solid var(--ink)}
+    .research-title strong{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-dark)}
+    .research-title p{margin:0;font-size:16px}
+    .research-row{display:grid;grid-template-columns:1.35fr 110px 1.65fr 72px;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);align-items:start}
+    .research-row .signal{font-family:Georgia,serif;font-size:20px;color:var(--blue-dark)}
+    .research-row p{margin:0;font-size:14px;color:var(--muted)}
+    .research-row a{display:inline-flex;align-items:center;min-height:44px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-dark)}
+    .test-plan{margin-top:40px;display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--line)}
+    .batch{min-height:230px;padding:18px 15px;border-right:1px solid var(--line);border-bottom:1px solid var(--ink);background:var(--sheet)}
+    .batch .posts{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-dark)}
+    .batch strong{display:block;font-size:15px;line-height:1.25;margin:24px 0 8px}
+    .batch p{font-size:12px;color:var(--muted);margin:0}
+    .scorecard{margin-top:32px;display:grid;grid-template-columns:180px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+    .scorecard strong{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+    .scorecard p{margin:0}
+    .account-split{display:grid;grid-template-columns:1fr 1fr;border-top:5px solid var(--ink)}
+    .account{padding:28px 30px 32px 0;border-bottom:1px solid var(--ink)}
+    .account+ .account{padding-left:30px;padding-right:0;border-left:1px solid var(--line)}
+    .account .handle{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-dark)}
+    .account h3{font-family:Georgia,serif;font-size:31px;margin:10px 0}
+    .account ul{padding-left:18px;margin:18px 0 0;color:#3f444d}
+    .account li+li{margin-top:8px}
+    .decision-table{border-top:5px solid var(--ink)}
+    .decision{display:grid;grid-template-columns:34px 235px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--line)}
+    .decision .dnum{font-family:Georgia,serif;font-size:22px;color:var(--blue-dark)}
+    .decision .recommendation{margin:6px 0 0;color:#424750}
+    .decision .ask{font-size:14px;color:var(--muted)}
+    .decision .ask strong{color:var(--ink);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:5px}
+    .system-table{border-top:5px solid var(--ink)}
+    .system-row{display:grid;grid-template-columns:1.25fr .8fr 1.5fr;gap:25px;padding:20px 0;border-bottom:1px solid var(--line)}
+    .system-row.head{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:12px 0}
+    .system-row p{margin:0;color:#424750}
+    .final{background:var(--black);color:#fff;padding:92px 0;border:0}
+    .final .page{display:grid;grid-template-columns:225px 1fr;gap:55px}
+    .final .section-index{color:#9fb3e8}
+    .final .big-idea{font-size:clamp(44px,6vw,78px);line-height:.98;color:#fff;margin:0;max-width:900px}
+    .final p{font-size:20px;color:#c6cad2;max-width:800px;margin:30px 0 0}
+    .final-asks{margin-top:42px;border-top:1px solid #42464f}
+    .final-ask{display:grid;grid-template-columns:40px 1fr;padding:16px 0;border-bottom:1px solid #42464f}
+    .final-ask span{color:#9fb3e8;font-family:Georgia,serif}
+    footer{background:var(--black);color:#878d98;padding:20px 0;border-top:1px solid #30343b;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    footer .page{display:flex;justify-content:space-between;gap:20px}
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr;gap:42px}.hero-side{max-width:520px}
+      .section-grid,.final .page{grid-template-columns:1fr;gap:22px}.section-index span{display:inline;margin-left:8px}
+      .metric-ledger{grid-template-columns:1fr 1fr}
+      .test-plan{grid-template-columns:repeat(3,1fr)}
+      .format{grid-template-columns:85px 190px 1fr}
     }
-    @media(max-width:720px){
-      .container{width:min(calc(100% - 28px),var(--max))}.nav{min-height:68px}.brand-note,.nav-action{display:none}.hero{padding:52px 0 70px}.hero-grid{min-height:auto}.hero-visual{min-height:400px}.halo{width:370px;height:370px}.orb{width:220px}.brief-card{width:250px;padding:18px;right:0;bottom:0}.brief-card h3{font-size:18px}.section{padding:78px 0}.section-sm{padding:58px 0}
-      .metrics,.account-grid,.division,.risk-grid,.timeline{grid-template-columns:1fr}.metric{padding:24px 0;border-right:0;border-bottom:1px solid var(--line)}.metric:nth-child(3){padding-left:0}.metric:last-child{border-bottom:0}.account{min-height:275px;padding:28px}.account-tag{margin-bottom:42px}.flow,.loop{grid-template-columns:1fr}.flow-step{min-height:0}.owned-panel,.risk-panel,.phase{padding:28px}.bar-row{grid-template-columns:82px 1fr 62px}.audit-figure{gap:26px}.image-window{height:430px}.decision{padding:22px}.copy-panel{align-items:flex-start;flex-direction:column}.asks{gap:40px}.footer-row{align-items:flex-start;flex-direction:column}.phase{min-height:0}
+    @media(max-width:650px){
+      .page,.masthead-inner{width:min(100% - 28px,var(--max))}
+      .masthead-inner{grid-template-columns:1fr auto;min-height:58px}.masthead .quiet{display:none}
+      .hero{padding:58px 0 50px}h1{font-size:54px}.hero-dek{font-size:20px}.thesis{grid-template-columns:1fr;gap:10px;margin-top:38px;padding:22px}
+      section{padding:58px 0}.brief-row{grid-template-columns:35px 1fr;gap:10px}.brief-row p{grid-column:2}
+      .metric-ledger{grid-template-columns:1fr}.metric{display:grid;grid-template-columns:120px 1fr;align-items:center;gap:18px}.metric .name{margin:0}
+      .flow-row{grid-template-columns:42px 1fr 84px;gap:12px}.flow-row h3{grid-column:2}.flow-row p{grid-column:2/4}.flow-row .status{grid-column:3;grid-row:1}
+      .evidence-row{grid-template-columns:1fr}.evidence-row.head{display:none}.evidence-row .views{font-size:18px}
+      .strategy-row{grid-template-columns:1fr;gap:8px}.not-now{grid-template-columns:1fr;gap:8px}
+      .format{grid-template-columns:1fr;gap:8px}.test-plan{grid-template-columns:1fr 1fr}.batch{min-height:185px}
+      .research-title,.research-row{grid-template-columns:1fr;gap:7px}.research-row a{padding:5px 0 9px}
+      .scorecard{grid-template-columns:1fr;gap:8px}.account-split{grid-template-columns:1fr}.account,.account+ .account{padding:24px 0;border-left:0}
+      .decision{grid-template-columns:30px 1fr}.decision .ask{grid-column:2}
+      .system-row{grid-template-columns:1fr;gap:8px}.system-row.head{display:none}
+      .exhibit-head{grid-template-columns:1fr auto}.exhibit-head span:nth-child(2){display:none}
+      footer .page{display:block}footer span{display:block;margin-top:5px}
     }
-    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{.masthead{background:#fff;color:#000}.hero,section{break-inside:avoid}.final{background:#fff;color:#000}.final p{color:#333}}
   </style>
 </head>
 <body>
-  <div class="progress" aria-hidden="true"></div>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="#top">Auré <span class="brand-note">Organic strategy</span></a>
-      <nav class="nav-links" aria-label="Strategy sections">
-        <a href="#now">Now</a><a href="#system">System</a><a href="#evidence">Evidence</a><a href="#launch">Launch</a><a href="#decisions">Decisions</a>
-      </nav>
-      <a class="nav-action" href="#decisions">Review formats</a>
-      <button class="menu" aria-label="Open navigation"><span></span><span></span></button>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <strong>Nick Kosty × Auré</strong>
+      <span class="quiet">Organic growth operating memo</span>
+      <span>Prepared for Michael</span>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <p class="eyebrow">Private strategy update for Michael</p>
-          <h1>Building Auré's organic growth engine.</h1>
-          <p class="lede">What I am running now, how it helps Auré before launch, what changes when the product is live, and the content boundaries I need your help defining.</p>
-          <div class="hero-actions"><a class="btn btn-dark" href="#now">See the current system</a><a class="btn btn-light" href="#decisions">Review the formats</a></div>
-          <div class="status-line"><span class="status-dot"></span><span>Pre-launch operation, prepared by Nick Kosty, August 30, 2026</span></div>
+      <div class="page">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Pre-launch to launch</p>
+            <h1>Master attention now. Build conversion after launch.</h1>
+            <p class="hero-dek">A straight explanation of what I am doing for Auré today, what the slideshow results actually prove, and how I plan to turn organic reach into app growth once there is a live product to show.</p>
+          </div>
+          <aside class="hero-side">
+            <div class="label">The honest status</div>
+            <p><strong>The content engine is operating.</strong> Publishing is manual. Slideshows are producing reach. App conversion is still unproven because the app has not launched.</p>
+          </aside>
         </div>
-        <div class="hero-visual reveal" aria-label="Auré organic strategy preview">
-          <div class="halo"></div><div class="orb"></div>
-          <div class="brief-card">
-            <div class="brief-top"><div><div class="brief-label">Current objective</div><strong>Learn before launch</strong></div><div class="mini-orb"></div></div>
-            <h3>Turn organic attention into a repeatable acquisition system.</h3>
-            <div class="brief-list"><span><i></i>Preserve proven TikTok mechanics</span><span><i></i>Protect brand truth and safety</span><span><i></i>Build owned performance history</span></div>
+        <div class="thesis">
+          <div class="thesis-label">The strategy</div>
+          <p>Use cheap, scalable slideshows to learn what earns attention before launch. Then keep the winning messages and test them inside UGC, POV, reaction, and product-demo formats that can actually show Auré.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary">
+      <div class="page section-grid">
+        <div class="section-index">00 / Start here<span>30-second version</span></div>
+        <div>
+          <h2>The whole plan, without the operating-system jargon.</h2>
+          <div class="brief">
+            <div class="brief-row"><span class="num">1</span><strong>Right now</strong><p>I am producing and testing relationship slideshows across Maria and Auré Official. They are fast, inexpensive top-of-funnel content: good for earning attention and learning hooks.</p></div>
+            <div class="brief-row"><span class="num">2</span><strong>What we know</strong><p>The owned accounts have 687.8K tracked views, and the outside audit found the same slideshow mechanisms reaching hundreds of thousands or millions across multiple accounts.</p></div>
+            <div class="brief-row"><span class="num">3</span><strong>What changes</strong><p>When the app launches, slideshows stay in the mix, but I add formats with stronger conversion potential: demos, emotional POVs, text over b-roll, reactions, and creator-led UGC.</p></div>
+            <div class="brief-row"><span class="num">4</span><strong>What decides winners</strong><p>Relentless controlled testing. Keep what repeats, change one major variable at a time, and let Auré's own clicks, installs, activation, and retention outrank competitor views.</p></div>
+          </div>
+          <p class="definition"><strong>Top of funnel</strong> means attention and awareness. It does not prove that someone will download or use the app.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="now">
+      <div class="page section-grid">
+        <div class="section-index">01 / Today<span>What I am doing now</span></div>
+        <div>
+          <h2>A working slideshow operation, with me still making the final call.</h2>
+          <p class="lead">The assistant handles context and creative judgment. ContentOS keeps the work organized and exportable. I review the actual slides, publish manually, and use performance to decide what deserves another test.</p>
+          <div class="flow">
+            <div class="flow-row"><span class="step">01</span><h3>Inspiration enters through chat</h3><p>I send TikToks, screenshots, voice notes, rough ideas, or feedback. I do not have to fill out a second intake form.</p><span class="status now">Current</span></div>
+            <div class="flow-row"><span class="step">02</span><h3>The source gets analyzed and routed</h3><p>The assistant identifies the hook, sequence, emotional mechanism, account fit, truth risks, and whether it should be recreated, varied, explored, or held.</p><span class="status now">Current</span></div>
+            <div class="flow-row"><span class="step">03</span><h3>The draft is created and checked</h3><p>Copy, imagery, account perspective, source fidelity, and Auré placement are checked before the draft reaches review.</p><span class="status now">Current</span></div>
+            <div class="flow-row"><span class="step">04</span><h3>I review, export, and publish</h3><p>ContentOS stores lineage and renders the package. I make the visual call and post to TikTok myself.</p><span class="status manual">Manual</span></div>
+            <div class="flow-row"><span class="step">05</span><h3>Public results come back</h3><p>The dashboard can reconcile live posts and store metrics. Continuous hourly reconciliation is a planned improvement, not a current claim.</p><span class="status planned">Partial</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="metric-band" aria-label="Current snapshot">
-      <div class="container metrics">
-        <div class="metric"><strong>61</strong><span>posts reconciled in ContentOS</span></div>
-        <div class="metric"><strong>664K</strong><span>tracked Maria views across 30 posts</span></div>
-        <div class="metric"><strong>19</strong><span>public TikTok sources audited deeply</span></div>
-        <div class="metric"><strong>2</strong><span>accounts with distinct jobs</span></div>
+    <section id="evidence">
+      <div class="page section-grid">
+        <div class="section-index">02 / Evidence<span>What slideshows prove</span></div>
+        <div>
+          <h2>Slideshows have earned reach. That makes them a useful laboratory.</h2>
+          <p class="lead">The result is not “slideshows solve growth.” The result is that we can test many hooks and emotional frames quickly, then carry the strongest messages into formats that can show the product.</p>
+          <div class="metric-ledger" aria-label="Current verified ContentOS snapshot">
+            <div class="metric"><div class="value">61</div><div class="name">Published or reconciled records</div></div>
+            <div class="metric"><div class="value">52</div><div class="name">Posts with tracked views</div></div>
+            <div class="metric"><div class="value">687.8K</div><div class="name">Combined tracked views</div></div>
+            <div class="metric"><div class="value">19</div><div class="name">Outside sources audited deeply</div></div>
+          </div>
+
+          <figure class="exhibit">
+            <div class="exhibit-head"><span>Exhibit A</span><span>First-slide hooks from the 19-post audit</span><span>Public TikTok</span></div>
+            <img src="assets/source-hooks.jpg" alt="Contact sheet showing the first slides of nineteen public TikTok relationship posts">
+            <figcaption>The audit compares the opening mechanism, wording, image treatment, sequence, and public performance. It is evidence for choosing hypotheses, not proof of Auré conversion.</figcaption>
+          </figure>
+
+          <div class="evidence-table">
+            <div class="evidence-row head"><span>Repeated family</span><span>Observed examples</span><span>Public views</span></div>
+            <div class="evidence-row"><strong>Rules after almost breaking up</strong><span>3 separate posts</span><span class="views">481K / 4.39M / 316K</span></div>
+            <div class="evidence-row"><strong>Restart with the same person</strong><span>3 separate posts</span><span class="views">1.06M / 4.07M / 40.6K</span></div>
+            <div class="evidence-row"><strong>Micro-rules that changed how we love</strong><span>3 separate posts</span><span class="views">264K / 745K / 74K</span></div>
+            <div class="evidence-row"><strong>Healthy relationship rules</strong><span>4 separate posts</span><span class="views">709K / 296K / 209K / 35K</span></div>
+          </div>
+          <div class="conclusion">The repeated pattern matters more than one viral outlier. The low examples matter too: copying a topic is not enough. Execution and account fit still decide the result.</div>
+        </div>
       </div>
     </section>
 
-    <section class="section white" id="now">
-      <div class="container thesis">
-        <div class="thesis-sticky reveal">
-          <p class="eyebrow">The strategy in one sentence</p>
-          <h2>Build the learning system before the product asks for conversion.</h2>
-          <p class="lede">The current work is not just filling a content calendar. It is reducing the creative uncertainty Auré would otherwise face at launch.</p>
+    <section id="prelaunch">
+      <div class="page section-grid">
+        <div class="section-index">03 / Before launch<span>What I optimize now</span></div>
+        <div>
+          <h2>Master the cheapest learning format before adding expensive production.</h2>
+          <p class="lead">Pre-launch has one job: build audience awareness and creative evidence while making the operation faster, more consistent, and safer.</p>
+          <div class="strategy-line">
+            <div class="strategy-row"><span class="when">Creative</span><div><h3>Four controlled slideshows</h3><p>Preserve a proven mechanism and change one named variable, such as hook wording, topic angle, image treatment, or CTA.</p></div><div><h3>One adjacent exploration</h3><p>Test a new topic or format without turning the whole week into random disconnected ideas.</p></div></div>
+            <div class="strategy-row"><span class="when">Accounts</span><div><h3>Maria earns relatability and reach</h3><p>Human, conversational content with first-person language only when the story is supported.</p></div><div><h3>Official earns clarity and trust</h3><p>Reader-facing education, product context, and no fabricated personal relationship experience.</p></div></div>
+            <div class="strategy-row"><span class="when">Learning</span><div><h3>Track owned repetition</h3><p>Wait for a mature sample before declaring a format dead or universally successful.</p></div><div><h3>Preserve losses</h3><p>A failed version helps identify which variable or account context did not travel.</p></div></div>
+          </div>
+          <div class="not-now"><strong>What I will not claim yet</strong><p>Pre-launch views do not establish customer acquisition, installs, retention, or meaningful product behavior. Those become measurable only after a real conversion path exists.</p></div>
         </div>
-        <div class="thesis-copy">
-          <article class="thesis-point reveal"><span class="thesis-num">01 / Reach</span><h3>Earn attention with formats people already understand.</h3><p>I study proven relationship slideshow structures and preserve the hook, progression, payoff, density, and swipe mechanism instead of forcing every source into a generic brand template.</p></article>
-          <article class="thesis-point reveal"><span class="thesis-num">02 / Trust</span><h3>Translate attention into an accurate Auré perspective.</h3><p>Each draft is routed to the account that can tell the story truthfully. The content remains useful first, with Auré introduced only where the product naturally supports the relationship experience.</p></article>
-          <article class="thesis-point reveal"><span class="thesis-num">03 / Learning</span><h3>Keep a traceable line from source to post to result.</h3><p>ContentOS preserves the source, draft, image sequence, status, public URL, and performance history so we can learn from controlled tests rather than random posting.</p></article>
-        </div>
-      </div>
-      <div class="container account-grid">
-        <article class="account maria reveal"><span class="account-tag">@maria.aure1</span><h3>Maria earns reach and relatability.</h3><p>Reader-first stories, recognizable relationship moments, cultural discussion, and human language. First-person claims are used only when Maria's actual experience supports them.</p></article>
-        <article class="account official reveal"><span class="account-tag">@myaurelife</span><h3>Official builds trust and product understanding.</h3><p>Reader-facing guidance, accurate Auré positioning, and clear product connection. The brand never pretends it personally experienced a breakup or relationship.</p></article>
       </div>
     </section>
 
-    <section class="section soft" id="system">
-      <div class="container">
-        <div class="section-head reveal"><p class="eyebrow">What I am doing now</p><h2>An assistant-led creative operation with ContentOS as the production record.</h2><p class="lede">I use the assistant as the contextual decision layer because it can combine the source, Auré's current positioning, previous feedback, account perspective, and safety boundaries in one place.</p></div>
-        <div class="flow">
-          <article class="flow-step reveal"><b>01</b><h3>Intake</h3><p>I send links, screenshots, rough ideas, voice notes, competitor examples, and feedback directly in chat.</p></article>
-          <article class="flow-step reveal"><b>02</b><h3>Route</h3><p>The assistant retrieves, deduplicates, and classifies each source as Maria, Official, Both, or Hold for Michael.</p></article>
-          <article class="flow-step reveal"><b>03</b><h3>Create and check</h3><p>Selected concepts become close recreations, controlled winner variations, or original tests, followed by truth, account, shape, safety, and copy QC.</p></article>
-          <article class="flow-step reveal"><b>04</b><h3>Review and publish</h3><p>Finished work enters ContentOS. I visually review, swap images if needed, export, and publish manually to TikTok.</p></article>
-        </div>
-        <div class="division">
-          <article class="division-card blue reveal"><p class="eyebrow">Context and judgment</p><h3>The assistant is the control layer.</h3><ul><li>Understands Michael's feedback and current brand boundaries</li><li>Preserves the mechanism of strong inspiration</li><li>Infers the correct account and creative mode</li><li>Flags sensitive concepts before they become brand statements</li><li>Catches semantic issues that a form cannot understand</li></ul></article>
-          <article class="division-card reveal"><p class="eyebrow">Durability and execution</p><h3>ContentOS is the system of record.</h3><ul><li>Stores source and draft lineage</li><li>Supports visual review, image swaps, rendering, and export</li><li>Tracks statuses, live URLs, and public performance</li><li>Reconciles confident caption matches when the dashboard refreshes</li><li>Creates the data history needed for later learning</li></ul></article>
-        </div>
-        <p class="caveat reveal"><strong>Current reality:</strong> publishing remains manual, recurring generation is paused while the workflow is being tuned, and public-post reconciliation currently depends on a dashboard refresh. Full automatic routing, explicit creative-mode fields, and hourly read-only reconciliation are planned improvements, not features I am claiming are already complete.</p>
-      </div>
-    </section>
-
-    <section class="section white" id="evidence">
-      <div class="container">
-        <div class="section-head reveal"><p class="eyebrow">What the evidence says so far</p><h2>We already have owned reach evidence and a clearer map of repeatable TikTok mechanics.</h2><p class="lede">Public competitor performance selects hypotheses. Auré's own performance decides whether those hypotheses deserve to scale.</p></div>
-        <div class="evidence-grid">
-          <div class="owned-panel reveal"><p class="eyebrow">Owned ContentOS snapshot</p><div class="owned-total">687.6K</div><p>Combined tracked views across Maria and Official at the current snapshot. This is reach evidence, not yet app conversion evidence.</p><div class="bar-group">
-            <div class="bar-row"><span>Maria total</span><div class="bar-track"><div class="bar-fill" style="width:96.6%"></div></div><strong>664K</strong></div>
-            <div class="bar-row"><span>Maria median</span><div class="bar-track"><div class="bar-fill" style="width:45%"></div></div><strong>4.4K</strong></div>
-            <div class="bar-row"><span>Official total</span><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div><strong>23.6K</strong></div>
-            <div class="bar-row"><span>Official median</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><strong>1.16K</strong></div>
+    <section id="launch">
+      <div class="page section-grid">
+        <div class="section-index">04 / At launch<span>How the content evolves</span></div>
+        <div>
+          <h2>Keep the winning message. Change the delivery so people can see Auré.</h2>
+          <p class="lead">Slideshows stay useful for reach, but launch unlocks content that can move from an emotional moment into a real product experience. Each format below is a hypothesis to test, not a promise that it will convert.</p>
+          <div class="format-list">
+            <div class="format"><span class="phase">Control</span><div><h3>Direct app demonstration</h3><p>Start with a real situation, then show the relevant Auré flow plainly.</p></div><div class="proof"><strong>Why test first</strong>It creates the clearest baseline between message, product proof, click, and activation.</div></div>
+            <div class="format"><span class="phase">Format 01</span><div><h3>Emotional POV → demo</h3><p>“POV: you found out he cheated and you are spiraling at 3 AM,” followed by the exact support experience inside Auré.</p></div><div class="proof"><strong>Main risk</strong>Dramatization cannot masquerade as a real user story or exploit someone in crisis.</div></div>
+            <div class="format"><span class="phase">Format 02</span><div><h3>Text over girl b-roll → demo</h3><p>A wall of text or recognizable yellow-text hook over emotionally congruent b-roll, then a clean product reveal.</p></div><div class="proof"><strong>Variable to isolate</strong>Text treatment, hook density, and point of the transition into the app.</div></div>
+            <div class="format"><span class="phase">Format 03</span><div><h3>Reaction + product walkthrough</h3><p>React to a relationship scenario, post, or common question, then demonstrate how Auré supports that moment.</p></div><div class="proof"><strong>Why it may work</strong>The reaction earns context. The walkthrough supplies proof instead of a generic app pitch.</div></div>
+            <div class="format"><span class="phase">Format 04</span><div><h3>Creator-led UGC</h3><p>A creator explains a real problem, gives an honest first impression, or walks through the product in native language.</p></div><div class="proof"><strong>Truth boundary</strong>No staged testimonial, fake outcome, or invented personal experience.</div></div>
+            <div class="format"><span class="phase">Exploration</span><div><h3>AI podcast clips</h3><p>Test one or two credible conversation clips as adjacent exploration, not as the center of the launch plan.</p></div><div class="proof"><strong>Open question</strong>Whether the format creates trust and qualified curiosity rather than empty reach.</div></div>
           </div>
-          </div>
-          <div class="audit-copy reveal"><p class="eyebrow">19-source format audit</p><h3>Near-identical relationship formats can win repeatedly across different accounts.</h3><p>The audit found four especially reusable families. One version can still underperform, which is why the mechanism should be treated as a controlled hypothesis rather than a guarantee.</p><div class="family-list">
-            <div class="family"><div><strong>Rules after almost breaking up</strong><span>Three separate examples</span></div><b>481K / 4.39M / 316K</b></div>
-            <div class="family"><div><strong>Restart with the same person</strong><span>Three separate examples</span></div><b>1.06M / 4.07M / 40.6K</b></div>
-            <div class="family"><div><strong>Micro-rules that changed how we love</strong><span>Three separate examples</span></div><b>264K / 745K / 74K</b></div>
-            <div class="family"><div><strong>Healthy relationship rules</strong><span>Four separate examples</span></div><b>709K / 296K / 209K / 35K</b></div>
-          </div>
-        </div>
-        </div>
-        <div class="audit-figure">
-          <figure class="image-window reveal"><img src="assets/source-hooks.jpg" alt="Contact sheet of first slides from the 19-post TikTok source audit"></figure>
-          <div class="audit-notes">
-            <article class="audit-note reveal"><strong>Preserve the control.</strong><p>For source recreation, keep the hook mechanism, slide count, reveal order, emotional progression, point order, approximate density, and image sequence whenever possible.</p></article>
-            <article class="audit-note reveal"><strong>Change one variable at a time.</strong><p>A winner variation should name the variable being tested, such as hook wording or aspect ratio, while the body structure and payoff remain fixed.</p></article>
-            <article class="audit-note reveal"><strong>Do not lead with an ad.</strong><p>The reviewed winners earn attention through a relationship problem first. Auré belongs at the exact support moment, not in a generic opening pitch.</p></article>
-            <article class="audit-note reveal"><strong>High views do not override positioning.</strong><p>Formats that pressure reconciliation, minimize harmful conflict, require forgiveness, make clinical claims, or materially broaden Auré's position still need review.</p></article>
+          <div class="research-ledger">
+            <div class="research-title"><strong>Lightreel live research</strong><p>Observed social examples support the format ladder, but none of these public view counts prove installs or activation.</p></div>
+            <div class="research-row"><strong>Emotional memory → product action</strong><span class="signal">605K</span><p>A specific relationship-memory trigger cut into a boundary-tracker interaction. This supports emotion-to-interface sequencing.</p><a href="https://www.tiktok.com/@haileyshealing/video/7678033644845419806" target="_blank" rel="noopener">Source ↗</a></div>
+            <div class="research-row"><strong>Yellow text over b-roll → feature</strong><span class="signal">385K</span><p>A seven-word hook over sad bedroom footage cut into one visible app result after roughly five seconds.</p><a href="https://www.tiktok.com/@paufindssz/video/7674433759101324575" target="_blank" rel="noopener">Source ↗</a></div>
+            <div class="research-row"><strong>Native direct app demonstration</strong><span class="signal">273K</span><p>The app appeared at frame one and completed one narrow, legible job. Product clarity did not require a lifestyle preamble.</p><a href="https://www.tiktok.com/@bloomcouples.app/video/7673219507237719327" target="_blank" rel="noopener">Source ↗</a></div>
+            <div class="research-row"><strong>Reaction hook → walkthrough → result</strong><span class="signal">721K</span><p>A short creator hook led to a fast demonstration and visible result, creating curiosity without hiding the product.</p><a href="https://www.instagram.com/reel/DcUtQkXScLW/" target="_blank" rel="noopener">Source ↗</a></div>
+            <div class="research-row"><strong>Synthetic podcast-style clip</strong><span class="signal">6.3M</span><p>It proved attention potential, not product curiosity. Undisclosed synthetic authority creates enough trust risk to keep this experimental.</p><a href="https://www.tiktok.com/@silenttruths_01/video/7673570559959108886" target="_blank" rel="noopener">Source ↗</a></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section warm" id="boundaries">
-      <div class="container">
-        <div class="section-head reveal"><p class="eyebrow">What can run now</p><h2>Separate the proven mechanics from the sensitive message.</h2><p class="lede">The current v3 Auré positioning supports a broad range of difficult relationship experiences. The main approval question is not whether a topic has views. It is whether the message is safe, truthful, and aligned.</p></div>
-        <div class="risk-grid">
-          <article class="risk-panel safe reveal"><div class="risk-title"><span class="risk-dot"></span><h3>Fits current positioning</h3></div><div class="risk-list">
-            <div class="risk-item"><strong>Communication micro-rules</strong><p>Specific language, check-ins, repair attempts, listening, and emotionally clear communication.</p></div>
-            <div class="risk-item"><strong>General healthy relationship habits</strong><p>Mutual respect, honest reflection, boundaries, and practices that do not instruct someone to remain in a relationship.</p></div>
-            <div class="risk-item"><strong>Carefully framed breakup coping</strong><p>Content supporting people through separation or emotional aftermath without diagnosing or promising outcomes.</p></div>
-            <div class="risk-item"><strong>Broader relationship changes</strong><p>Infidelity, separation, divorce, partner loss, unhealthy relationships, loneliness, and difficult change, consistent with the new homepage positioning.</p></div>
-          </div></article>
-          <article class="risk-panel hold reveal"><div class="risk-title"><span class="risk-dot"></span><h3>Needs Michael's decision</h3></div><div class="risk-list">
-            <div class="risk-item"><strong>Reconciliation-first formats</strong><p>Content that assumes staying together, restarting, or repairing is the preferred outcome.</p></div>
-            <div class="risk-item"><strong>Breakup is failure framing</strong><p>Hooks such as “your relationship needs a reset, not a breakup” can pressure people to remain.</p></div>
-            <div class="risk-item"><strong>Conflict normalization</strong><p>“Normal fights” content can become unsafe when it blurs the line between ordinary conflict and harmful behavior.</p></div>
-            <div class="risk-item"><strong>Therapy, mental-health, or universal-stage claims</strong><p>These can imply clinical authority, oversimplify experiences, or establish new positioning.</p></div>
-          </div></article>
+    <section id="testing">
+      <div class="page section-grid">
+        <div class="section-index">05 / Test plan<span>First 30 launch posts</span></div>
+        <div>
+          <h2>Six batches. One major question per batch.</h2>
+          <p class="lead">The point is not to spray thirty unrelated ideas. The point is to create interpretable evidence, keep the message consistent enough to compare formats, and then spend more output on the winner.</p>
+          <div class="test-plan">
+            <div class="batch"><span class="posts">Posts 1–5</span><strong>Choose the format baseline</strong><p>Compare two POV demos, two direct demos, and one no-product b-roll control.</p></div>
+            <div class="batch"><span class="posts">Posts 6–10</span><strong>Test hook wording</strong><p>Keep the winning format fixed. Compare five evidence-based hook families.</p></div>
+            <div class="batch"><span class="posts">Posts 11–15</span><strong>Test reveal timing</strong><p>Show the product at frame one, 3s, 5s, 7s, and on slide two.</p></div>
+            <div class="batch"><span class="posts">Posts 16–20</span><strong>Test product proof</strong><p>Compare five real in-app jobs while holding the hook and edit fixed.</p></div>
+            <div class="batch"><span class="posts">Posts 21–25</span><strong>Test the messenger</strong><p>Compare brand voice, real user, creator UGC, reaction, and screen-record voiceover.</p></div>
+            <div class="batch"><span class="posts">Posts 26–30</span><strong>Test the CTA</strong><p>Adopt the least forceful CTA that still improves qualified action.</p></div>
+          </div>
+          <div class="scorecard"><strong>How a winner changes</strong><p><strong>Before launch:</strong> watch time, completion, shares, saves, profile activity, and account-relative views. <strong>After launch:</strong> add click-through, install or signup where measurable, activation, retention, and meaningful support behavior.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="section white" id="launch">
-      <div class="container">
-        <div class="section-head reveal"><p class="eyebrow">How this helps before launch</p><h2>Pre-launch content reduces the cold-start problem. Launch turns the same engine toward conversion.</h2><p class="lede">The creative system stays. The job of the content, the call to action, and the evidence used to select winners become more product-specific.</p></div>
-        <div class="timeline">
-          <article class="phase now reveal"><span class="phase-tag">Now / pre-launch</span><h3>Build reach, recognition, trust, and a library of proven controls.</h3><p>The immediate goal is to learn what earns attention and what language people respond to before every post has to carry an install target.</p><ul><li>Test repeatable slideshow mechanics at volume</li><li>Warm the Official account and clarify what Auré supports</li><li>Build audience familiarity across the broader relationship-change position</li><li>Collect comments and audience language for future creative</li><li>Prepare a launch-ready library of hooks, formats, and objections</li><li>Route appropriate interest toward the waitlist or early access</li></ul></article>
-          <article class="phase launch reveal"><span class="phase-tag">Launch and after</span><h3>Connect winning attention to real product use and measurable acquisition.</h3><p>Organic content becomes both top-of-funnel discovery and a direct demonstration of how Auré supports difficult moments.</p><ul><li>Shift calls to action from coming soon to try Auré or download</li><li>Create in-the-moment AI Companion demonstrations</li><li>Show personalized practices, peer connection, matched groups, and educational content accurately</li><li>Build founder-led and behind-the-product stories where supported</li><li>Use real user stories and reactions only with consent and truthful framing</li><li>Adapt winning relationship formats while integrating the exact relevant Auré support path</li></ul></article>
+    <section id="accounts">
+      <div class="page section-grid">
+        <div class="section-index">06 / Accounts<span>Two different jobs</span></div>
+        <div>
+          <h2>Maria earns attention. Official proves what Auré is.</h2>
+          <p class="lead">The accounts can cover the same underlying problem, but the voice, claim, and product role should not be interchangeable.</p>
+          <div class="account-split">
+            <article class="account"><span class="handle">@maria.aure1</span><h3>Relatable distribution</h3><ul><li>Human hooks and conversational language</li><li>Lived experience only when evidence supports it</li><li>Broad relationship moments that attract the right audience</li><li>Natural Auré mention after value, not a forced pitch</li></ul></article>
+            <article class="account"><span class="handle">@myaurelife</span><h3>Trust and product understanding</h3><ul><li>Reader-facing support and educational framing</li><li>No claim of personal relationship experience</li><li>Clear product demonstrations after launch</li><li>A dedicated CTA when the product is relevant to the exact moment</li></ul></article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section soft" id="learning">
-      <div class="container">
-        <div class="section-head reveal"><p class="eyebrow">The post-launch learning loop</p><h2>Public views find opportunities. Owned behavior decides what actually scales.</h2><p class="lede">Once attribution is available, a format should not be called a winner only because it receives views.</p></div>
-        <div class="loop">
-          <div class="loop-node reveal"><b>01</b><span>Source mechanism and hypothesis</span></div>
-          <div class="loop-node reveal"><b>02</b><span>Watch time and completion</span></div>
-          <div class="loop-node reveal"><b>03</b><span>Shares, saves, comments, and profile activity</span></div>
-          <div class="loop-node reveal"><b>04</b><span>Bio click, store visit, or landing-page action</span></div>
-          <div class="loop-node reveal"><b>05</b><span>Install, signup, or account creation where measurable</span></div>
-          <div class="loop-node reveal"><b>06</b><span>Activation, retention, and meaningful product behavior</span></div>
+    <section id="decisions">
+      <div class="page section-grid">
+        <div class="section-index">07 / Michael<span>Decisions I need</span></div>
+        <div>
+          <h2>Approve the boundaries once so I can move faster inside them.</h2>
+          <p class="lead">I do not need line-by-line approval on every post. I need clear policy decisions on the topics and claims where virality can create positioning risk.</p>
+          <div class="decision-table">
+            <div class="decision"><span class="dnum">1</span><div><h3>Relationship outcomes</h3><p class="recommendation">Recommended default: support the person's decision without implying they should reconcile, forgive, stay, or break up.</p></div><div class="ask"><strong>Decision needed</strong>May Auré test “restart with the same person” and “rules after almost breaking up” if the copy explicitly preserves leaving as valid?</div></div>
+            <div class="decision"><span class="dnum">2</span><div><h3>Conflict and relationship stages</h3><p class="recommendation">Recommended default: avoid universal models and never normalize coercive, threatening, or harmful behavior.</p></div><div class="ask"><strong>Decision needed</strong>How broad can Auré go into “normal fights,” relationship stages, and general relationship advice?</div></div>
+            <div class="decision"><span class="dnum">3</span><div><h3>Therapy and mental-health language</h3><p class="recommendation">Recommended default: Auré is support and education, not therapy, diagnosis, crisis care, or a substitute for professional help.</p></div><div class="ask"><strong>Decision needed</strong>Which approved product and safety wording should every creator use?</div></div>
+            <div class="decision"><span class="dnum">4</span><div><h3>Dramatized UGC</h3><p class="recommendation">Recommended default: POV scenarios may dramatize a moment, but cannot be presented as a real testimonial or verified user outcome.</p></div><div class="ask"><strong>Decision needed</strong>Is fictionalized emotional b-roll acceptable when the format is clearly framed as POV?</div></div>
+            <div class="decision"><span class="dnum">5</span><div><h3>Launch claims and CTA</h3><p class="recommendation">Recommended default: show only verified functionality and route to one measurable launch action.</p></div><div class="ask"><strong>Decision needed</strong>What will the launch CTA be, and which exact app experiences can content demonstrate?</div></div>
+            <div class="decision"><span class="dnum">6</span><div><h3>Testing freedom</h3><p class="recommendation">Recommended default: I run controlled variations inside approved boundaries, then bring genuinely new positioning back for review.</p></div><div class="ask"><strong>Decision needed</strong>Once these guardrails are approved, can I iterate without pre-approving every individual post?</div></div>
+          </div>
         </div>
-        <p class="caveat reveal">The long-term goal is controlled iteration: keep the winning mechanism, change one named variable, connect each live post back to its draft, and let Auré's own downstream behavior outrank competitor view counts.</p>
       </div>
     </section>
 
-    <section class="section white" id="decisions">
-      <div class="container">
-        <div class="decision-intro">
-          <div class="reveal"><p class="eyebrow">Formats I need your view on</p><h2>Choose the boundary, not the final copy.</h2><p class="lede">Each source has a proven organic mechanism. The question is whether Auré should test the underlying message, test it with explicit guardrails, or hold it.</p></div>
-          <p class="decision-help reveal">Selections stay in this browser. After choosing, use “Copy decisions” and send the generated response to Nick. Source links open the actual TikTok examples.</p>
+    <section id="system">
+      <div class="page section-grid">
+        <div class="section-index">08 / Infrastructure<span>What is real vs next</span></div>
+        <div>
+          <h2>The tooling supports the strategy. It is not the strategy.</h2>
+          <p class="lead">ContentOS matters because it makes high-volume testing traceable. Lightreel adds live social research. Neither replaces judgment, product truth, or manual publishing.</p>
+          <div class="system-table">
+            <div class="system-row head"><span>Capability</span><span>Status</span><span>What that means</span></div>
+            <div class="system-row"><strong>Chat intake and contextual analysis</strong><span class="status now">Current</span><p>I can send rough direction once and let the assistant interpret it against all known context.</p></div>
+            <div class="system-row"><strong>ContentOS review, lineage, render, and export</strong><span class="status now">Current</span><p>The source, draft, images, status, and performance stay connected.</p></div>
+            <div class="system-row"><strong>Lightreel social research API</strong><span class="status now">Connected</span><p>The first structured Auré research pass is complete. Live examples now inform the launch ladder, but Auré's own results still make the final decision.</p></div>
+            <div class="system-row"><strong>TikTok publishing</strong><span class="status manual">Manual</span><p>I remain the final reviewer and publisher. No autonomous posting is part of this plan.</p></div>
+            <div class="system-row"><strong>Automatic account routing and creative-mode records</strong><span class="status planned">Planned</span><p>The intended logic exists, but it is not yet fully wired into production.</p></div>
+            <div class="system-row"><strong>Hourly read-only reconciliation and post-launch attribution</strong><span class="status planned">Planned</span><p>These become important when owned conversion evidence can outrank views.</p></div>
+          </div>
         </div>
-        <div class="decision-list">
-          <article class="decision reveal" data-format="Rules after almost breaking up"><div class="decision-top"><div><div class="decision-kicker">Repeated family / up to 4.39M views</div><h3>Rules couples made after they almost broke up</h3><p>Strong repeatable list structure. Main risk: the adaptation could imply that reconciliation is expected or morally preferable.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FAHvVo/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
-          <article class="decision reveal" data-format="Restart with the same person"><div class="decision-top"><div><div class="decision-kicker">Repeated family / up to 4.07M views</div><h3>How to restart with the same person</h3><p>Proven “restart” structure with clear curiosity and progression. Main risk: it explicitly centers reconciliation rather than supporting the person's own decision.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FAsuH6/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
-          <article class="decision reveal" data-format="Reset, not a breakup"><div class="decision-top"><div><div class="decision-kicker">Single source / 2.49M views</div><h3>Your relationship needs a reset, not a breakup</h3><p>Very strong contradiction hook. Main risk: it frames ending the relationship as the wrong choice before knowing the person's circumstances.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FAbyPD/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
-          <article class="decision reveal" data-format="Fights that are normal"><div class="decision-top"><div><div class="decision-kicker">Single source / 1.79M views</div><h3>Fights that are normal in a relationship</h3><p>High-recognition topic with comment potential. Main risk: careless examples can normalize harmful or coercive behavior.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FAf2dn/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
-          <article class="decision reveal" data-format="Forgiveness obligations"><div class="decision-top"><div><div class="decision-kicker">Sensitive message / 143K views</div><h3>Forgiveness as a relationship requirement</h3><p>The format is easy to understand, but “you have to forgive” language can pressure people and oversimplify betrayal, safety, and recovery.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FA5pJr/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
-          <article class="decision reveal" data-format="Four relationship stages"><div class="decision-top"><div><div class="decision-kicker">Organic presentation / 2.75M views</div><h3>The four stages of a relationship</h3><p>The source presents relationship progression very naturally and could position Auré as support during difficult stages. Main risk: a universal stage model can oversimplify relationships and broaden product positioning.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FAsuc3/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
-        </div>
-        <div class="copy-panel reveal"><div><strong>Ready to send your decisions?</strong><p>The copied response includes every selected format and leaves unselected items clearly marked.</p></div><div><button class="btn btn-blue" id="copy-decisions">Copy decisions</button><span class="copy-status" id="copy-status" aria-live="polite"></span></div></div>
       </div>
     </section>
 
-    <section class="section dark" id="asks">
-      <div class="container asks">
-        <div class="reveal"><p class="eyebrow">What I need from Michael</p><h2>A few clear decisions will let me move faster without turning organic reach into positioning risk.</h2><p class="lede">I am not asking for approval on every post. I am asking for durable boundaries that the system can apply consistently.</p></div>
-        <div class="ask-list">
-          <div class="ask reveal"><b>01</b><div><strong>Approve, guardrail, or hold the six format families above.</strong><p>This defines which proven mechanisms can enter the testing queue.</p></div></div>
-          <div class="ask reveal"><b>02</b><div><strong>Confirm how far Auré can speak about reconciliation and staying together.</strong><p>Should Auré remain neutral, or can it support repair when the content explicitly preserves user choice and safety?</p></div></div>
-          <div class="ask reveal"><b>03</b><div><strong>Confirm the product claims we can use at launch.</strong><p>AI Companion, peer connection, matched groups, personalized practices, educational videos, privacy language, and any launch-specific availability constraints.</p></div></div>
-          <div class="ask reveal"><b>04</b><div><strong>Define any clinical or subject-matter review trigger.</strong><p>Clarify what requires review when content touches therapy, mental health, grief, coercion, abuse, crisis, or safety.</p></div></div>
-          <div class="ask reveal"><b>05</b><div><strong>Confirm the launch conversion path.</strong><p>Waitlist, early access, App Store, web signup, or another route, plus the events we will use to judge organic acquisition.</p></div></div>
+    <section class="final">
+      <div class="page">
+        <div class="section-index">The takeaway</div>
+        <div>
+          <p class="big-idea">Slideshows are the pre-launch learning engine, not the final form of Auré marketing.</p>
+          <p>I plan to master their speed and repeatability now, carry the winning messages into product-visible formats at launch, and relentlessly test until Auré's own behavior shows us what to scale.</p>
+          <div class="final-asks">
+            <div class="final-ask"><span>1</span><strong>Approve the content and safety boundaries.</strong></div>
+            <div class="final-ask"><span>2</span><strong>Confirm the launch product claims and primary CTA.</strong></div>
+            <div class="final-ask"><span>3</span><strong>Give me room to iterate inside those boundaries.</strong></div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer><div class="container footer-row"><strong>Auré</strong><span>Organic growth strategy prepared by Nick Kosty for Michael</span><span>Private and unlisted</span></div></footer>
-  <script>
-    const nav=document.querySelector('.nav');
-    const menu=document.querySelector('.menu');
-    if(menu&&nav){menu.addEventListener('click',()=>nav.classList.toggle('open'));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')))}
-    const progress=document.querySelector('.progress');
-    function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'}
-    addEventListener('scroll',updateProgress,{passive:true});updateProgress();
-    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}}),{threshold:.08});
-    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-    const key='aure-michael-format-decisions-v1';
-    const saved=JSON.parse(localStorage.getItem(key)||'{}');
-    document.querySelectorAll('.decision').forEach(card=>{
-      const name=card.dataset.format;
-      const set=value=>{card.querySelectorAll('.choice-btn').forEach(btn=>btn.classList.toggle('selected',btn.dataset.value===value));if(value){saved[name]=value}else{delete saved[name]}localStorage.setItem(key,JSON.stringify(saved))};
-      card.querySelectorAll('.choice-btn').forEach(btn=>btn.addEventListener('click',()=>set(btn.dataset.value)));
-      if(saved[name])set(saved[name]);
-    });
-    const copyButton=document.getElementById('copy-decisions');
-    const copyStatus=document.getElementById('copy-status');
-    copyButton.addEventListener('click',async()=>{
-      const cards=[...document.querySelectorAll('.decision')];
-      const lines=['Michael format decisions:',''];
-      cards.forEach(card=>lines.push(card.dataset.format+': '+(saved[card.dataset.format]||'No decision yet')));
-      lines.push('','Additional guardrails or notes:');
-      try{await navigator.clipboard.writeText(lines.join('\n'));copyStatus.textContent='Copied'}catch(e){copyStatus.textContent='Copy blocked by browser'}
-      setTimeout(()=>copyStatus.textContent='',2400);
-    });
-  </script>
+  <footer><div class="page">Nick Kosty × Auré Organic Growth <span>Prepared for Michael • August 30, 2026</span></div></footer>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
