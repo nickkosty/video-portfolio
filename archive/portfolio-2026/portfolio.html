@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Nick</title>
+<meta name="description" content="Nick, organic marketing, mostly short-form video.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0b0a; --bg2:#161412; --bg3:#1f1c18;
+    --line:rgba(240,230,214,.09); --line2:rgba(240,230,214,.17);
+    --text:#ece6da; --muted:#a59e90; --faint:#6f6a5f;
+    --accent:#e3a743; --accent-soft:rgba(227,167,67,.14);
+    --sans:'Hanken Grotesk',system-ui,sans-serif;
+    --serif:'Fraunces',Georgia,serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:var(--sans);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* atmosphere */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 480px at 18% -8%, rgba(227,167,67,.10), transparent 60%),
+      radial-gradient(700px 420px at 105% 4%, rgba(227,167,67,.05), transparent 55%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:0 24px}
+
+  /* ===== hero ===== */
+  header{padding:84px 0 30px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin:0 0 22px}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(52px,10vw,92px);line-height:.94;letter-spacing:-.02em;margin:0 0 26px}
+  .lede{font-size:clamp(17px,2.2vw,19px);color:var(--muted);max-width:54ch;margin:0 0 10px}
+  .lede strong{color:var(--text);font-weight:500}
+
+  /* ===== tabs ===== */
+  .tabs{
+    position:sticky;top:0;z-index:5;margin-top:40px;
+    display:flex;gap:6px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    background:rgba(12,11,10,.78);backdrop-filter:blur(10px);
+  }
+  .tab{
+    appearance:none;background:none;border:0;cursor:pointer;
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--faint);padding:18px 4px 16px;margin-right:24px;
+    border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;
+  }
+  .tab:hover{color:var(--muted)}
+  .tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent)}
+  .tab .ct{color:var(--faint);margin-left:7px;font-size:11px}
+  .tab[aria-selected="true"] .ct{color:var(--accent)}
+
+  /* ===== panels ===== */
+  .panel{display:none;padding:38px 0 10px;animation:fade .5s ease both}
+  .panel.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .phead{font-family:var(--serif);font-size:24px;font-weight:400;margin:0 0 6px}
+  .psub{color:var(--muted);font-size:15px;margin:0 0 26px;max-width:60ch}
+
+  /* ===== video row ===== */
+  .row{
+    display:flex;gap:18px;overflow-x:auto;padding:2px 0 22px;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;
+  }
+  .vid .player{transition:transform .25s ease,border-color .25s ease}
+  .vid:hover .player{transform:translateY(-3px);border-color:var(--line2)}
+  .row::-webkit-scrollbar{height:7px}
+  .row::-webkit-scrollbar-track{background:transparent}
+  .row::-webkit-scrollbar-thumb{background:var(--line2);border-radius:99px}
+  .vid{flex:0 0 auto;width:330px;scroll-snap-align:start}
+  .vid-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
+  .vid-views{font-family:var(--mono);font-size:21px;color:var(--text);letter-spacing:-.01em}
+  .vid-plat{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-soft);background:var(--accent-soft);padding:4px 8px;border-radius:6px;white-space:nowrap}
+  .vid-note{color:var(--muted);font-size:13.5px;line-height:1.5;margin:0 0 14px;min-height:40px}
+  .vid-eng{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--faint);margin:0 0 8px}
+  .player{position:relative;width:100%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line)}
+  .player video.pv{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer}
+  .player .ext{position:absolute;top:11px;right:11px;background:rgba(0,0,0,.62);color:#fff;text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.03em;padding:7px 11px;border-radius:999px;display:flex;align-items:center;gap:5px;backdrop-filter:blur(6px);transition:background .2s,color .2s;z-index:2}
+  .player .ext:hover{background:var(--accent);color:#1a1407}
+
+  /* ===== accounts ===== */
+  .acct{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;margin-bottom:12px;background:var(--bg2);transition:border-color .2s,transform .2s,background .2s;
+  }
+  .acct:hover{border-color:var(--line2);transform:translateY(-2px);background:var(--bg3)}
+  .acct .h{font-size:18px;font-weight:600}
+  .acct .s{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:4px;letter-spacing:.02em}
+  .acct .go{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .acct-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+  .acct-grid .acct{margin-bottom:0}
+  .subhead{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:36px 0 16px}
+
+  /* ===== stats ===== */
+  .shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;max-width:620px}
+  .shot img{display:block;width:100%;height:auto}
+  .cap{color:var(--faint);font-size:13px;margin:14px 0 0;max-width:60ch;line-height:1.55}
+  .aud-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+  .aud{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--bg2)}
+  .aud-h{font-size:17px;font-weight:600;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .aud-h span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:400}
+  .grp{margin-top:18px}
+  .grp-l{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+  .bar{display:flex;align-items:center;gap:10px;margin:6px 0}
+  .bar .k{font-family:var(--mono);font-size:11.5px;color:var(--muted);flex:0 0 58px}
+  .bar .t{flex:1;height:7px;background:var(--bg3);border-radius:99px;overflow:hidden}
+  .bar .f{display:block;height:100%;background:var(--accent);border-radius:99px}
+  .bar .v{font-family:var(--mono);font-size:11.5px;color:var(--text);flex:0 0 46px;text-align:right}
+  .aud-note{color:var(--muted);font-size:12.5px;line-height:1.55;margin:16px 0 0;border-top:1px solid var(--line);padding-top:14px}
+  .aud-note strong{color:var(--accent);font-weight:500}
+
+  /* ===== empty state ===== */
+  .empty{border:1px dashed var(--line2);border-radius:14px;padding:40px 24px;text-align:center;color:var(--faint);font-size:14px;background:rgba(255,255,255,.012)}
+
+  /* ===== approach ===== */
+  .approach{border-top:1px solid var(--line);margin-top:60px;padding:56px 0}
+  .approach .label{font-family:var(--mono);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin:0 0 20px}
+  .approach p{font-family:var(--serif);font-weight:400;font-size:clamp(19px,2.6vw,23px);line-height:1.5;color:var(--text);max-width:38ch;margin:0 0 18px}
+  .approach em{font-style:italic;color:var(--accent)}
+
+  /* ===== footer ===== */
+  footer{border-top:1px solid var(--line);padding:34px 0 70px}
+  .fine{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:26px;letter-spacing:.06em}
+
+  /* load reveal */
+  .rv{opacity:0;transform:translateY(14px);animation:rvin .8s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rvin{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.rv,.panel{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <header>
+    <p class="eyebrow rv" style="animation-delay:.05s">Organic marketing</p>
+    <h1 class="rv" style="animation-delay:.12s">Nick</h1>
+    <p class="lede rv" style="animation-delay:.22s">Some of the short-form videos I've made that have done well, the accounts I run, and the creators I direct.</p>
+  </header>
+
+  <!-- ===== TABS ===== -->
+  <div class="tabs rv" role="tablist" aria-label="Sections" style="animation-delay:.40s">
+    <button class="tab" id="tab-videos"   role="tab" aria-controls="p-videos"   aria-selected="true"  onclick="showTab('videos')">Videos<span class="ct">6</span></button>
+    <button class="tab" id="tab-accounts" role="tab" aria-controls="p-accounts" aria-selected="false" onclick="showTab('accounts')">Accounts<span class="ct">2</span></button>
+    <button class="tab" id="tab-creators" role="tab" aria-controls="p-creators" aria-selected="false" onclick="showTab('creators')">Creators<span class="ct">7</span></button>
+    <button class="tab" id="tab-stats"    role="tab" aria-controls="p-stats"    aria-selected="false" onclick="showTab('stats')">Audience</button>
+  </div>
+
+  <!-- ===== VIDEOS PANEL ===== -->
+  <section class="panel on" id="p-videos" role="tabpanel" aria-labelledby="tab-videos">
+    <h2 class="phead">Some of my work</h2>
+    <p class="psub">A few videos I made, with what they did. Scroll sideways for more.</p>
+    <div class="row">
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">137K</span><span class="vid-plat">TikTok</span></div>
+        <p class="vid-note">For my app, Rewired. The whole video is the app itself, and it converted well.</p>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-137k.jpg" src="videos/own-rewired-137k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.tiktok.com/t/ZTBWpuVL2/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">2.3M</span><span class="vid-plat">TikTok</span></div>
+        <p class="vid-note">My own product, RawLyfe batana oil. This is the video that drove those sales.</p>
+        <div class="player">
+          <video class="pv" poster="videos/own-rawlyfe-23m.jpg" src="videos/own-rawlyfe-23m.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.tiktok.com/t/ZTBWgdw74/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">214K</span><span class="vid-plat">Instagram</span></div>
+        <p class="vid-note">For my app, Rewired.</p>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-214k.jpg" src="videos/own-rewired-214k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.instagram.com/therewired.app/reel/DVUR8Z4DnIy/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">80K</span><span class="vid-plat">Facebook</span></div>
+        <p class="vid-note">For Rewired. UGC style, with the app front and center. Converted well.</p>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-fb-80k.jpg" src="videos/own-rewired-fb-80k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.facebook.com/reel/1258501942905444" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">1.6M</span><span class="vid-plat">Facebook</span></div>
+        <p class="vid-eng">14.5K likes &middot; 4K saves &middot; 603 comments</p>
+        <p class="vid-note">For Rewired. UGC-style content, the kind that's easy to run at volume, and this one hit.</p>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-fb-16m.jpg" src="videos/own-rewired-fb-16m.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.facebook.com/reel/1599459981197906" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">32K</span><span class="vid-plat">Instagram</span></div>
+        <p class="vid-note">For Rewired. Higher quality, and it also ran as a paid ad at around $20 CPA.</p>
+        <div class="player">
+          <video class="pv" poster="videos/own-rewired-32k.jpg" src="videos/own-rewired-32k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.instagram.com/therewired.app/reel/DVHhjiyjphF/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <!-- TODO add more videos (Facebook etc): copy a .vid block above, set data-type to
+           "tiktok", "instagram", or "facebook" and update data-url, views and note. -->
+
+    </div>
+  </section>
+
+  <!-- ===== ACCOUNTS PANEL ===== -->
+  <section class="panel" id="p-accounts" role="tabpanel" aria-labelledby="tab-accounts" hidden>
+    <h2 class="phead">My accounts</h2>
+    <p class="psub">My main accounts. I post here and repost the same videos across TikTok, YouTube, and Facebook.</p>
+    <a class="acct" href="https://www.tiktok.com/@kostywitshop" target="_blank" rel="noopener">
+      <div><div class="h">@kostywitshop</div><div class="s">TikTok &middot; 31K followers</div></div>
+      <span class="go">Open</span>
+    </a>
+    <a class="acct" href="https://www.instagram.com/therewired.app/" target="_blank" rel="noopener">
+      <div><div class="h">@therewired.app</div><div class="s">Instagram</div></div>
+      <span class="go">Open</span>
+    </a>
+    <!-- TODO add more accounts (Facebook page etc) by copying an .acct block above. -->
+  </section>
+
+  <!-- ===== CREATORS PANEL ===== -->
+  <section class="panel" id="p-creators" role="tabpanel" aria-labelledby="tab-creators" hidden>
+    <h2 class="phead">Creators I work with</h2>
+    <p class="psub">I help manage and give creative direction to a roster of UGC creators. Same proven format, run across creators at volume. A few of their best below.</p>
+    <div class="row">
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">364K</span><span class="vid-plat">Instagram</span></div>
+        <p class="vid-note">Ryan (@lockinwryan).</p>
+        <div class="player">
+          <video class="pv" poster="videos/creator-ryan-364k.jpg" src="videos/creator-ryan-364k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.instagram.com/reel/DZq7KKwRP19/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">1.8M</span><span class="vid-plat">Instagram</span></div>
+        <p class="vid-eng">113K likes</p>
+        <p class="vid-note">Bennett (@bennettslocked). UGC with the app plugged at the end.</p>
+        <div class="player">
+          <video class="pv" poster="videos/creator-bennett-18m.jpg" src="videos/creator-bennett-18m.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.instagram.com/reel/DZlY3z_Nufh/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">10K</span><span class="vid-plat">TikTok</span></div>
+        <p class="vid-note">Oishi (@oishi.focus). A newer creator.</p>
+        <div class="player">
+          <video class="pv" poster="videos/creator-oishi-10k.jpg" src="videos/creator-oishi-10k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.tiktok.com/@oishi.focus/video/7652920824294296852" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <div class="vid">
+        <div class="vid-head"><span class="vid-views">188K</span><span class="vid-plat">Instagram</span></div>
+        <p class="vid-note">Ryan (@lockinwryan). Another one.</p>
+        <div class="player">
+          <video class="pv" poster="videos/creator-ryan-188k.jpg" src="videos/creator-ryan-188k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.instagram.com/reel/DZtX6zHOApq/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+        </div>
+      </div>
+
+      <!-- TODO add more creator videos: copy a .vid block above, swap views + note + data-url. -->
+
+    </div>
+
+    <p class="subhead">The roster</p>
+    <p class="psub" style="margin-top:-6px">The creators I direct. They post on Instagram and repost the same videos across TikTok, YouTube, and Facebook.</p>
+    <div class="acct-grid">
+      <a class="acct" href="https://www.instagram.com/bennettslocked/reels/" target="_blank" rel="noopener"><div><div class="h">@bennettslocked</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/lockinwryan/reels/" target="_blank" rel="noopener"><div><div class="h">@lockinwryan</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/damon.lockin/reels/" target="_blank" rel="noopener"><div><div class="h">@damon.lockin</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/oishi.focus/reels/" target="_blank" rel="noopener"><div><div class="h">@oishi.focus</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/lockinwithxavier/reels/" target="_blank" rel="noopener"><div><div class="h">@lockinwithxavier</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/sofiafocus3/reels/" target="_blank" rel="noopener"><div><div class="h">@sofiafocus3</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+      <a class="acct" href="https://www.instagram.com/maria.lockin/reels/" target="_blank" rel="noopener"><div><div class="h">@maria.lockin</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
+    </div>
+  </section>
+
+  <!-- ===== STATS PANEL ===== -->
+  <section class="panel" id="p-stats" role="tabpanel" aria-labelledby="tab-stats" hidden>
+    <h2 class="phead">Audience</h2>
+    <p class="psub">Straight from TikTok and Instagram analytics. Depending on the account and the content, I can reach a younger audience or an older one.</p>
+    <div class="aud-grid">
+
+      <div class="aud">
+        <div class="aud-h">Rewired <span>Instagram</span></div>
+        <div class="grp"><div class="grp-l">Gender</div>
+          <div class="bar"><span class="k">Men</span><span class="t"><span class="f" style="width:78.8%"></span></span><span class="v">78.8%</span></div>
+          <div class="bar"><span class="k">Women</span><span class="t"><span class="f" style="width:21.2%"></span></span><span class="v">21.2%</span></div>
+        </div>
+        <div class="grp"><div class="grp-l">Age</div>
+          <div class="bar"><span class="k">18-24</span><span class="t"><span class="f" style="width:48.4%"></span></span><span class="v">48.4%</span></div>
+          <div class="bar"><span class="k">25-34</span><span class="t"><span class="f" style="width:33.8%"></span></span><span class="v">33.8%</span></div>
+          <div class="bar"><span class="k">35-44</span><span class="t"><span class="f" style="width:10.1%"></span></span><span class="v">10.1%</span></div>
+          <div class="bar"><span class="k">45-54</span><span class="t"><span class="f" style="width:4.3%"></span></span><span class="v">4.3%</span></div>
+        </div>
+        <div class="grp"><div class="grp-l">Top countries</div>
+          <div class="bar"><span class="k">US</span><span class="t"><span class="f" style="width:80.2%"></span></span><span class="v">80.2%</span></div>
+          <div class="bar"><span class="k">India</span><span class="t"><span class="f" style="width:4.6%"></span></span><span class="v">4.6%</span></div>
+          <div class="bar"><span class="k">Turkey</span><span class="t"><span class="f" style="width:1.4%"></span></span><span class="v">1.4%</span></div>
+        </div>
+      </div>
+
+      <div class="aud">
+        <div class="aud-h">Rewired <span>TikTok</span></div>
+        <div class="grp"><div class="grp-l">Gender</div>
+          <div class="bar"><span class="k">Male</span><span class="t"><span class="f" style="width:86%"></span></span><span class="v">86%</span></div>
+          <div class="bar"><span class="k">Female</span><span class="t"><span class="f" style="width:13%"></span></span><span class="v">13%</span></div>
+          <div class="bar"><span class="k">Other</span><span class="t"><span class="f" style="width:1%"></span></span><span class="v">1%</span></div>
+        </div>
+        <div class="grp"><div class="grp-l">Age</div>
+          <div class="bar"><span class="k">18-24</span><span class="t"><span class="f" style="width:31.7%"></span></span><span class="v">31.7%</span></div>
+          <div class="bar"><span class="k">25-34</span><span class="t"><span class="f" style="width:28%"></span></span><span class="v">28.0%</span></div>
+          <div class="bar"><span class="k">35-44</span><span class="t"><span class="f" style="width:19.2%"></span></span><span class="v">19.2%</span></div>
+          <div class="bar"><span class="k">45-54</span><span class="t"><span class="f" style="width:9%"></span></span><span class="v">9.0%</span></div>
+          <div class="bar"><span class="k">55+</span><span class="t"><span class="f" style="width:12.1%"></span></span><span class="v">12.1%</span></div>
+        </div>
+      </div>
+
+      <div class="aud">
+        <div class="aud-h">RawLyfe <span>TikTok &middot; @kostywitshop</span></div>
+        <div class="grp"><div class="grp-l">Age</div>
+          <div class="bar"><span class="k">18-24</span><span class="t"><span class="f" style="width:2.3%"></span></span><span class="v">2.3%</span></div>
+          <div class="bar"><span class="k">25-34</span><span class="t"><span class="f" style="width:7.4%"></span></span><span class="v">7.4%</span></div>
+          <div class="bar"><span class="k">35-44</span><span class="t"><span class="f" style="width:20.3%"></span></span><span class="v">20.3%</span></div>
+          <div class="bar"><span class="k">45-54</span><span class="t"><span class="f" style="width:30%"></span></span><span class="v">30.0%</span></div>
+          <div class="bar"><span class="k">55+</span><span class="t"><span class="f" style="width:40%"></span></span><span class="v">40.0%</span></div>
+        </div>
+        <p class="aud-note">This one skews older. <strong>70% of viewers are 45+</strong>, so I can reach an older, higher-spending audience too, not just a young one.</p>
+      </div>
+
+    </div>
+
+    <p class="subhead">Sales</p>
+    <p class="psub" style="margin-top:-6px">One example: my own TikTok Shop brand, RawLyfe, tracked through the 2.3M view video.</p>
+    <div class="shot"><img src="results.png" alt="TikTok Shop affiliate GMV for @kostywitshop: $21,074.38, 97.69% of total GMV, 31.04K followers" loading="lazy"></div>
+    <p class="cap">The real number runs a bit higher, since TikTok only shows about two months of single-video revenue.</p>
+  </section>
+
+  <!-- ===== APPROACH ===== -->
+  <section class="approach">
+    <p class="label">How I approach it</p>
+    <p>Find what's already working, replicate it, improve it a bit, and test <em>fast</em> until something hits.</p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="fine">Nick &middot; 2026</div>
+  </footer>
+
+</div>
+
+<script>
+  var vids = Array.prototype.slice.call(document.querySelectorAll('video.pv'));
+
+  // ---- tab switching ----
+  function showTab(name){
+    document.querySelectorAll('.tab').forEach(function(t){ t.setAttribute('aria-selected', t.id === 'tab-'+name ? 'true' : 'false'); });
+    document.querySelectorAll('.panel').forEach(function(p){
+      var on = p.id === 'p-'+name;
+      p.classList.toggle('on', on);
+      if(on){ p.removeAttribute('hidden'); } else { p.setAttribute('hidden',''); }
+    });
+  }
+
+  // native controls so each video can be scrubbed, rewound, paused, and unmuted
+  vids.forEach(function(v){ v.controls = true; v.setAttribute('controlsList','nodownload'); });
+
+  // label each open-original button with its platform
+  document.querySelectorAll('.player .ext').forEach(function(a){
+    var vid = a.closest('.vid');
+    var plat = vid ? vid.querySelector('.vid-plat') : null;
+    a.innerHTML = 'Watch on ' + (plat ? plat.textContent : 'original') + ' &#8599;';
+  });
+</script>
+<!-- Vercel Web Analytics (static site method) -->
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

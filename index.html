@@ -1,396 +1,433 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nick</title>
-<meta name="description" content="Nick, organic marketing, mostly short-form video.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0c0b0a; --bg2:#161412; --bg3:#1f1c18;
-    --line:rgba(240,230,214,.09); --line2:rgba(240,230,214,.17);
-    --text:#ece6da; --muted:#a59e90; --faint:#6f6a5f;
-    --accent:#e3a743; --accent-soft:rgba(227,167,67,.14);
-    --sans:'Hanken Grotesk',system-ui,sans-serif;
-    --serif:'Fraunces',Georgia,serif;
-    --mono:'JetBrains Mono',ui-monospace,monospace;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;background:var(--bg);color:var(--text);
-    font-family:var(--sans);font-size:16px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  }
-  /* atmosphere */
-  body::before{
-    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(900px 480px at 18% -8%, rgba(227,167,67,.10), transparent 60%),
-      radial-gradient(700px 420px at 105% 4%, rgba(227,167,67,.05), transparent 55%);
-  }
-  body::after{
-    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-  .wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:0 24px}
-
-  /* ===== hero ===== */
-  header{padding:84px 0 30px}
-  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin:0 0 22px}
-  h1{font-family:var(--serif);font-weight:400;font-size:clamp(52px,10vw,92px);line-height:.94;letter-spacing:-.02em;margin:0 0 26px}
-  .lede{font-size:clamp(17px,2.2vw,19px);color:var(--muted);max-width:54ch;margin:0 0 10px}
-  .lede strong{color:var(--text);font-weight:500}
-
-  /* ===== tabs ===== */
-  .tabs{
-    position:sticky;top:0;z-index:5;margin-top:40px;
-    display:flex;gap:6px;flex-wrap:wrap;
-    border-bottom:1px solid var(--line);
-    background:rgba(12,11,10,.78);backdrop-filter:blur(10px);
-  }
-  .tab{
-    appearance:none;background:none;border:0;cursor:pointer;
-    font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--faint);padding:18px 4px 16px;margin-right:24px;
-    border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;
-  }
-  .tab:hover{color:var(--muted)}
-  .tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent)}
-  .tab .ct{color:var(--faint);margin-left:7px;font-size:11px}
-  .tab[aria-selected="true"] .ct{color:var(--accent)}
-
-  /* ===== panels ===== */
-  .panel{display:none;padding:38px 0 10px;animation:fade .5s ease both}
-  .panel.on{display:block}
-  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .phead{font-family:var(--serif);font-size:24px;font-weight:400;margin:0 0 6px}
-  .psub{color:var(--muted);font-size:15px;margin:0 0 26px;max-width:60ch}
-
-  /* ===== video row ===== */
-  .row{
-    display:flex;gap:18px;overflow-x:auto;padding:2px 0 22px;
-    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;
-  }
-  .vid .player{transition:transform .25s ease,border-color .25s ease}
-  .vid:hover .player{transform:translateY(-3px);border-color:var(--line2)}
-  .row::-webkit-scrollbar{height:7px}
-  .row::-webkit-scrollbar-track{background:transparent}
-  .row::-webkit-scrollbar-thumb{background:var(--line2);border-radius:99px}
-  .vid{flex:0 0 auto;width:330px;scroll-snap-align:start}
-  .vid-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
-  .vid-views{font-family:var(--mono);font-size:21px;color:var(--text);letter-spacing:-.01em}
-  .vid-plat{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-soft);background:var(--accent-soft);padding:4px 8px;border-radius:6px;white-space:nowrap}
-  .vid-note{color:var(--muted);font-size:13.5px;line-height:1.5;margin:0 0 14px;min-height:40px}
-  .vid-eng{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--faint);margin:0 0 8px}
-  .player{position:relative;width:100%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line)}
-  .player video.pv{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer}
-  .player .ext{position:absolute;top:11px;right:11px;background:rgba(0,0,0,.62);color:#fff;text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.03em;padding:7px 11px;border-radius:999px;display:flex;align-items:center;gap:5px;backdrop-filter:blur(6px);transition:background .2s,color .2s;z-index:2}
-  .player .ext:hover{background:var(--accent);color:#1a1407}
-
-  /* ===== accounts ===== */
-  .acct{
-    display:flex;align-items:center;justify-content:space-between;gap:16px;
-    text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:14px;
-    padding:20px 22px;margin-bottom:12px;background:var(--bg2);transition:border-color .2s,transform .2s,background .2s;
-  }
-  .acct:hover{border-color:var(--line2);transform:translateY(-2px);background:var(--bg3)}
-  .acct .h{font-size:18px;font-weight:600}
-  .acct .s{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:4px;letter-spacing:.02em}
-  .acct .go{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-  .acct-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
-  .acct-grid .acct{margin-bottom:0}
-  .subhead{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:36px 0 16px}
-
-  /* ===== stats ===== */
-  .shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;max-width:620px}
-  .shot img{display:block;width:100%;height:auto}
-  .cap{color:var(--faint);font-size:13px;margin:14px 0 0;max-width:60ch;line-height:1.55}
-  .aud-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
-  .aud{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--bg2)}
-  .aud-h{font-size:17px;font-weight:600;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-  .aud-h span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:400}
-  .grp{margin-top:18px}
-  .grp-l{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
-  .bar{display:flex;align-items:center;gap:10px;margin:6px 0}
-  .bar .k{font-family:var(--mono);font-size:11.5px;color:var(--muted);flex:0 0 58px}
-  .bar .t{flex:1;height:7px;background:var(--bg3);border-radius:99px;overflow:hidden}
-  .bar .f{display:block;height:100%;background:var(--accent);border-radius:99px}
-  .bar .v{font-family:var(--mono);font-size:11.5px;color:var(--text);flex:0 0 46px;text-align:right}
-  .aud-note{color:var(--muted);font-size:12.5px;line-height:1.55;margin:16px 0 0;border-top:1px solid var(--line);padding-top:14px}
-  .aud-note strong{color:var(--accent);font-weight:500}
-
-  /* ===== empty state ===== */
-  .empty{border:1px dashed var(--line2);border-radius:14px;padding:40px 24px;text-align:center;color:var(--faint);font-size:14px;background:rgba(255,255,255,.012)}
-
-  /* ===== approach ===== */
-  .approach{border-top:1px solid var(--line);margin-top:60px;padding:56px 0}
-  .approach .label{font-family:var(--mono);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin:0 0 20px}
-  .approach p{font-family:var(--serif);font-weight:400;font-size:clamp(19px,2.6vw,23px);line-height:1.5;color:var(--text);max-width:38ch;margin:0 0 18px}
-  .approach em{font-style:italic;color:var(--accent)}
-
-  /* ===== footer ===== */
-  footer{border-top:1px solid var(--line);padding:34px 0 70px}
-  .fine{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:26px;letter-spacing:.06em}
-
-  /* load reveal */
-  .rv{opacity:0;transform:translateY(14px);animation:rvin .8s cubic-bezier(.2,.7,.2,1) forwards}
-  @keyframes rvin{to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){.rv,.panel{animation:none;opacity:1;transform:none}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Auré Organic Growth Plan | Nick's Update for Michael</title>
+  <meta name="description" content="A private strategy update on Auré's organic marketing system, pre-launch plan, launch evolution, and content decisions for Michael.">
+  <style>
+    :root{
+      --aure:#8FA7DF;
+      --aure-deep:#6F88C8;
+      --aure-soft:#E9EEFB;
+      --aure-pale:#F3F6FD;
+      --ink:#171B25;
+      --copy:#454D5F;
+      --muted:#667085;
+      --faint:#9298A6;
+      --line:#E5E8F0;
+      --paper:#FFFFFF;
+      --canvas:#F8F9FC;
+      --warm:#F7F4F1;
+      --hold:#A26F48;
+      --safe:#637A68;
+      --radius-xl:34px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --shadow:0 24px 70px rgba(39,51,85,.10);
+      --shadow-soft:0 10px 35px rgba(39,51,85,.07);
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:var(--canvas);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{display:block;max-width:100%}
+    .container{width:min(calc(100% - 40px),var(--max));margin:0 auto}
+    .progress{position:fixed;inset:0 auto auto 0;width:0;height:3px;background:linear-gradient(90deg,var(--aure-deep),#B6C5EC);z-index:200}
+    .site-header{position:sticky;top:0;z-index:100;background:rgba(248,249,252,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(229,232,240,.76)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-size:25px;font-weight:680;letter-spacing:-.04em}
+    .brand-note{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.11em;margin-left:12px;vertical-align:middle}
+    .nav-links{display:flex;align-items:center;gap:24px;color:#4C5568;font-size:14px}
+    .nav-links a{padding:8px 0;transition:.2s ease}
+    .nav-links a:hover{color:var(--ink)}
+    .nav-action{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 17px;border-radius:999px;background:var(--ink);color:#fff;font-weight:650;font-size:13px}
+    .menu{display:none;width:42px;height:42px;border:0;background:transparent;border-radius:12px}
+    .menu span{display:block;width:21px;height:1.5px;background:var(--ink);margin:5px auto}
+    .section{padding:110px 0;scroll-margin-top:78px}
+    .section-sm{padding:80px 0;scroll-margin-top:78px}
+    .white{background:var(--paper)}
+    .soft{background:var(--aure-pale)}
+    .warm{background:var(--warm)}
+    .dark{background:#171B25;color:#fff}
+    .eyebrow{margin:0 0 14px;font-size:12px;line-height:1.2;letter-spacing:.14em;text-transform:uppercase;font-weight:750;color:var(--aure-deep)}
+    .dark .eyebrow{color:#BFD0F7}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3{letter-spacing:-.035em;line-height:1.08}
+    h1{font-size:clamp(50px,7.4vw,90px);font-weight:650;margin-bottom:28px}
+    h2{font-size:clamp(37px,4.7vw,60px);font-weight:620;margin-bottom:22px}
+    h3{font-size:22px;font-weight:650;margin-bottom:12px}
+    .lede{font-size:clamp(19px,2vw,23px);color:var(--copy);max-width:790px}
+    .dark .lede{color:rgba(255,255,255,.74)}
+    .small{font-size:13px;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid transparent;font-weight:650;font-size:14px;cursor:pointer;transition:.2s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-dark{background:var(--ink);color:#fff}
+    .btn-light{background:#fff;color:var(--ink);border-color:var(--line)}
+    .btn-blue{background:var(--aure);color:#17203A}
+    .hero{padding:80px 0 88px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:65px;align-items:center;min-height:660px}
+    .hero .lede{max-width:720px;margin-bottom:30px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 25px}
+    .status-line{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14px}
+    .status-dot{width:8px;height:8px;background:var(--aure);border-radius:50%;box-shadow:0 0 0 5px rgba(143,167,223,.18)}
+    .hero-visual{position:relative;min-height:560px;display:grid;place-items:center}
+    .halo{position:absolute;width:510px;height:510px;border-radius:50%;background:radial-gradient(circle,rgba(143,167,223,.30) 0,rgba(143,167,223,.12) 38%,rgba(143,167,223,0) 72%);filter:blur(7px)}
+    .orb{width:285px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.98) 0 7%,rgba(220,231,255,.94) 13%,rgba(143,167,223,.95) 43%,rgba(111,136,200,.9) 69%,rgba(92,108,163,.92) 100%);box-shadow:inset -28px -34px 58px rgba(50,63,105,.18),inset 24px 20px 45px rgba(255,255,255,.40),0 28px 90px rgba(101,126,190,.34)}
+    .brief-card{width:min(350px,84%);position:absolute;right:0;bottom:28px;padding:24px;background:rgba(255,255,255,.89);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.9);border-radius:30px;box-shadow:var(--shadow)}
+    .brief-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .mini-orb{width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 32% 28%,white,#B9C8F0 38%,#7891D0 78%);box-shadow:0 8px 22px rgba(111,136,200,.28)}
+    .brief-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--aure-deep);font-weight:750}
+    .brief-card h3{font-size:21px;margin-bottom:14px}
+    .brief-list{display:grid;gap:9px}
+    .brief-list span{display:flex;align-items:center;gap:9px;font-size:13px;color:#566076}
+    .brief-list i{display:block;width:6px;height:6px;border-radius:50%;background:var(--aure)}
+    .metric-band{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr)}
+    .metric{padding:32px 28px;border-right:1px solid var(--line)}
+    .metric:first-child{padding-left:0}
+    .metric:last-child{border-right:0}
+    .metric strong{display:block;font-size:31px;letter-spacing:-.04em;margin-bottom:5px}
+    .metric span{font-size:13px;color:var(--muted)}
+    .section-head{max-width:820px;margin-bottom:52px}
+    .section-head.center{text-align:center;margin-left:auto;margin-right:auto}
+    .thesis{display:grid;grid-template-columns:.78fr 1.22fr;gap:80px;align-items:start}
+    .thesis-sticky{position:sticky;top:118px}
+    .thesis-copy{display:grid;gap:42px}
+    .thesis-point{padding-bottom:38px;border-bottom:1px solid var(--line)}
+    .thesis-point:last-child{border-bottom:0}
+    .thesis-num{display:block;color:var(--aure-deep);font-size:12px;letter-spacing:.12em;font-weight:750;margin-bottom:12px}
+    .thesis-point p{color:var(--muted);font-size:17px;margin:0;max-width:630px}
+    .account-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:42px}
+    .account{border-radius:28px;padding:36px;min-height:315px;position:relative;overflow:hidden}
+    .account.maria{background:linear-gradient(145deg,#EAF0FD,#FAFBFF);border:1px solid #DDE5F5}
+    .account.official{background:linear-gradient(145deg,#F8F4F1,#FFFFFF);border:1px solid #ECE5DF}
+    .account-tag{display:inline-block;margin-bottom:58px;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.75);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5E687D}
+    .account p{color:var(--muted);max-width:480px;margin:0}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+    .flow-step{background:#fff;border:1px solid var(--line);border-radius:22px;padding:25px;min-height:205px}
+    .flow-step b{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--aure-soft);color:#5269A8;font-size:13px;margin-bottom:24px}
+    .flow-step p{font-size:14px;color:var(--muted);margin:0}
+    .division{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .division-card{border-radius:26px;padding:34px;background:#fff;border:1px solid var(--line)}
+    .division-card.blue{background:linear-gradient(145deg,#EDF2FD,#FFFFFF);border-color:#DDE5F5}
+    .division-card h3{font-size:26px}
+    .division-card ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px;color:var(--muted)}
+    .division-card li{padding-left:19px;position:relative}
+    .division-card li:before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--aure)}
+    .evidence-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+    .owned-panel{background:#fff;border:1px solid var(--line);border-radius:30px;padding:38px;box-shadow:var(--shadow-soft)}
+    .owned-total{font-size:58px;line-height:1;letter-spacing:-.05em;margin:10px 0 12px}
+    .owned-panel>p{color:var(--muted)}
+    .bar-group{margin-top:32px;display:grid;gap:20px}
+    .bar-row{display:grid;grid-template-columns:110px 1fr 78px;gap:14px;align-items:center;font-size:13px}
+    .bar-track{height:10px;background:#EEF1F6;border-radius:99px;overflow:hidden}
+    .bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--aure-deep),#B7C6ED)}
+    .audit-copy p{color:var(--muted);font-size:17px}
+    .family-list{display:grid;gap:0;margin-top:30px;border-top:1px solid var(--line)}
+    .family{display:grid;grid-template-columns:1fr auto;gap:25px;padding:18px 0;border-bottom:1px solid var(--line);align-items:center}
+    .family strong{display:block;margin-bottom:4px}
+    .family span{font-size:13px;color:var(--muted)}
+    .family b{color:var(--aure-deep);font-size:14px;white-space:nowrap}
+    .audit-figure{margin-top:58px;display:grid;grid-template-columns:.72fr 1.28fr;gap:40px;align-items:center}
+    .image-window{height:580px;border-radius:30px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-soft)}
+    .image-window img{width:100%;height:100%;object-fit:cover;object-position:top}
+    .audit-notes{display:grid;gap:22px}
+    .audit-note{padding-bottom:22px;border-bottom:1px solid var(--line)}
+    .audit-note:last-child{border-bottom:0}
+    .audit-note strong{display:block;margin-bottom:7px}
+    .audit-note p{margin:0;color:var(--muted)}
+    .risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .risk-panel{border-radius:30px;padding:38px;background:#fff;border:1px solid var(--line)}
+    .risk-panel.safe{border-color:#DDE8E0}
+    .risk-panel.hold{border-color:#EADFD6}
+    .risk-title{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+    .risk-dot{width:12px;height:12px;border-radius:50%}
+    .safe .risk-dot{background:var(--safe)}
+    .hold .risk-dot{background:var(--hold)}
+    .risk-list{display:grid;gap:18px}
+    .risk-item{padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .risk-item:last-child{padding-bottom:0;border-bottom:0}
+    .risk-item strong{display:block;margin-bottom:5px}
+    .risk-item p{margin:0;color:var(--muted);font-size:14px}
+    .timeline{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:46px}
+    .phase{border-radius:30px;padding:42px;min-height:520px}
+    .phase.now{background:linear-gradient(145deg,#EAF0FD,#FAFBFF);border:1px solid #DDE5F5}
+    .phase.launch{background:#171B25;color:#fff}
+    .phase-tag{display:inline-block;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.72);font-size:11px;text-transform:uppercase;letter-spacing:.09em;margin-bottom:52px;color:#5E6E9A}
+    .launch .phase-tag{background:rgba(255,255,255,.1);color:#C9D5F3}
+    .phase h3{font-size:31px;max-width:430px}
+    .phase p{color:var(--muted)}
+    .launch p{color:rgba(255,255,255,.65)}
+    .phase ul{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+    .phase li{padding-left:21px;position:relative;color:#4F596D}
+    .launch li{color:rgba(255,255,255,.72)}
+    .phase li:before{content:"";position:absolute;left:0;top:.68em;width:7px;height:7px;border-radius:50%;background:var(--aure)}
+    .loop{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:44px}
+    .loop-node{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 16px;min-height:145px}
+    .loop-node b{font-size:12px;color:var(--aure-deep);display:block;margin-bottom:13px}
+    .loop-node span{font-size:13px;color:var(--muted)}
+    .caveat{margin-top:26px;padding:18px 21px;background:#fff;border:1px solid var(--line);border-radius:17px;color:var(--muted);font-size:14px}
+    .decision-intro{display:grid;grid-template-columns:1fr .75fr;gap:55px;align-items:end;margin-bottom:45px}
+    .decision-help{color:var(--muted);font-size:15px}
+    .decision-list{display:grid;gap:14px}
+    .decision{background:#fff;border:1px solid var(--line);border-radius:25px;padding:28px;transition:.2s ease}
+    .decision:focus-within{border-color:#C4D0EC;box-shadow:var(--shadow-soft)}
+    .decision-top{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
+    .decision-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--aure-deep);font-weight:750;margin-bottom:8px}
+    .decision h3{font-size:23px;margin-bottom:8px}
+    .decision p{color:var(--muted);font-size:14px;max-width:760px;margin-bottom:0}
+    .source-link{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border:1px solid var(--line);border-radius:999px;font-size:12px;font-weight:650;color:#505A70;white-space:nowrap}
+    .source-link:hover{border-color:#C7CFE0;background:var(--aure-pale)}
+    .choices{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+    .choice-btn{min-height:39px;padding:0 14px;border:1px solid var(--line);background:#fff;border-radius:999px;color:#626B7D;font-size:12px;font-weight:650;cursor:pointer;transition:.16s ease}
+    .choice-btn:hover{border-color:#C9D3EA}
+    .choice-btn.selected{background:var(--aure-soft);color:#354C88;border-color:#BFCDEC}
+    .choice-btn[data-value="Hold"].selected{background:#F4EBE5;color:#815535;border-color:#E5CDBD}
+    .copy-panel{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px 28px;background:#171B25;color:#fff;border-radius:24px}
+    .copy-panel p{margin:4px 0 0;color:rgba(255,255,255,.62);font-size:13px}
+    .copy-status{font-size:12px;color:#BFD0F7;margin-left:12px}
+    .asks{display:grid;grid-template-columns:.82fr 1.18fr;gap:75px;align-items:start}
+    .ask-list{display:grid;gap:0;border-top:1px solid rgba(255,255,255,.12)}
+    .ask{display:grid;grid-template-columns:42px 1fr;gap:18px;padding:25px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+    .ask b{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:rgba(143,167,223,.18);color:#C6D5F7;font-size:12px}
+    .ask strong{display:block;margin-bottom:5px}
+    .ask p{margin:0;color:rgba(255,255,255,.62);font-size:14px}
+    footer{padding:38px 0;background:#10131A;color:rgba(255,255,255,.5);font-size:12px}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .footer-row strong{color:#fff;font-size:18px}
+    .reveal{opacity:1;transform:none}
+    @media(max-width:1040px){
+      .nav-links{display:none}.menu{display:block}.nav.open{align-items:flex-start;padding:17px 0;flex-wrap:wrap}.nav.open .nav-links{order:3;width:100%;display:grid;gap:0}.nav.open .nav-links a{padding:10px 0}
+      .hero-grid,.thesis,.evidence-grid,.audit-figure,.asks{grid-template-columns:1fr}.hero-grid{gap:20px}.thesis-sticky{position:static}.hero-visual{min-height:480px}.metrics{grid-template-columns:1fr 1fr}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.metric:nth-child(3){padding-left:0}
+      .flow{grid-template-columns:1fr 1fr}.loop{grid-template-columns:repeat(3,1fr)}.decision-intro{grid-template-columns:1fr}.image-window{height:520px;max-width:530px}.decision-top{grid-template-columns:1fr}.source-link{justify-self:start}
+    }
+    @media(max-width:720px){
+      .container{width:min(calc(100% - 28px),var(--max))}.nav{min-height:68px}.brand-note,.nav-action{display:none}.hero{padding:52px 0 70px}.hero-grid{min-height:auto}.hero-visual{min-height:400px}.halo{width:370px;height:370px}.orb{width:220px}.brief-card{width:250px;padding:18px;right:0;bottom:0}.brief-card h3{font-size:18px}.section{padding:78px 0}.section-sm{padding:58px 0}
+      .metrics,.account-grid,.division,.risk-grid,.timeline{grid-template-columns:1fr}.metric{padding:24px 0;border-right:0;border-bottom:1px solid var(--line)}.metric:nth-child(3){padding-left:0}.metric:last-child{border-bottom:0}.account{min-height:275px;padding:28px}.account-tag{margin-bottom:42px}.flow,.loop{grid-template-columns:1fr}.flow-step{min-height:0}.owned-panel,.risk-panel,.phase{padding:28px}.bar-row{grid-template-columns:82px 1fr 62px}.audit-figure{gap:26px}.image-window{height:430px}.decision{padding:22px}.copy-panel{align-items:flex-start;flex-direction:column}.asks{gap:40px}.footer-row{align-items:flex-start;flex-direction:column}.phase{min-height:0}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
 </head>
 <body>
-
-<div class="wrap">
-
-  <!-- ===== HERO ===== -->
-  <header>
-    <p class="eyebrow rv" style="animation-delay:.05s">Organic marketing</p>
-    <h1 class="rv" style="animation-delay:.12s">Nick</h1>
-    <p class="lede rv" style="animation-delay:.22s">Some of the short-form videos I've made that have done well, the accounts I run, and the creators I direct.</p>
+  <div class="progress" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">Auré <span class="brand-note">Organic strategy</span></a>
+      <nav class="nav-links" aria-label="Strategy sections">
+        <a href="#now">Now</a><a href="#system">System</a><a href="#evidence">Evidence</a><a href="#launch">Launch</a><a href="#decisions">Decisions</a>
+      </nav>
+      <a class="nav-action" href="#decisions">Review formats</a>
+      <button class="menu" aria-label="Open navigation"><span></span><span></span></button>
+    </div>
   </header>
 
-  <!-- ===== TABS ===== -->
-  <div class="tabs rv" role="tablist" aria-label="Sections" style="animation-delay:.40s">
-    <button class="tab" id="tab-videos"   role="tab" aria-controls="p-videos"   aria-selected="true"  onclick="showTab('videos')">Videos<span class="ct">6</span></button>
-    <button class="tab" id="tab-accounts" role="tab" aria-controls="p-accounts" aria-selected="false" onclick="showTab('accounts')">Accounts<span class="ct">2</span></button>
-    <button class="tab" id="tab-creators" role="tab" aria-controls="p-creators" aria-selected="false" onclick="showTab('creators')">Creators<span class="ct">7</span></button>
-    <button class="tab" id="tab-stats"    role="tab" aria-controls="p-stats"    aria-selected="false" onclick="showTab('stats')">Audience</button>
-  </div>
-
-  <!-- ===== VIDEOS PANEL ===== -->
-  <section class="panel on" id="p-videos" role="tabpanel" aria-labelledby="tab-videos">
-    <h2 class="phead">Some of my work</h2>
-    <p class="psub">A few videos I made, with what they did. Scroll sideways for more.</p>
-    <div class="row">
-
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">137K</span><span class="vid-plat">TikTok</span></div>
-        <p class="vid-note">For my app, Rewired. The whole video is the app itself, and it converted well.</p>
-        <div class="player">
-          <video class="pv" poster="videos/own-rewired-137k.jpg" src="videos/own-rewired-137k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.tiktok.com/t/ZTBWpuVL2/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Private strategy update for Michael</p>
+          <h1>Building Auré's organic growth engine.</h1>
+          <p class="lede">What I am running now, how it helps Auré before launch, what changes when the product is live, and the content boundaries I need your help defining.</p>
+          <div class="hero-actions"><a class="btn btn-dark" href="#now">See the current system</a><a class="btn btn-light" href="#decisions">Review the formats</a></div>
+          <div class="status-line"><span class="status-dot"></span><span>Pre-launch operation, prepared by Nick Kosty, August 30, 2026</span></div>
+        </div>
+        <div class="hero-visual reveal" aria-label="Auré organic strategy preview">
+          <div class="halo"></div><div class="orb"></div>
+          <div class="brief-card">
+            <div class="brief-top"><div><div class="brief-label">Current objective</div><strong>Learn before launch</strong></div><div class="mini-orb"></div></div>
+            <h3>Turn organic attention into a repeatable acquisition system.</h3>
+            <div class="brief-list"><span><i></i>Preserve proven TikTok mechanics</span><span><i></i>Protect brand truth and safety</span><span><i></i>Build owned performance history</span></div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">2.3M</span><span class="vid-plat">TikTok</span></div>
-        <p class="vid-note">My own product, RawLyfe batana oil. This is the video that drove those sales.</p>
-        <div class="player">
-          <video class="pv" poster="videos/own-rawlyfe-23m.jpg" src="videos/own-rawlyfe-23m.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.tiktok.com/t/ZTBWgdw74/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+    <section class="metric-band" aria-label="Current snapshot">
+      <div class="container metrics">
+        <div class="metric"><strong>61</strong><span>posts reconciled in ContentOS</span></div>
+        <div class="metric"><strong>664K</strong><span>tracked Maria views across 30 posts</span></div>
+        <div class="metric"><strong>19</strong><span>public TikTok sources audited deeply</span></div>
+        <div class="metric"><strong>2</strong><span>accounts with distinct jobs</span></div>
+      </div>
+    </section>
+
+    <section class="section white" id="now">
+      <div class="container thesis">
+        <div class="thesis-sticky reveal">
+          <p class="eyebrow">The strategy in one sentence</p>
+          <h2>Build the learning system before the product asks for conversion.</h2>
+          <p class="lede">The current work is not just filling a content calendar. It is reducing the creative uncertainty Auré would otherwise face at launch.</p>
+        </div>
+        <div class="thesis-copy">
+          <article class="thesis-point reveal"><span class="thesis-num">01 / Reach</span><h3>Earn attention with formats people already understand.</h3><p>I study proven relationship slideshow structures and preserve the hook, progression, payoff, density, and swipe mechanism instead of forcing every source into a generic brand template.</p></article>
+          <article class="thesis-point reveal"><span class="thesis-num">02 / Trust</span><h3>Translate attention into an accurate Auré perspective.</h3><p>Each draft is routed to the account that can tell the story truthfully. The content remains useful first, with Auré introduced only where the product naturally supports the relationship experience.</p></article>
+          <article class="thesis-point reveal"><span class="thesis-num">03 / Learning</span><h3>Keep a traceable line from source to post to result.</h3><p>ContentOS preserves the source, draft, image sequence, status, public URL, and performance history so we can learn from controlled tests rather than random posting.</p></article>
         </div>
       </div>
+      <div class="container account-grid">
+        <article class="account maria reveal"><span class="account-tag">@maria.aure1</span><h3>Maria earns reach and relatability.</h3><p>Reader-first stories, recognizable relationship moments, cultural discussion, and human language. First-person claims are used only when Maria's actual experience supports them.</p></article>
+        <article class="account official reveal"><span class="account-tag">@myaurelife</span><h3>Official builds trust and product understanding.</h3><p>Reader-facing guidance, accurate Auré positioning, and clear product connection. The brand never pretends it personally experienced a breakup or relationship.</p></article>
+      </div>
+    </section>
 
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">214K</span><span class="vid-plat">Instagram</span></div>
-        <p class="vid-note">For my app, Rewired.</p>
-        <div class="player">
-          <video class="pv" poster="videos/own-rewired-214k.jpg" src="videos/own-rewired-214k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.instagram.com/therewired.app/reel/DVUR8Z4DnIy/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+    <section class="section soft" id="system">
+      <div class="container">
+        <div class="section-head reveal"><p class="eyebrow">What I am doing now</p><h2>An assistant-led creative operation with ContentOS as the production record.</h2><p class="lede">I use the assistant as the contextual decision layer because it can combine the source, Auré's current positioning, previous feedback, account perspective, and safety boundaries in one place.</p></div>
+        <div class="flow">
+          <article class="flow-step reveal"><b>01</b><h3>Intake</h3><p>I send links, screenshots, rough ideas, voice notes, competitor examples, and feedback directly in chat.</p></article>
+          <article class="flow-step reveal"><b>02</b><h3>Route</h3><p>The assistant retrieves, deduplicates, and classifies each source as Maria, Official, Both, or Hold for Michael.</p></article>
+          <article class="flow-step reveal"><b>03</b><h3>Create and check</h3><p>Selected concepts become close recreations, controlled winner variations, or original tests, followed by truth, account, shape, safety, and copy QC.</p></article>
+          <article class="flow-step reveal"><b>04</b><h3>Review and publish</h3><p>Finished work enters ContentOS. I visually review, swap images if needed, export, and publish manually to TikTok.</p></article>
+        </div>
+        <div class="division">
+          <article class="division-card blue reveal"><p class="eyebrow">Context and judgment</p><h3>The assistant is the control layer.</h3><ul><li>Understands Michael's feedback and current brand boundaries</li><li>Preserves the mechanism of strong inspiration</li><li>Infers the correct account and creative mode</li><li>Flags sensitive concepts before they become brand statements</li><li>Catches semantic issues that a form cannot understand</li></ul></article>
+          <article class="division-card reveal"><p class="eyebrow">Durability and execution</p><h3>ContentOS is the system of record.</h3><ul><li>Stores source and draft lineage</li><li>Supports visual review, image swaps, rendering, and export</li><li>Tracks statuses, live URLs, and public performance</li><li>Reconciles confident caption matches when the dashboard refreshes</li><li>Creates the data history needed for later learning</li></ul></article>
+        </div>
+        <p class="caveat reveal"><strong>Current reality:</strong> publishing remains manual, recurring generation is paused while the workflow is being tuned, and public-post reconciliation currently depends on a dashboard refresh. Full automatic routing, explicit creative-mode fields, and hourly read-only reconciliation are planned improvements, not features I am claiming are already complete.</p>
+      </div>
+    </section>
+
+    <section class="section white" id="evidence">
+      <div class="container">
+        <div class="section-head reveal"><p class="eyebrow">What the evidence says so far</p><h2>We already have owned reach evidence and a clearer map of repeatable TikTok mechanics.</h2><p class="lede">Public competitor performance selects hypotheses. Auré's own performance decides whether those hypotheses deserve to scale.</p></div>
+        <div class="evidence-grid">
+          <div class="owned-panel reveal"><p class="eyebrow">Owned ContentOS snapshot</p><div class="owned-total">687.6K</div><p>Combined tracked views across Maria and Official at the current snapshot. This is reach evidence, not yet app conversion evidence.</p><div class="bar-group">
+            <div class="bar-row"><span>Maria total</span><div class="bar-track"><div class="bar-fill" style="width:96.6%"></div></div><strong>664K</strong></div>
+            <div class="bar-row"><span>Maria median</span><div class="bar-track"><div class="bar-fill" style="width:45%"></div></div><strong>4.4K</strong></div>
+            <div class="bar-row"><span>Official total</span><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div><strong>23.6K</strong></div>
+            <div class="bar-row"><span>Official median</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><strong>1.16K</strong></div>
+          </div>
+          </div>
+          <div class="audit-copy reveal"><p class="eyebrow">19-source format audit</p><h3>Near-identical relationship formats can win repeatedly across different accounts.</h3><p>The audit found four especially reusable families. One version can still underperform, which is why the mechanism should be treated as a controlled hypothesis rather than a guarantee.</p><div class="family-list">
+            <div class="family"><div><strong>Rules after almost breaking up</strong><span>Three separate examples</span></div><b>481K / 4.39M / 316K</b></div>
+            <div class="family"><div><strong>Restart with the same person</strong><span>Three separate examples</span></div><b>1.06M / 4.07M / 40.6K</b></div>
+            <div class="family"><div><strong>Micro-rules that changed how we love</strong><span>Three separate examples</span></div><b>264K / 745K / 74K</b></div>
+            <div class="family"><div><strong>Healthy relationship rules</strong><span>Four separate examples</span></div><b>709K / 296K / 209K / 35K</b></div>
+          </div>
+        </div>
+        </div>
+        <div class="audit-figure">
+          <figure class="image-window reveal"><img src="assets/source-hooks.jpg" alt="Contact sheet of first slides from the 19-post TikTok source audit"></figure>
+          <div class="audit-notes">
+            <article class="audit-note reveal"><strong>Preserve the control.</strong><p>For source recreation, keep the hook mechanism, slide count, reveal order, emotional progression, point order, approximate density, and image sequence whenever possible.</p></article>
+            <article class="audit-note reveal"><strong>Change one variable at a time.</strong><p>A winner variation should name the variable being tested, such as hook wording or aspect ratio, while the body structure and payoff remain fixed.</p></article>
+            <article class="audit-note reveal"><strong>Do not lead with an ad.</strong><p>The reviewed winners earn attention through a relationship problem first. Auré belongs at the exact support moment, not in a generic opening pitch.</p></article>
+            <article class="audit-note reveal"><strong>High views do not override positioning.</strong><p>Formats that pressure reconciliation, minimize harmful conflict, require forgiveness, make clinical claims, or materially broaden Auré's position still need review.</p></article>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">80K</span><span class="vid-plat">Facebook</span></div>
-        <p class="vid-note">For Rewired. UGC style, with the app front and center. Converted well.</p>
-        <div class="player">
-          <video class="pv" poster="videos/own-rewired-fb-80k.jpg" src="videos/own-rewired-fb-80k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.facebook.com/reel/1258501942905444" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+    <section class="section warm" id="boundaries">
+      <div class="container">
+        <div class="section-head reveal"><p class="eyebrow">What can run now</p><h2>Separate the proven mechanics from the sensitive message.</h2><p class="lede">The current v3 Auré positioning supports a broad range of difficult relationship experiences. The main approval question is not whether a topic has views. It is whether the message is safe, truthful, and aligned.</p></div>
+        <div class="risk-grid">
+          <article class="risk-panel safe reveal"><div class="risk-title"><span class="risk-dot"></span><h3>Fits current positioning</h3></div><div class="risk-list">
+            <div class="risk-item"><strong>Communication micro-rules</strong><p>Specific language, check-ins, repair attempts, listening, and emotionally clear communication.</p></div>
+            <div class="risk-item"><strong>General healthy relationship habits</strong><p>Mutual respect, honest reflection, boundaries, and practices that do not instruct someone to remain in a relationship.</p></div>
+            <div class="risk-item"><strong>Carefully framed breakup coping</strong><p>Content supporting people through separation or emotional aftermath without diagnosing or promising outcomes.</p></div>
+            <div class="risk-item"><strong>Broader relationship changes</strong><p>Infidelity, separation, divorce, partner loss, unhealthy relationships, loneliness, and difficult change, consistent with the new homepage positioning.</p></div>
+          </div></article>
+          <article class="risk-panel hold reveal"><div class="risk-title"><span class="risk-dot"></span><h3>Needs Michael's decision</h3></div><div class="risk-list">
+            <div class="risk-item"><strong>Reconciliation-first formats</strong><p>Content that assumes staying together, restarting, or repairing is the preferred outcome.</p></div>
+            <div class="risk-item"><strong>Breakup is failure framing</strong><p>Hooks such as “your relationship needs a reset, not a breakup” can pressure people to remain.</p></div>
+            <div class="risk-item"><strong>Conflict normalization</strong><p>“Normal fights” content can become unsafe when it blurs the line between ordinary conflict and harmful behavior.</p></div>
+            <div class="risk-item"><strong>Therapy, mental-health, or universal-stage claims</strong><p>These can imply clinical authority, oversimplify experiences, or establish new positioning.</p></div>
+          </div></article>
         </div>
       </div>
+    </section>
 
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">1.6M</span><span class="vid-plat">Facebook</span></div>
-        <p class="vid-eng">14.5K likes &middot; 4K saves &middot; 603 comments</p>
-        <p class="vid-note">For Rewired. UGC-style content, the kind that's easy to run at volume, and this one hit.</p>
-        <div class="player">
-          <video class="pv" poster="videos/own-rewired-fb-16m.jpg" src="videos/own-rewired-fb-16m.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.facebook.com/reel/1599459981197906" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+    <section class="section white" id="launch">
+      <div class="container">
+        <div class="section-head reveal"><p class="eyebrow">How this helps before launch</p><h2>Pre-launch content reduces the cold-start problem. Launch turns the same engine toward conversion.</h2><p class="lede">The creative system stays. The job of the content, the call to action, and the evidence used to select winners become more product-specific.</p></div>
+        <div class="timeline">
+          <article class="phase now reveal"><span class="phase-tag">Now / pre-launch</span><h3>Build reach, recognition, trust, and a library of proven controls.</h3><p>The immediate goal is to learn what earns attention and what language people respond to before every post has to carry an install target.</p><ul><li>Test repeatable slideshow mechanics at volume</li><li>Warm the Official account and clarify what Auré supports</li><li>Build audience familiarity across the broader relationship-change position</li><li>Collect comments and audience language for future creative</li><li>Prepare a launch-ready library of hooks, formats, and objections</li><li>Route appropriate interest toward the waitlist or early access</li></ul></article>
+          <article class="phase launch reveal"><span class="phase-tag">Launch and after</span><h3>Connect winning attention to real product use and measurable acquisition.</h3><p>Organic content becomes both top-of-funnel discovery and a direct demonstration of how Auré supports difficult moments.</p><ul><li>Shift calls to action from coming soon to try Auré or download</li><li>Create in-the-moment AI Companion demonstrations</li><li>Show personalized practices, peer connection, matched groups, and educational content accurately</li><li>Build founder-led and behind-the-product stories where supported</li><li>Use real user stories and reactions only with consent and truthful framing</li><li>Adapt winning relationship formats while integrating the exact relevant Auré support path</li></ul></article>
         </div>
       </div>
+    </section>
 
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">32K</span><span class="vid-plat">Instagram</span></div>
-        <p class="vid-note">For Rewired. Higher quality, and it also ran as a paid ad at around $20 CPA.</p>
-        <div class="player">
-          <video class="pv" poster="videos/own-rewired-32k.jpg" src="videos/own-rewired-32k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.instagram.com/therewired.app/reel/DVHhjiyjphF/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
+    <section class="section soft" id="learning">
+      <div class="container">
+        <div class="section-head reveal"><p class="eyebrow">The post-launch learning loop</p><h2>Public views find opportunities. Owned behavior decides what actually scales.</h2><p class="lede">Once attribution is available, a format should not be called a winner only because it receives views.</p></div>
+        <div class="loop">
+          <div class="loop-node reveal"><b>01</b><span>Source mechanism and hypothesis</span></div>
+          <div class="loop-node reveal"><b>02</b><span>Watch time and completion</span></div>
+          <div class="loop-node reveal"><b>03</b><span>Shares, saves, comments, and profile activity</span></div>
+          <div class="loop-node reveal"><b>04</b><span>Bio click, store visit, or landing-page action</span></div>
+          <div class="loop-node reveal"><b>05</b><span>Install, signup, or account creation where measurable</span></div>
+          <div class="loop-node reveal"><b>06</b><span>Activation, retention, and meaningful product behavior</span></div>
+        </div>
+        <p class="caveat reveal">The long-term goal is controlled iteration: keep the winning mechanism, change one named variable, connect each live post back to its draft, and let Auré's own downstream behavior outrank competitor view counts.</p>
+      </div>
+    </section>
+
+    <section class="section white" id="decisions">
+      <div class="container">
+        <div class="decision-intro">
+          <div class="reveal"><p class="eyebrow">Formats I need your view on</p><h2>Choose the boundary, not the final copy.</h2><p class="lede">Each source has a proven organic mechanism. The question is whether Auré should test the underlying message, test it with explicit guardrails, or hold it.</p></div>
+          <p class="decision-help reveal">Selections stay in this browser. After choosing, use “Copy decisions” and send the generated response to Nick. Source links open the actual TikTok examples.</p>
+        </div>
+        <div class="decision-list">
+          <article class="decision reveal" data-format="Rules after almost breaking up"><div class="decision-top"><div><div class="decision-kicker">Repeated family / up to 4.39M views</div><h3>Rules couples made after they almost broke up</h3><p>Strong repeatable list structure. Main risk: the adaptation could imply that reconciliation is expected or morally preferable.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FAHvVo/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
+          <article class="decision reveal" data-format="Restart with the same person"><div class="decision-top"><div><div class="decision-kicker">Repeated family / up to 4.07M views</div><h3>How to restart with the same person</h3><p>Proven “restart” structure with clear curiosity and progression. Main risk: it explicitly centers reconciliation rather than supporting the person's own decision.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FAsuH6/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
+          <article class="decision reveal" data-format="Reset, not a breakup"><div class="decision-top"><div><div class="decision-kicker">Single source / 2.49M views</div><h3>Your relationship needs a reset, not a breakup</h3><p>Very strong contradiction hook. Main risk: it frames ending the relationship as the wrong choice before knowing the person's circumstances.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FAbyPD/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
+          <article class="decision reveal" data-format="Fights that are normal"><div class="decision-top"><div><div class="decision-kicker">Single source / 1.79M views</div><h3>Fights that are normal in a relationship</h3><p>High-recognition topic with comment potential. Main risk: careless examples can normalize harmful or coercive behavior.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FAf2dn/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
+          <article class="decision reveal" data-format="Forgiveness obligations"><div class="decision-top"><div><div class="decision-kicker">Sensitive message / 143K views</div><h3>Forgiveness as a relationship requirement</h3><p>The format is easy to understand, but “you have to forgive” language can pressure people and oversimplify betrayal, safety, and recovery.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FA5pJr/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
+          <article class="decision reveal" data-format="Four relationship stages"><div class="decision-top"><div><div class="decision-kicker">Organic presentation / 2.75M views</div><h3>The four stages of a relationship</h3><p>The source presents relationship progression very naturally and could position Auré as support during difficult stages. Main risk: a universal stage model can oversimplify relationships and broaden product positioning.</p></div><a class="source-link" href="https://vm.tiktok.com/ZN8FAsuc3/" target="_blank" rel="noopener">Open source ↗</a></div><div class="choices"><button class="choice-btn" data-value="Approve">Approve</button><button class="choice-btn" data-value="Approve with guardrails">Approve with guardrails</button><button class="choice-btn" data-value="Hold">Hold</button></div></article>
+        </div>
+        <div class="copy-panel reveal"><div><strong>Ready to send your decisions?</strong><p>The copied response includes every selected format and leaves unselected items clearly marked.</p></div><div><button class="btn btn-blue" id="copy-decisions">Copy decisions</button><span class="copy-status" id="copy-status" aria-live="polite"></span></div></div>
+      </div>
+    </section>
+
+    <section class="section dark" id="asks">
+      <div class="container asks">
+        <div class="reveal"><p class="eyebrow">What I need from Michael</p><h2>A few clear decisions will let me move faster without turning organic reach into positioning risk.</h2><p class="lede">I am not asking for approval on every post. I am asking for durable boundaries that the system can apply consistently.</p></div>
+        <div class="ask-list">
+          <div class="ask reveal"><b>01</b><div><strong>Approve, guardrail, or hold the six format families above.</strong><p>This defines which proven mechanisms can enter the testing queue.</p></div></div>
+          <div class="ask reveal"><b>02</b><div><strong>Confirm how far Auré can speak about reconciliation and staying together.</strong><p>Should Auré remain neutral, or can it support repair when the content explicitly preserves user choice and safety?</p></div></div>
+          <div class="ask reveal"><b>03</b><div><strong>Confirm the product claims we can use at launch.</strong><p>AI Companion, peer connection, matched groups, personalized practices, educational videos, privacy language, and any launch-specific availability constraints.</p></div></div>
+          <div class="ask reveal"><b>04</b><div><strong>Define any clinical or subject-matter review trigger.</strong><p>Clarify what requires review when content touches therapy, mental health, grief, coercion, abuse, crisis, or safety.</p></div></div>
+          <div class="ask reveal"><b>05</b><div><strong>Confirm the launch conversion path.</strong><p>Waitlist, early access, App Store, web signup, or another route, plus the events we will use to judge organic acquisition.</p></div></div>
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- TODO add more videos (Facebook etc): copy a .vid block above, set data-type to
-           "tiktok", "instagram", or "facebook" and update data-url, views and note. -->
-
-    </div>
-  </section>
-
-  <!-- ===== ACCOUNTS PANEL ===== -->
-  <section class="panel" id="p-accounts" role="tabpanel" aria-labelledby="tab-accounts" hidden>
-    <h2 class="phead">My accounts</h2>
-    <p class="psub">My main accounts. I post here and repost the same videos across TikTok, YouTube, and Facebook.</p>
-    <a class="acct" href="https://www.tiktok.com/@kostywitshop" target="_blank" rel="noopener">
-      <div><div class="h">@kostywitshop</div><div class="s">TikTok &middot; 31K followers</div></div>
-      <span class="go">Open</span>
-    </a>
-    <a class="acct" href="https://www.instagram.com/therewired.app/" target="_blank" rel="noopener">
-      <div><div class="h">@therewired.app</div><div class="s">Instagram</div></div>
-      <span class="go">Open</span>
-    </a>
-    <!-- TODO add more accounts (Facebook page etc) by copying an .acct block above. -->
-  </section>
-
-  <!-- ===== CREATORS PANEL ===== -->
-  <section class="panel" id="p-creators" role="tabpanel" aria-labelledby="tab-creators" hidden>
-    <h2 class="phead">Creators I work with</h2>
-    <p class="psub">I help manage and give creative direction to a roster of UGC creators. Same proven format, run across creators at volume. A few of their best below.</p>
-    <div class="row">
-
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">364K</span><span class="vid-plat">Instagram</span></div>
-        <p class="vid-note">Ryan (@lockinwryan).</p>
-        <div class="player">
-          <video class="pv" poster="videos/creator-ryan-364k.jpg" src="videos/creator-ryan-364k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.instagram.com/reel/DZq7KKwRP19/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
-        </div>
-      </div>
-
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">1.8M</span><span class="vid-plat">Instagram</span></div>
-        <p class="vid-eng">113K likes</p>
-        <p class="vid-note">Bennett (@bennettslocked). UGC with the app plugged at the end.</p>
-        <div class="player">
-          <video class="pv" poster="videos/creator-bennett-18m.jpg" src="videos/creator-bennett-18m.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.instagram.com/reel/DZlY3z_Nufh/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
-        </div>
-      </div>
-
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">10K</span><span class="vid-plat">TikTok</span></div>
-        <p class="vid-note">Oishi (@oishi.focus). A newer creator.</p>
-        <div class="player">
-          <video class="pv" poster="videos/creator-oishi-10k.jpg" src="videos/creator-oishi-10k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.tiktok.com/@oishi.focus/video/7652920824294296852" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
-        </div>
-      </div>
-
-      <div class="vid">
-        <div class="vid-head"><span class="vid-views">188K</span><span class="vid-plat">Instagram</span></div>
-        <p class="vid-note">Ryan (@lockinwryan). Another one.</p>
-        <div class="player">
-          <video class="pv" poster="videos/creator-ryan-188k.jpg" src="videos/creator-ryan-188k.mp4" loop playsinline preload="none"></video>          <a class="ext" href="https://www.instagram.com/reel/DZtX6zHOApq/" target="_blank" rel="noopener" aria-label="Open original">&#8599;</a>
-        </div>
-      </div>
-
-      <!-- TODO add more creator videos: copy a .vid block above, swap views + note + data-url. -->
-
-    </div>
-
-    <p class="subhead">The roster</p>
-    <p class="psub" style="margin-top:-6px">The creators I direct. They post on Instagram and repost the same videos across TikTok, YouTube, and Facebook.</p>
-    <div class="acct-grid">
-      <a class="acct" href="https://www.instagram.com/bennettslocked/reels/" target="_blank" rel="noopener"><div><div class="h">@bennettslocked</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
-      <a class="acct" href="https://www.instagram.com/lockinwryan/reels/" target="_blank" rel="noopener"><div><div class="h">@lockinwryan</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
-      <a class="acct" href="https://www.instagram.com/damon.lockin/reels/" target="_blank" rel="noopener"><div><div class="h">@damon.lockin</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
-      <a class="acct" href="https://www.instagram.com/oishi.focus/reels/" target="_blank" rel="noopener"><div><div class="h">@oishi.focus</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
-      <a class="acct" href="https://www.instagram.com/lockinwithxavier/reels/" target="_blank" rel="noopener"><div><div class="h">@lockinwithxavier</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
-      <a class="acct" href="https://www.instagram.com/sofiafocus3/reels/" target="_blank" rel="noopener"><div><div class="h">@sofiafocus3</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
-      <a class="acct" href="https://www.instagram.com/maria.lockin/reels/" target="_blank" rel="noopener"><div><div class="h">@maria.lockin</div><div class="s">Instagram</div></div><span class="go">Open</span></a>
-    </div>
-  </section>
-
-  <!-- ===== STATS PANEL ===== -->
-  <section class="panel" id="p-stats" role="tabpanel" aria-labelledby="tab-stats" hidden>
-    <h2 class="phead">Audience</h2>
-    <p class="psub">Straight from TikTok and Instagram analytics. Depending on the account and the content, I can reach a younger audience or an older one.</p>
-    <div class="aud-grid">
-
-      <div class="aud">
-        <div class="aud-h">Rewired <span>Instagram</span></div>
-        <div class="grp"><div class="grp-l">Gender</div>
-          <div class="bar"><span class="k">Men</span><span class="t"><span class="f" style="width:78.8%"></span></span><span class="v">78.8%</span></div>
-          <div class="bar"><span class="k">Women</span><span class="t"><span class="f" style="width:21.2%"></span></span><span class="v">21.2%</span></div>
-        </div>
-        <div class="grp"><div class="grp-l">Age</div>
-          <div class="bar"><span class="k">18-24</span><span class="t"><span class="f" style="width:48.4%"></span></span><span class="v">48.4%</span></div>
-          <div class="bar"><span class="k">25-34</span><span class="t"><span class="f" style="width:33.8%"></span></span><span class="v">33.8%</span></div>
-          <div class="bar"><span class="k">35-44</span><span class="t"><span class="f" style="width:10.1%"></span></span><span class="v">10.1%</span></div>
-          <div class="bar"><span class="k">45-54</span><span class="t"><span class="f" style="width:4.3%"></span></span><span class="v">4.3%</span></div>
-        </div>
-        <div class="grp"><div class="grp-l">Top countries</div>
-          <div class="bar"><span class="k">US</span><span class="t"><span class="f" style="width:80.2%"></span></span><span class="v">80.2%</span></div>
-          <div class="bar"><span class="k">India</span><span class="t"><span class="f" style="width:4.6%"></span></span><span class="v">4.6%</span></div>
-          <div class="bar"><span class="k">Turkey</span><span class="t"><span class="f" style="width:1.4%"></span></span><span class="v">1.4%</span></div>
-        </div>
-      </div>
-
-      <div class="aud">
-        <div class="aud-h">Rewired <span>TikTok</span></div>
-        <div class="grp"><div class="grp-l">Gender</div>
-          <div class="bar"><span class="k">Male</span><span class="t"><span class="f" style="width:86%"></span></span><span class="v">86%</span></div>
-          <div class="bar"><span class="k">Female</span><span class="t"><span class="f" style="width:13%"></span></span><span class="v">13%</span></div>
-          <div class="bar"><span class="k">Other</span><span class="t"><span class="f" style="width:1%"></span></span><span class="v">1%</span></div>
-        </div>
-        <div class="grp"><div class="grp-l">Age</div>
-          <div class="bar"><span class="k">18-24</span><span class="t"><span class="f" style="width:31.7%"></span></span><span class="v">31.7%</span></div>
-          <div class="bar"><span class="k">25-34</span><span class="t"><span class="f" style="width:28%"></span></span><span class="v">28.0%</span></div>
-          <div class="bar"><span class="k">35-44</span><span class="t"><span class="f" style="width:19.2%"></span></span><span class="v">19.2%</span></div>
-          <div class="bar"><span class="k">45-54</span><span class="t"><span class="f" style="width:9%"></span></span><span class="v">9.0%</span></div>
-          <div class="bar"><span class="k">55+</span><span class="t"><span class="f" style="width:12.1%"></span></span><span class="v">12.1%</span></div>
-        </div>
-      </div>
-
-      <div class="aud">
-        <div class="aud-h">RawLyfe <span>TikTok &middot; @kostywitshop</span></div>
-        <div class="grp"><div class="grp-l">Age</div>
-          <div class="bar"><span class="k">18-24</span><span class="t"><span class="f" style="width:2.3%"></span></span><span class="v">2.3%</span></div>
-          <div class="bar"><span class="k">25-34</span><span class="t"><span class="f" style="width:7.4%"></span></span><span class="v">7.4%</span></div>
-          <div class="bar"><span class="k">35-44</span><span class="t"><span class="f" style="width:20.3%"></span></span><span class="v">20.3%</span></div>
-          <div class="bar"><span class="k">45-54</span><span class="t"><span class="f" style="width:30%"></span></span><span class="v">30.0%</span></div>
-          <div class="bar"><span class="k">55+</span><span class="t"><span class="f" style="width:40%"></span></span><span class="v">40.0%</span></div>
-        </div>
-        <p class="aud-note">This one skews older. <strong>70% of viewers are 45+</strong>, so I can reach an older, higher-spending audience too, not just a young one.</p>
-      </div>
-
-    </div>
-
-    <p class="subhead">Sales</p>
-    <p class="psub" style="margin-top:-6px">One example: my own TikTok Shop brand, RawLyfe, tracked through the 2.3M view video.</p>
-    <div class="shot"><img src="results.png" alt="TikTok Shop affiliate GMV for @kostywitshop: $21,074.38, 97.69% of total GMV, 31.04K followers" loading="lazy"></div>
-    <p class="cap">The real number runs a bit higher, since TikTok only shows about two months of single-video revenue.</p>
-  </section>
-
-  <!-- ===== APPROACH ===== -->
-  <section class="approach">
-    <p class="label">How I approach it</p>
-    <p>Find what's already working, replicate it, improve it a bit, and test <em>fast</em> until something hits.</p>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="fine">Nick &middot; 2026</div>
-  </footer>
-
-</div>
-
-<script>
-  var vids = Array.prototype.slice.call(document.querySelectorAll('video.pv'));
-
-  // ---- tab switching ----
-  function showTab(name){
-    document.querySelectorAll('.tab').forEach(function(t){ t.setAttribute('aria-selected', t.id === 'tab-'+name ? 'true' : 'false'); });
-    document.querySelectorAll('.panel').forEach(function(p){
-      var on = p.id === 'p-'+name;
-      p.classList.toggle('on', on);
-      if(on){ p.removeAttribute('hidden'); } else { p.setAttribute('hidden',''); }
+  <footer><div class="container footer-row"><strong>Auré</strong><span>Organic growth strategy prepared by Nick Kosty for Michael</span><span>Private and unlisted</span></div></footer>
+  <script>
+    const nav=document.querySelector('.nav');
+    const menu=document.querySelector('.menu');
+    if(menu&&nav){menu.addEventListener('click',()=>nav.classList.toggle('open'));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')))}
+    const progress=document.querySelector('.progress');
+    function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'}
+    addEventListener('scroll',updateProgress,{passive:true});updateProgress();
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}}),{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    const key='aure-michael-format-decisions-v1';
+    const saved=JSON.parse(localStorage.getItem(key)||'{}');
+    document.querySelectorAll('.decision').forEach(card=>{
+      const name=card.dataset.format;
+      const set=value=>{card.querySelectorAll('.choice-btn').forEach(btn=>btn.classList.toggle('selected',btn.dataset.value===value));if(value){saved[name]=value}else{delete saved[name]}localStorage.setItem(key,JSON.stringify(saved))};
+      card.querySelectorAll('.choice-btn').forEach(btn=>btn.addEventListener('click',()=>set(btn.dataset.value)));
+      if(saved[name])set(saved[name]);
     });
-  }
-
-  // native controls so each video can be scrubbed, rewound, paused, and unmuted
-  vids.forEach(function(v){ v.controls = true; v.setAttribute('controlsList','nodownload'); });
-
-  // label each open-original button with its platform
-  document.querySelectorAll('.player .ext').forEach(function(a){
-    var vid = a.closest('.vid');
-    var plat = vid ? vid.querySelector('.vid-plat') : null;
-    a.innerHTML = 'Watch on ' + (plat ? plat.textContent : 'original') + ' &#8599;';
-  });
-</script>
-<!-- Vercel Web Analytics (static site method) -->
-<script defer src="/_vercel/insights/script.js"></script>
+    const copyButton=document.getElementById('copy-decisions');
+    const copyStatus=document.getElementById('copy-status');
+    copyButton.addEventListener('click',async()=>{
+      const cards=[...document.querySelectorAll('.decision')];
+      const lines=['Michael format decisions:',''];
+      cards.forEach(card=>lines.push(card.dataset.format+': '+(saved[card.dataset.format]||'No decision yet')));
+      lines.push('','Additional guardrails or notes:');
+      try{await navigator.clipboard.writeText(lines.join('\n'));copyStatus.textContent='Copied'}catch(e){copyStatus.textContent='Copy blocked by browser'}
+      setTimeout(()=>copyStatus.textContent='',2400);
+    });
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
