@@ -21,7 +21,7 @@
       --max: 1100px;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 60px; }
     body { margin: 0; color: var(--ink); background: var(--bg); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.5; }
     a { color: inherit; }
     .nav { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(16,16,21,.12); background: rgba(246,246,243,.94); backdrop-filter: blur(14px); }
@@ -29,12 +29,12 @@
     .nav strong { font-size: 14px; }
     .nav span { color: var(--muted); font-size: 13px; }
     main { overflow: hidden; }
-    .section { padding: 82px 0; border-bottom: 1px solid var(--line); }
+    .section { padding: 82px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 60px; }
     .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
     .kicker { margin: 0 0 15px; color: var(--violet-dark); font-size: 12px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
     h1, h2 { max-width: 1000px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 500; letter-spacing: -.045em; line-height: 1; text-wrap: balance; }
-    h1 { font-size: clamp(52px, 8vw, 94px); }
-    h2 { font-size: clamp(39px, 5.6vw, 66px); }
+    h1 { font-size: clamp(46px, 6.5vw, 76px); }
+    h2 { font-size: clamp(36px, 4.8vw, 56px); }
     h3 { margin: 0; font-size: 20px; line-height: 1.25; }
     p { margin: 0; }
     .lead { max-width: 900px; margin-top: 25px; color: #383a43; font-size: clamp(19px, 2.2vw, 25px); line-height: 1.42; }
@@ -47,7 +47,7 @@
     .account { padding: 25px; border-top: 5px solid var(--violet); background: var(--paper); }
     .account.maria { border-top-color: var(--pink); }
     .account p { margin-top: 9px; color: var(--muted); }
-    .roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; }
+    .roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
     .role { padding: 20px; border: 1px solid var(--line); background: var(--paper); }
     .role strong { display: block; margin-bottom: 7px; font-size: 15px; }
     .role p { color: var(--muted); font-size: 14px; }
@@ -96,6 +96,20 @@
     .preview-copy .tag { color: var(--violet-dark); font-size: 11px; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
     .preview-copy h3 { margin-top: 12px; overflow-wrap: anywhere; }
     .preview-copy p { margin-top: 8px; color: var(--muted); font-size: 14px; }
+    .library-controls { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; padding: 18px; border: 1px solid var(--line); background: var(--paper); }
+    .library-controls label { display: grid; gap: 6px; min-width: 180px; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .library-controls select { min-height: 44px; padding: 0 36px 0 12px; border: 1px solid var(--line); border-radius: 0; color: var(--ink); background: white; font: inherit; }
+    .library-count { align-self: end; min-height: 44px; display: flex; align-items: center; margin-left: auto; color: var(--violet-dark); font-size: 13px; font-weight: 800; }
+    .reference-type { display: inline-flex; margin-top: 11px; padding: 5px 8px; background: var(--violet-wash); color: var(--violet-dark); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+    .preview details { margin: 15px 0 0; padding: 0; border: 0; border-top: 1px solid var(--line); }
+    .preview summary { min-height: 48px; font-size: 13px; }
+    .reference-notes { padding-bottom: 2px; }
+    .reference-notes p { margin-top: 8px; color: #454750; font-size: 13px; }
+    .reference-notes strong { color: var(--ink); }
+    .card-caveat { margin-top: 12px !important; padding: 11px; background: #fff4df; color: #65470b !important; }
+    .empty-library { grid-column: 1 / -1; padding: 28px; border: 1px solid var(--line); background: var(--paper); color: var(--muted); text-align: center; }
+    .pipeline.three { grid-template-columns: repeat(3, 1fr); }
+    .measurement.three { grid-template-columns: repeat(3, 1fr); }
     .checklist { margin-top: 36px; border-top: 4px solid var(--ink); }
     .check { display: grid; grid-template-columns: 44px 220px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
     .check span { color: var(--violet); font-family: Georgia, serif; font-size: 25px; }
@@ -127,7 +141,7 @@
     @media (max-width: 850px) {
       .section { padding: 60px 0; }
       .stats, .split, .roles, .formats, .preview-grid, .sources { grid-template-columns: 1fr; }
-      .pipeline, .measurement { grid-template-columns: 1fr; }
+      .pipeline, .pipeline.three, .measurement, .measurement.three { grid-template-columns: 1fr; }
       .step, .metric { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
       .step:last-child, .metric:last-child { border-bottom: 0; }
       .metric:not(:last-child)::after { content: "↓"; top: auto; right: 20px; bottom: -11px; }
@@ -138,6 +152,9 @@
       .hook a { grid-column: 2; }
       .inspiration-group-head { display: block; }
       .inspiration-group-head p { margin-top: 8px; }
+      .library-controls { display: grid; }
+      .library-controls label { min-width: 0; }
+      .library-count { margin-left: 0; }
       footer .wrap { display: block; }
       footer span { display: block; margin-top: 5px; }
     }
@@ -149,43 +166,42 @@
   </style>
 </head>
 <body>
-  <header class="nav"><div class="nav-inner"><strong>Nick × Auré Organic</strong><span>Current work, launch plan, and scale</span></div></header>
+  <header class="nav"><div class="nav-inner"><strong>Nick × Auré Organic</strong><span>What is working now and what comes after launch</span></div></header>
 
   <main>
     <section class="section">
       <div class="wrap">
         <p class="kicker">Auré organic update</p>
-        <h1>The current Auré organic system and what comes after launch.</h1>
-        <p class="lead">Right now, 5 to 10 slideshows are published daily across Maria and Official. They provide inexpensive reach, consistent output, and fast hook testing. After launch, the slideshows keep running as a supporting top-of-funnel layer while UGC and app-demo videos do more of the conversion work.</p>
+        <h1>What I’m doing with Auré organic now, and what I want to test after launch.</h1>
+        <p class="lead">Right now, 5 to 10 slideshows are published daily across Maria and Official. They generate inexpensive reach and show which relationship language earns attention. After launch, those learnings can become openings for product-led video, with one clear Auré action showing viewers what the product can do.</p>
       </div>
     </section>
 
     <section class="section" id="now">
       <div class="wrap">
-        <p class="kicker">Current output</p>
-        <h2>Publishing 5 to 10 slideshows every day.</h2>
+        <p class="kicker">What is happening now</p>
+        <h2>Daily slideshows are building reach and testing language.</h2>
         <div class="stats">
           <div class="stat"><strong>5–10</strong><span>daily slideshows across the current accounts</span></div>
           <div class="stat"><strong>2</strong><span>primary accounts: Maria and Official</span></div>
           <div class="stat"><strong>Manual</strong><span>ContentOS supports production; final review and publishing remain manual</span></div>
         </div>
         <div class="split">
-          <article class="account maria"><h3>Maria currently leads on reach</h3><p>Personal stories feel native to the feed. Viewers connect with the situation before Auré enters.</p></article>
-          <article class="account"><h3>Official handles clearer product communication</h3><p>Brand-led content is easier to recognize as promotion, so its reach is monitored against Maria’s less-branded approach.</p></article>
+          <article class="account maria"><h3>Maria currently leads on reach</h3><p>Personal stories feel native to the feed. Viewers connect with the situation before encountering the brand.</p></article>
+          <article class="account"><h3>Official tests direct Auré framing</h3><p>Brand-led posts make the connection to Auré clearer, but they are easier to recognize as promotion and currently earn less reach.</p></article>
         </div>
       </div>
     </section>
 
     <section class="section" id="learning">
       <div class="wrap">
-        <p class="kicker">What the current tests show</p>
-        <h2>Slideshows generate inexpensive reach and surface concepts worth testing as video.</h2>
-        <p class="lead">Slideshows support the broader organic strategy through inexpensive top-of-funnel reach, easy production, and fast hook testing. By themselves, they are unlikely to drive the strongest conversion results. Their larger value is keeping attention flowing while revealing which hooks and concepts should be rebuilt as UGC and product-led video.</p>
+        <p class="kicker">What the current results show</p>
+        <h2>Specific relationship language is earning attention.</h2>
+        <p class="lead">The strongest current posts are personal and concrete: rules after betrayal, rebuilding a sense of safety, and behaviors that make recovery harder. Slideshows keep Auré in front of new people while showing which wounds, questions, and story structures are worth developing further.</p>
         <div class="roles">
-          <div class="role"><strong>Top-of-funnel views</strong><p>They keep Auré in front of new people through easy, feed-native content.</p></div>
-          <div class="role"><strong>Hook testing</strong><p>Many wounds, questions, and phrases can be tested without expensive production.</p></div>
-          <div class="role"><strong>Easy volume</strong><p>The format is cheap, repeatable, and can eventually be scheduled or distributed with less menial work.</p></div>
-          <div class="role"><strong>Lower conversion</strong><p>The limitation is that slideshows cannot demonstrate Auré as clearly as UGC and app-centered video.</p></div>
+          <div class="role"><strong>Inexpensive reach</strong><p>Feed-native stories keep the accounts active and put Auré’s subject matter in front of new people.</p></div>
+          <div class="role"><strong>Fast creative learning</strong><p>Hooks and emotional angles can be tested in volume without committing to expensive production.</p></div>
+          <div class="role"><strong>A clear limitation</strong><p>Slideshows can validate attention, but they cannot show Auré’s value as clearly as product-led video.</p></div>
         </div>
         <div class="hooks">
           <div class="hook"><div class="views">290.7K</div><p>“Rules we made after he cheated on me, because I couldn’t live like that again.”</p><a href="https://www.tiktok.com/@maria.aure1/photo/7671482396071447839" target="_blank" rel="noopener">View ↗</a></div>
@@ -193,121 +209,128 @@
           <div class="hook"><div class="views">65.4K</div><p>“Things that can make it worse after your partner cheats.”</p><a href="https://www.tiktok.com/@maria.aure1/photo/7671791320289021215" target="_blank" rel="noopener">View ↗</a></div>
         </div>
         <div class="evidence-note">These posts demonstrate reach for betrayal-recovery hooks. They do not establish clicks, installs, activation, or product demand.</div>
-        <div class="pipeline">
-          <div class="step"><span class="n">01</span><h3>Publish</h3><p>Test many emotional hooks cheaply through slideshows.</p></div>
-          <div class="step"><span class="n">02</span><h3>Identify winners</h3><p>Look for hooks that beat the account baseline or work repeatedly.</p></div>
-          <div class="step"><span class="n">03</span><h3>Adapt to video</h3><p>Move the winning language into a POV, reaction, or text-led opening.</p></div>
-          <div class="step"><span class="n">04</span><h3>Measure product action</h3><p>Test whether the app demo turns that attention into real interest.</p></div>
+        <div class="split">
+          <article class="account maria"><h3>Before launch</h3><p>Hook → emotional recognition → profile or waitlist interest.</p></article>
+          <article class="account"><h3>After launch</h3><p>Hook → relevant Auré action → visible payoff → measurable product interest.</p></article>
         </div>
       </div>
     </section>
 
     <section class="section" id="inspiration">
       <div class="wrap">
-        <p class="kicker">Viral format library</p>
-        <h2>Watch the reference videos first.</h2>
-        <p class="lead">Every current inspiration candidate is included below and numbered for review. Watch the videos, then keep only the formats worth carrying into the final strategy.</p>
-        <div class="first-test"><h3>Review by number</h3><p>Send the numbers to keep or remove. The final version will contain only the references that earn a place.</p></div>
-        <div id="inspiration-library"></div>
+        <p class="kicker">Format and product inspiration</p>
+        <h2>A small library of references worth returning to.</h2>
+        <p class="lead">These references are useful for different reasons. Some show how to open, some show how a product enters, and some show the tone that already resonates around betrayal and recovery. None of them should be copied wholesale.</p>
+        <div class="library-controls" aria-label="Inspiration library controls">
+          <label>Format<select id="format-filter"><option value="all">All formats</option><option value="POV + Demo">POV + Demo</option><option value="Wall of Text">Wall of Text</option></select></label>
+          <label>Reference role<select id="role-filter"><option value="all">All roles</option><option value="format">Format</option><option value="product">Product</option><option value="tone">Tone</option></select></label>
+          <label>Sort<select id="sort-filter"><option value="curated">Curated order</option><option value="views">Highest views</option><option value="engagement">Highest engagement</option></select></label>
+          <div class="library-count" id="library-count" aria-live="polite"></div>
+        </div>
+        <div class="preview-grid" id="inspiration-library"></div>
       </div>
     </section>
 
     <section class="section" id="after-launch">
       <div class="wrap">
-        <p class="kicker">How the formats become Auré videos</p>
-        <h2>Keep the proven structure. Rebuild the creative around Auré.</h2>
-        <p class="lead">The original product and wording do not transfer. The format does. Each Auré version needs an ICP-specific hook and one real product action that can be understood immediately.</p>
+        <p class="kicker">What I want to test after launch</p>
+        <h2>Connect strong openings to something viewers can understand in the product.</h2>
+        <p class="lead">The format should follow the feature, not the other way around. Each product-led video needs one recognizable relationship moment, one real Auré action, and one result that is clear on screen.</p>
         <div class="formats">
-          <article class="format"><span class="tag">POV + Demo</span><h3>Use Auré inside the situation</h3><div class="beats"><p><strong>Keep:</strong> One specific moment, first-person visuals, and a direct transition into the app.</p><p><strong>Replace:</strong> Rebuild the situation around betrayal, a no-contact urge, or loneliness inside a relationship.</p><p><strong>Product:</strong> The exact Auré action depends on the confirmed launch flow.</p></div></article>
-          <article class="format"><span class="tag">Reaction + Demo</span><h3>Use the late-discovery reveal</h3><div class="beats"><p><strong>Keep:</strong> A short time-or-repetition hook, visible surprise, and a product reveal within seconds.</p><p><strong>Replace:</strong> Rewrite the hook around an Auré-specific internal struggle drawn from proven copy.</p><p><strong>Product:</strong> Reveal one confirmed Auré flow rather than touring the app.</p></div></article>
-          <article class="format"><span class="tag">Wall of Text + Demo</span><h3>Use one emotional contradiction</h3><div class="beats"><p><strong>Keep:</strong> A complete paragraph over quiet B-roll that is worth pausing to read.</p><p><strong>Replace:</strong> Write around betrayal, safety, wanting comfort from the person who caused the hurt, or refusing to pass pain forward.</p><p><strong>Product:</strong> Add an Auré transition only when a real feature naturally fits the thought.</p></div></article>
+          <article class="format"><span class="tag">First planned test</span><h3>Wall of Text → Demo</h3><div class="beats"><p><strong>Why first:</strong> It is closest to the emotional language already earning attention.</p><p><strong>What is new:</strong> The paragraph creates the need; one Auré interaction has to complete the thought.</p><p><strong>Boundary:</strong> This is an experimental hybrid until the product transition is tested.</p></div></article>
+          <article class="format"><span class="tag">When the action fits</span><h3>POV → Demo</h3><div class="beats"><p><strong>Opening:</strong> Show one private behavior instead of explaining the entire story.</p><p><strong>Transition:</strong> Auré must be used naturally inside that same moment.</p><p><strong>Boundary:</strong> A distress clip followed by an unrelated screen recording does not count.</p></div></article>
+          <article class="format"><span class="tag">Feature-dependent</span><h3>Reaction or Feature-first</h3><div class="beats"><p><strong>Reaction:</strong> Use only when Auré produces a result worth reacting to.</p><p><strong>Feature-first:</strong> Lead with the product when one action creates an immediately legible output.</p><p><strong>Boundary:</strong> Do not manufacture surprise or force a feature tour.</p></div></article>
         </div>
-        <div class="topics">
-          <span class="topic">breakup healing</span><span class="topic">betrayal recovery</span><span class="topic">stay-or-leave uncertainty</span><span class="topic">loneliness inside a relationship</span><span class="topic">difficulty expressing a feeling</span><span class="topic">the person who caused the hurt</span><span class="topic">grief and major change</span>
+        <h3 class="preview-heading">Every demo should make one sequence clear.</h3>
+        <div class="pipeline three">
+          <div class="step"><span class="n">01</span><h3>Situation or input</h3><p>The viewer understands the relationship moment or what the creator gives Auré.</p></div>
+          <div class="step"><span class="n">02</span><h3>One Auré action</h3><p>The creator completes one interaction rather than touring several screens.</p></div>
+          <div class="step"><span class="n">03</span><h3>Visible result</h3><p>The output provides clarity, recognition, relief, or a useful next step without promising a fixed outcome.</p></div>
         </div>
-        <div class="first-test"><h3>What still needs to be known</h3><p>The final Auré scripts cannot be finished until the strongest launch feature, screen flow, visible output, and approved product claims are clear.</p></div>
-
       </div>
     </section>
 
     <section class="section" id="product">
       <div class="wrap">
-        <p class="kicker">What needs to be ready</p>
-        <h2>Product-led content starts once there is something clear and visual to show.</h2>
+        <p class="kicker">What needs to be clear about the product</p>
+        <h2>A useful feature is easier to market when its value is visible quickly.</h2>
+        <p class="lead">This is not a request for a gimmicky or “viral” feature. It is a way to identify which real Auré flow can carry the strongest short-form demonstrations.</p>
         <div class="checklist">
-          <div class="check"><span>1</span><strong>Feature to demonstrate</strong><p>Choose the launch feature or flow that is easiest to understand and most compelling to watch.</p></div>
-          <div class="check"><span>2</span><strong>Visible payoff</strong><p>Make the input, interaction, and result clear enough to understand within a few seconds.</p></div>
-          <div class="check"><span>3</span><strong>Working demo</strong><p>Provide a stable build, seeded examples, and approved screen recordings so the content shows the real product rather than guesses.</p></div>
-          <div class="check"><span>4</span><strong>Privacy and claims</strong><p>Confirm what can be shown safely and which benefits can be described without promising guaranteed outcomes.</p></div>
+          <div class="check"><span>1</span><strong>Fast comprehension</strong><p>A muted viewer can understand what changed without reading a long explanation.</p></div>
+          <div class="check"><span>2</span><strong>Clear sequence</strong><p>One situation leads to one input, one interaction, and one visible result.</p></div>
+          <div class="check"><span>3</span><strong>Personal relevance</strong><p>The result feels connected to a recognizable relationship experience rather than a generic feature.</p></div>
+          <div class="check"><span>4</span><strong>Emotional payoff</strong><p>The output creates clarity, recognition, relief, or a useful next step.</p></div>
+          <div class="check"><span>5</span><strong>Repeatability</strong><p>The same flow can support multiple hooks and situations without repeating one exact script.</p></div>
+          <div class="check"><span>6</span><strong>Safe promise</strong><p>The demonstration does not claim to repair trust, resolve abuse, replace professional care, or guarantee recovery.</p></div>
         </div>
+        <div class="evidence-note">Final scripts still depend on the confirmed launch flow, visible output, stable build, privacy boundaries, approved screens, and approved product claims.</div>
       </div>
     </section>
 
     <section class="section" id="measure">
       <div class="wrap">
-        <p class="kicker">How performance is judged and scaled</p>
-        <h2>Organic attribution is directional, not exact.</h2>
-        <p class="lead">Content performance and install trends should be visible in one place. Each post can be organized by account, hook, format, publish time, views, and engagement, then compared with changes in installs. Links provide extra evidence, but the main signal is whether content spikes repeatedly correlate with install spikes.</p>
-        <div class="measurement">
-          <div class="metric"><small>System</small><h3>Performance tracking</h3><p>Keep every account, post, hook, format, and publish time organized in one place.</p></div>
-          <div class="metric"><small>Content</small><h3>Views and engagement</h3><p>Track which posts and formats are actually earning attention.</p></div>
-          <div class="metric"><small>Intent</small><h3>Profile activity and links</h3><p>Use these as supporting signals rather than perfect attribution.</p></div>
-          <div class="metric"><small>Outcome</small><h3>Download trend</h3><p>Watch for movement above the normal daily baseline.</p></div>
-          <div class="metric"><small>Confidence</small><h3>Repeated correlation</h3><p>Look for the same view-to-download pattern across multiple posts.</p></div>
+        <p class="kicker">How the next decisions get made</p>
+        <h2>Results decide what gets another round.</h2>
+        <p class="lead">Views show that an opening can earn attention. Product-led tests should show whether that attention creates stronger intent. Organic attribution will remain directional, so confidence comes from repeated patterns rather than one spike.</p>
+        <div class="measurement three">
+          <div class="metric"><small>Attention winner</small><h3>Earns attention repeatedly</h3><p>A hook or concept beats the relevant account baseline more than once through views, engagement, shares, or profile activity.</p></div>
+          <div class="metric"><small>Product winner</small><h3>Creates measurable intent</h3><p>The video appears alongside stronger link activity, installs, or the first meaningful product action once that event is defined and available.</p></div>
+          <div class="metric"><small>Scale candidate</small><h3>Survives wider distribution</h3><p>A repeat organic winner becomes a sensible Spark Ad or paid Instagram test. Paid performance determines whether it can scale predictably.</p></div>
         </div>
-        <div class="operating-loop"><strong>The operating loop</strong><p>Maintain consistent output, use performance data to identify repeat winners, create more variations, compare content spikes with install movement, test the strongest videos as paid creative, and feed the results back into the next round of content.</p></div>
+        <h3 class="preview-heading">The working loop</h3>
         <div class="scale-list">
-          <div class="scale-row"><strong>Slideshows</strong><p>Keep daily slideshow publishing in place for inexpensive reach and hook testing. Schedule posts and reduce repetitive distribution work where useful.</p></div>
-          <div class="scale-row"><strong>Product-led video</strong><p>Test different creators, hooks, and formats after launch, then compare the results with profile activity, link clicks, and install trends.</p></div>
-          <div class="scale-row"><strong>What to double down on</strong><p>Prioritize hooks and formats that perform repeatedly and appear alongside stronger product interest. High views alone are not enough.</p></div>
-          <div class="scale-row"><strong>Organic into paid</strong><p>High-performing organic videos are already validated as attention-grabbing creative and often translate well into paid ads. Test those winners as TikTok Spark Ads or paid Instagram creative and scale the ones that continue performing.</p></div>
-          <div class="scale-row"><strong>Review and scale</strong><p>Use the available views, engagement, profile activity, clicks, and install trends to decide what deserves more variations and distribution.</p></div>
+          <div class="scale-row"><strong>1 · Test recognition</strong><p>Keep the daily slideshow layer running across Auré’s clearest relationship pains.</p></div>
+          <div class="scale-row"><strong>2 · Find repeat winners</strong><p>Separate hooks that repeatedly outperform the account baseline from isolated spikes.</p></div>
+          <div class="scale-row"><strong>3 · Match hook to feature</strong><p>Choose the Auré interaction that genuinely addresses the situation created by the opening.</p></div>
+          <div class="scale-row"><strong>4 · Rebuild as video</strong><p>Use wall-of-text, POV, reaction, or feature-first execution only when the product supports it naturally.</p></div>
+          <div class="scale-row"><strong>5 · Compare attention and action</strong><p>Organize posts by account, hook, format, time, views, and engagement, then compare spikes with profile activity, links, installs, and available product signals.</p></div>
+          <div class="scale-row"><strong>6 · Scale combinations</strong><p>Create variations around hook–feature pairings that perform repeatedly and test strong organic videos through Auré’s existing paid operation.</p></div>
         </div>
+        <div class="evidence-note">Profile activity and tracked links provide supporting evidence, but no single organic post should be credited with every install. Repeated correlation is the practical standard.</div>
       </div>
     </section>
   </main>
 
-  <footer><div class="wrap">Nick Kosty × Auré <span>Organic strategy · September 2, 2026</span></div></footer>
+  <footer><div class="wrap">Nick Kosty × Auré <span>Organic strategy · September 3, 2026</span></div></footer>
   <script>
     const inspirationVideos = [
-      {n:1,g:'POV + Demo',f:'Alarm challenge → tracked result',p:'376.4K views · 1.42% like rate',a:'@macywakesup',id:'7666283999735663880',u:'https://www.tiktok.com/@macywakesup/video/7666283999735663880',img:'assets/formats/1.jpg'},
-      {n:2,g:'POV + Demo',f:'Deal hunt → receipt proof',p:'186.2K views · 5.91% like rate',a:'@dealzwithmatt1',id:'7665449967804222733',u:'https://www.tiktok.com/@dealzwithmatt1/video/7665449967804222733',img:'assets/formats/2.jpg'},
-      {n:3,g:'POV + Demo',f:'Parent problem → remote action',p:'1.62M views · 1.04% like rate',a:'@findmykids.geotracker.us',id:'7675297754888801557',u:'https://www.tiktok.com/@findmykids.geotracker.us/video/7675297754888801557',img:'assets/formats/3.jpg'},
-      {n:4,g:'POV + Demo',f:'AI prank → generated result',p:'809.3K views · 1.92% like rate',a:'@pranksbyfas',id:'7653158836055936277',u:'https://www.tiktok.com/@pranksbyfas/video/7653158836055936277',img:'assets/formats/4.jpg'},
-      {n:5,g:'POV + Demo',f:'Old photo → live case refresh',p:'851.2K views · 2.0% like rate',a:'@framecasee',id:'7668714252085071136',u:'https://www.tiktok.com/@framecasee/video/7668714252085071136',img:'assets/formats/5.jpg'},
-      {n:6,g:'POV + Demo',f:'Design struggle → finished Story',p:'280.9K views · 0.4% like rate',a:'@eziapp',id:'7649377591593291026',u:'https://www.tiktok.com/@eziapp/video/7649377591593291026',img:'assets/formats/6.jpg'},
-      {n:7,g:'POV + Demo',f:'Anxious text → in-moment app use',p:'1.03M views',a:'@ura_app',id:'7643354280879000850',u:'https://www.tiktok.com/@ura_app/video/7643354280879000850',img:'assets/formats/7.jpg'},
-      {n:8,g:'Reaction + Demo',f:'Shock → relationship widget',p:'479K views · 5.24% like rate',a:'@daniela.couple360',id:'7672615167150001429',u:'https://www.tiktok.com/@daniela.couple360/video/7672615167150001429',img:'assets/formats/8.jpg'},
-      {n:9,g:'Reaction + Demo',f:'Surprise → travel activity join',p:'291.2K views · 7.23% like rate',a:'@emiliemeetstheworld',id:'7664468215715745046',u:'https://www.tiktok.com/@emiliemeetstheworld/video/7664468215715745046',img:'assets/formats/9.jpg'},
-      {n:10,g:'Reaction + Demo',f:'Disbelief → generated meal plan',p:'748.4K views · 0.34% like rate',a:'@willowsfeed',id:'7663151111288671518',u:'https://www.tiktok.com/@willowsfeed/video/7663151111288671518',img:'assets/formats/11.jpg'},
-      {n:11,g:'Reaction + Demo',f:'Mock crying → AI tutor response',p:'1.34M views · 10.59% like rate',a:'@manuslearningpath',id:'7650147419123879201',u:'https://www.tiktok.com/@manuslearningpath/video/7650147419123879201',img:'assets/formats/12.jpg'},
-      {n:12,g:'Reaction + Demo',f:'Shock → public-record search',p:'602K views · 1.43% like rate',a:'@jadalynsmedia',id:'7649552141371051294',u:'https://www.tiktok.com/@jadalynsmedia/video/7649552141371051294',img:'assets/formats/13.jpg'},
-      {n:13,g:'Reaction + Demo',f:'Reaction → fast micro-tutorial',p:'444.2K views',a:'@guadaisinlove',id:'7643931949337283847',u:'https://www.tiktok.com/@guadaisinlove/video/7643931949337283847',img:'assets/inspo/6.jpg'},
-      {n:14,g:'True Wall of Text',f:'Identity belief over quiet B-roll',p:'1.45M views · 23% like rate',a:'@notesonhealingg',id:'7676829686986542350',u:'https://www.tiktok.com/@notesonhealingg/video/7676829686986542350',img:'assets/formats/14.jpg'},
-      {n:15,g:'True Wall of Text',f:'Therapist exchange over one shot',p:'1.76M views · 9.46% like rate',a:'@cat.naur',id:'7669281434133187870',u:'https://www.tiktok.com/@cat.naur/video/7669281434133187870',img:'assets/formats/15.jpg'},
-      {n:16,g:'True Wall of Text',f:'Film analysis over selfie footage',p:'703.2K views · 9.6% like rate',a:'@lizatokss',id:'7668457446305746206',u:'https://www.tiktok.com/@lizatokss/video/7668457446305746206',img:'assets/formats/16.jpg'},
-      {n:17,g:'True Wall of Text',f:'Long text-message story',p:'292.8K views · 5.31% like rate',a:'@christinakingston2',id:'7648416055743810846',u:'https://www.tiktok.com/@christinakingston2/video/7648416055743810846',img:'assets/formats/17.jpg'}
+      {n:1,g:'POV + Demo',roles:['format','product'],roleLabel:'Format + product reference',f:'Private trigger → in-moment app use',p:'1.03M views',views:1030000,engagement:0,a:'@ura_app',id:'7643354280879000850',u:'https://www.tiktok.com/@ura_app/video/7643354280879000850',img:'assets/library/1.jpg',opening:'An anxious-attachment text exchange creates the situation before the product appears.',transition:'The app is opened inside the same phone moment rather than added after an unrelated scene.',action:'One focused product flow responds to the immediate emotional trigger.',payoff:'The viewer sees the problem and the role of the product in one sequence.',takeaway:'Use this structure only when a confirmed Auré feature naturally belongs inside the moment.'},
+      {n:2,g:'Wall of Text',roles:['tone','format'],roleLabel:'Tone + format reference',f:'Betrayal contradiction → debate',p:'832.6K views · 6.8% like rate',views:832600,engagement:6.8,a:'@legirltea',id:'7668644389882776862',u:'https://www.tiktok.com/@legirltea/video/7668644389882776862',img:'assets/library/2.jpg',opening:'A complete confession about feeling close again, then remembering the truth would never have been volunteered.',transition:'No product appears. The paragraph remains over quiet kitchen footage.',action:'None in the source.',payoff:'Recognition and disagreement keep the thought active in the comments.',takeaway:'Useful for emotional tension and pause time. An Auré demo should be added only if a real feature completes the thought.',caveat:'The performance may partly come from controversy. The wording can be read as judgment toward people who remain or reconcile after betrayal.'},
+      {n:3,g:'Wall of Text',roles:['tone','format'],roleLabel:'Tone + format reference',f:'Silence feels safer than honesty',p:'1.86M views · 16.7% like rate',views:1860000,engagement:16.7,a:'@notesonhealingg',id:'7661999248828828942',u:'https://www.tiktok.com/@notesonhealingg/video/7661999248828828942',img:'assets/library/3.jpg',opening:'A relationship reaches the point where silence feels safer because honest feelings no longer seem likely to be understood.',transition:'No product appears. One paragraph stays over a quiet nighttime drive.',action:'None in the source.',payoff:'The emotional experience is named precisely enough that viewers recognize themselves.',takeaway:'Preserve the specificity and calm pacing. Test a product transition only when the launch flow offers a relevant next step.'},
+      {n:4,g:'Wall of Text',roles:['tone','format'],roleLabel:'Tone + format reference',f:'Pain without losing kindness',p:'1.47M views · 23% like rate',views:1470000,engagement:23,a:'@notesonhealingg',id:'7676829686986542350',u:'https://www.tiktok.com/@notesonhealingg/video/7676829686986542350',img:'assets/library/4.jpg',opening:'An identity statement about being hurt without allowing the experience to remove the ability to love and care deeply.',transition:'No product appears. The full paragraph remains over nighttime highway footage.',action:'None in the source.',payoff:'The thought resolves in a clear statement of identity rather than advice.',takeaway:'Useful for mature emotional tone. A demo would need to support the identity shift without making a recovery promise.'}
     ];
 
     const library = document.querySelector('#inspiration-library');
-    const groupNotes = {
-      'POV + Demo': 'A specific lived situation becomes visible product use and a result. The app is part of the scene, not a random reveal afterward.',
-      'Reaction + Demo': 'A clear reaction opens the video, the app appears within seconds, and the creator demonstrates one understandable flow.',
-      'True Wall of Text': 'A real paragraph stays on screen over simple footage. These prove the text structure only; adding an Auré demo remains an experimental hybrid.'
-    };
-    Object.keys(groupNotes).forEach(groupName => {
-      const section = document.createElement('section');
-      section.className = 'inspiration-group';
-      section.innerHTML = `<div class="inspiration-group-head"><h3>${groupName}</h3><p>${groupNotes[groupName]}</p></div><div class="preview-grid"></div>`;
-      const grid = section.querySelector('.preview-grid');
-      inspirationVideos.filter(video => video.g === groupName).forEach(video => {
+    const formatFilter = document.querySelector('#format-filter');
+    const roleFilter = document.querySelector('#role-filter');
+    const sortFilter = document.querySelector('#sort-filter');
+    const libraryCount = document.querySelector('#library-count');
+
+    function renderLibrary() {
+      const format = formatFilter.value;
+      const role = roleFilter.value;
+      const sort = sortFilter.value;
+      const videos = inspirationVideos
+        .filter(video => format === 'all' || video.g === format)
+        .filter(video => role === 'all' || video.roles.includes(role))
+        .sort((a, b) => sort === 'views' ? b.views - a.views : sort === 'engagement' ? b.engagement - a.engagement : a.n - b.n);
+
+      library.innerHTML = '';
+      libraryCount.textContent = `${videos.length} approved reference${videos.length === 1 ? '' : 's'}`;
+      if (!videos.length) {
+        library.innerHTML = '<div class="empty-library">No approved references match these filters.</div>';
+        return;
+      }
+      videos.forEach(video => {
         const card = document.createElement('article');
         card.className = 'preview';
-        card.innerHTML = `<div class="video-shell"><button class="video-poster" type="button" data-video-id="${video.id}" aria-label="Play inspiration ${video.n}"><img src="${video.img}" alt="Preview frame for inspiration ${video.n}"><span class="video-number">${video.n}</span><span class="play">Play #${video.n}</span></button></div><div class="preview-copy"><span class="tag">#${video.n} · ${video.f}</span><h3>${video.a}</h3><p>${video.p}</p><p><a href="${video.u}" target="_blank" rel="noopener">Open original ↗</a></p></div>`;
-        grid.appendChild(card);
+        card.innerHTML = `<div class="video-shell"><button class="video-poster" type="button" data-video-id="${video.id}" aria-label="Play inspiration ${video.n}"><img src="${video.img}" alt="Preview frame for inspiration ${video.n}"><span class="video-number">${video.n}</span><span class="play">Play #${video.n}</span></button></div><div class="preview-copy"><span class="tag">#${video.n} · ${video.g}</span><h3>${video.a}</h3><p>${video.f}</p><p>${video.p}</p><span class="reference-type">${video.roleLabel}</span><p><a href="${video.u}" target="_blank" rel="noopener">Open original ↗</a></p>${video.caveat ? `<p class="card-caveat"><strong>Controversy note:</strong> ${video.caveat}</p>` : ''}<details><summary>Why it is here</summary><div class="reference-notes"><p><strong>Opening:</strong> ${video.opening}</p><p><strong>Transition:</strong> ${video.transition}</p><p><strong>Demonstrated action:</strong> ${video.action}</p><p><strong>Visible payoff:</strong> ${video.payoff}</p><p><strong>Auré takeaway:</strong> ${video.takeaway}</p></div></details></div>`;
+        library.appendChild(card);
       });
-      library.appendChild(section);
-    });
+    }
+
+    [formatFilter, roleFilter, sortFilter].forEach(control => control.addEventListener('change', renderLibrary));
+    renderLibrary();
 
     document.addEventListener('click', event => {
       const button = event.target.closest('.video-poster');
