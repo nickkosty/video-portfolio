@@ -19,6 +19,7 @@ window.inspirationVideos = [
   },
   {
     n: 2,
+    anchor: "ura-emotional-scenario",
     g: "Emotional Scenario → Demo",
     roles: ["format", "product", "tone"],
     roleLabel: "Format + product + tone reference",
