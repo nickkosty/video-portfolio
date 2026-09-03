@@ -77,6 +77,10 @@
     .first-test { margin-top: 26px; padding: 24px; color: white; background: var(--ink); }
     .first-test p { margin-top: 9px; color: #ceced6; }
     .preview-heading { margin-top: 52px; }
+    .inspiration-group { margin-top: 46px; }
+    .inspiration-group-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; padding-bottom: 15px; border-bottom: 1px solid var(--ink); }
+    .inspiration-group-head h3 { font-family: Georgia, serif; font-size: 30px; font-weight: 500; }
+    .inspiration-group-head p { max-width: 620px; color: var(--muted); font-size: 15px; }
     .preview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
     .preview { overflow: hidden; border: 1px solid var(--line); background: var(--paper); }
     .video-shell { position: relative; aspect-ratio: 9 / 16; max-height: 560px; background: #08080b; }
@@ -90,7 +94,7 @@
     .video-unavailable { width: 100%; height: 100%; display: grid; place-items: center; padding: 28px; color: #aaa; background: #17171c; text-align: center; }
     .preview-copy { padding: 19px; }
     .preview-copy .tag { color: var(--violet-dark); font-size: 11px; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
-    .preview-copy h3 { margin-top: 12px; }
+    .preview-copy h3 { margin-top: 12px; overflow-wrap: anywhere; }
     .preview-copy p { margin-top: 8px; color: var(--muted); font-size: 14px; }
     .checklist { margin-top: 36px; border-top: 4px solid var(--ink); }
     .check { display: grid; grid-template-columns: 44px 220px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
@@ -132,6 +136,8 @@
       .check span { position: absolute; left: 0; top: 18px; }
       .hook { grid-template-columns: 82px 1fr; gap: 13px; }
       .hook a { grid-column: 2; }
+      .inspiration-group-head { display: block; }
+      .inspiration-group-head p { margin-top: 8px; }
       footer .wrap { display: block; }
       footer span { display: block; margin-top: 5px; }
     }
@@ -202,7 +208,7 @@
         <h2>Watch the reference videos first.</h2>
         <p class="lead">Every current inspiration candidate is included below and numbered for review. Watch the videos, then keep only the formats worth carrying into the final strategy.</p>
         <div class="first-test"><h3>Review by number</h3><p>Send the numbers to keep or remove. The final version will contain only the references that earn a place.</p></div>
-        <div class="preview-grid" id="inspiration-library"></div>
+        <div id="inspiration-library"></div>
       </div>
     </section>
 
@@ -264,39 +270,43 @@
   <footer><div class="wrap">Nick Kosty × Auré <span>Organic strategy · September 2, 2026</span></div></footer>
   <script>
     const inspirationVideos = [
-      {n:1,f:'Somber reaction → recovery tracker',p:'1.13M views',a:'@healingwithteesha',id:'7658013122875133206',u:'https://www.tiktok.com/@healingwithteesha/video/7658013122875133206',img:'assets/inspo/1.jpg'},
-      {n:2,f:'Relationship dilemma → app check-in',p:'285.2K views',a:'@healingwithteesha',id:'7670515753761705249',u:'https://www.tiktok.com/@healingwithteesha/video/7670515753761705249',img:'assets/inspo/2.jpg'},
-      {n:3,f:'Emotional question → visual result',p:'603.7K views',a:'@gillys.journey6',id:'7663665428836715806',u:'https://www.tiktok.com/@gillys.journey6/video/7663665428836715806',img:'assets/inspo/3.jpg'},
-      {n:4,f:'Contemplative POV → app check-in',p:'418.2K views',a:'@yu.journeyy',id:'7670514561870646529',u:'https://www.tiktok.com/@yu.journeyy/video/7670514561870646529',img:'assets/inspo/9.jpg'},
-      {n:5,f:'Creator reaction → no-contact tracker',p:'304.5K views',a:'@healwith.katara',id:'7674675320607296799',u:'https://www.tiktok.com/@healwith.katara/video/7674675320607296799',img:'assets/inspo/10.jpg'},
-      {n:6,f:'Nervous-system question → app result',p:'279.4K views',a:'@lifewithkayy114',id:'7677412011860397342',u:'https://www.tiktok.com/@lifewithkayy114/video/7677412011860397342',img:'assets/inspo/11.jpg'},
-      {n:7,f:'POV reaction → tracker',p:'264.6K views',a:'@heal.with.izzy',id:'7679150220751506702',u:'https://www.tiktok.com/@heal.with.izzy/video/7679150220751506702',img:'assets/inspo/12.jpg'},
-      {n:8,f:'Emotional theory → tracker',p:'184.4K views',a:'@maddiejourney.y',id:'7672713009306848525',u:'https://www.tiktok.com/@maddiejourney.y/video/7672713009306848525',img:'assets/inspo/13.jpg'},
-      {n:9,f:'Breakup-hope POV → app tracker',p:'642.9K views',a:'@elliee.clo',id:'7669985222271798542',u:'https://www.tiktok.com/@elliee.clo/video/7669985222271798542',img:'assets/inspo/14.jpg'},
-      {n:10,f:'Direct-to-camera breakup POV → app',p:'114.6K views',a:'@annasflights01',id:'7676246718161145118',u:'https://www.tiktok.com/@annasflights01/video/7676246718161145118',img:'assets/inspo/15.jpg'},
-      {n:11,f:'Text-led emotion → app action',p:'112.7K views',a:'@annasdiary02',id:'7667645407970790670',u:'https://www.tiktok.com/@annasdiary02/video/7667645407970790670',img:'assets/inspo/4.jpg'},
-      {n:12,f:'Comment reply → full walkthrough',p:'185.5K views',a:'@daniela.couple360',id:'7667008880609611029',u:'https://www.tiktok.com/@daniela.couple360/video/7667008880609611029',img:'assets/inspo/5.jpg'},
-      {n:13,f:'Reaction → micro-tutorial',p:'444.2K views',a:'@guadaisinlove',id:'7643931949337283847',u:'https://www.tiktok.com/@guadaisinlove/video/7643931949337283847',img:'assets/inspo/6.jpg'},
-      {n:14,f:'Two-phone live feature demo',p:'276.1K views',a:'@bloomcouples.app',id:'7673219507237719327',u:'https://www.tiktok.com/@bloomcouples.app/video/7673219507237719327',img:'assets/inspo/7.jpg'},
-      {n:15,f:'Performed reaction → app payoff',p:'Performance not supplied',a:'@heyitsgilly',id:'7671359184713157918',u:'https://www.tiktok.com/@heyitsgilly/video/7671359184713157918',img:'assets/inspo/16.jpg'},
-      {n:16,f:'Emotion → feature reveal',p:'Performance not supplied',a:'@ellie.longdistance',id:'7670410872497425694',u:'https://www.tiktok.com/@ellie.longdistance/video/7670410872497425694',img:'assets/inspo/17.jpg'},
-      {n:17,f:'Relatable setup → immediate AI demo',p:'Performance not supplied',a:'@gracefullyyap',id:'7671089525162020109',u:'https://www.tiktok.com/@gracefullyyap/video/7671089525162020109',img:'assets/inspo/18.jpg'},
-      {n:18,f:'Problem → process → result',p:'Performance not supplied',a:'@textrizzappp',id:'7671362157254102286',u:'https://www.tiktok.com/@textrizzappp/video/7671362157254102286',img:'assets/inspo/19.jpg'},
-      {n:19,f:'Product-native emotional visualization',p:'4.0M views reported by LightReel',a:'@letizia.catzy',u:'https://www.tiktok.com/@letizia.catzy/video/7658246087005703437',unavailable:true},
-      {n:20,f:'POV situation → app action',p:'1.03M views',a:'@ura_app',id:'7643354280879000850',u:'https://www.tiktok.com/@ura_app/video/7643354280879000850',img:'assets/inspo/pov-ura.jpg'},
-      {n:21,f:'Reaction → fast product reveal',p:'479K views',a:'@daniela.couple360',id:'7672615167150001429',u:'https://www.tiktok.com/@daniela.couple360/video/7672615167150001429',img:'assets/inspo/reaction-couple360.jpg'},
-      {n:22,f:'Wall of text → emotional recognition',p:'1.45M views · 23% like rate',a:'@notesonhealingg',id:'7676829686986542350',u:'https://www.tiktok.com/@notesonhealingg/video/7676829686986542350',img:'assets/inspo/wall-notesonhealing.jpg'}
+      {n:1,g:'POV + Demo',f:'Alarm challenge → tracked result',p:'376.4K views · 1.42% like rate',a:'@macywakesup',id:'7666283999735663880',u:'https://www.tiktok.com/@macywakesup/video/7666283999735663880',img:'assets/formats/1.jpg'},
+      {n:2,g:'POV + Demo',f:'Deal hunt → receipt proof',p:'186.2K views · 5.91% like rate',a:'@dealzwithmatt1',id:'7665449967804222733',u:'https://www.tiktok.com/@dealzwithmatt1/video/7665449967804222733',img:'assets/formats/2.jpg'},
+      {n:3,g:'POV + Demo',f:'Parent problem → remote action',p:'1.62M views · 1.04% like rate',a:'@findmykids.geotracker.us',id:'7675297754888801557',u:'https://www.tiktok.com/@findmykids.geotracker.us/video/7675297754888801557',img:'assets/formats/3.jpg'},
+      {n:4,g:'POV + Demo',f:'AI prank → generated result',p:'809.3K views · 1.92% like rate',a:'@pranksbyfas',id:'7653158836055936277',u:'https://www.tiktok.com/@pranksbyfas/video/7653158836055936277',img:'assets/formats/4.jpg'},
+      {n:5,g:'POV + Demo',f:'Old photo → live case refresh',p:'851.2K views · 2.0% like rate',a:'@framecasee',id:'7668714252085071136',u:'https://www.tiktok.com/@framecasee/video/7668714252085071136',img:'assets/formats/5.jpg'},
+      {n:6,g:'POV + Demo',f:'Design struggle → finished Story',p:'280.9K views · 0.4% like rate',a:'@eziapp',id:'7649377591593291026',u:'https://www.tiktok.com/@eziapp/video/7649377591593291026',img:'assets/formats/6.jpg'},
+      {n:7,g:'POV + Demo',f:'Anxious text → in-moment app use',p:'1.03M views',a:'@ura_app',id:'7643354280879000850',u:'https://www.tiktok.com/@ura_app/video/7643354280879000850',img:'assets/formats/7.jpg'},
+      {n:8,g:'Reaction + Demo',f:'Shock → relationship widget',p:'479K views · 5.24% like rate',a:'@daniela.couple360',id:'7672615167150001429',u:'https://www.tiktok.com/@daniela.couple360/video/7672615167150001429',img:'assets/formats/8.jpg'},
+      {n:9,g:'Reaction + Demo',f:'Surprise → travel activity join',p:'291.2K views · 7.23% like rate',a:'@emiliemeetstheworld',id:'7664468215715745046',u:'https://www.tiktok.com/@emiliemeetstheworld/video/7664468215715745046',img:'assets/formats/9.jpg'},
+      {n:10,g:'Reaction + Demo',f:'Disbelief → generated meal plan',p:'748.4K views · 0.34% like rate',a:'@willowsfeed',id:'7663151111288671518',u:'https://www.tiktok.com/@willowsfeed/video/7663151111288671518',img:'assets/formats/11.jpg'},
+      {n:11,g:'Reaction + Demo',f:'Mock crying → AI tutor response',p:'1.34M views · 10.59% like rate',a:'@manuslearningpath',id:'7650147419123879201',u:'https://www.tiktok.com/@manuslearningpath/video/7650147419123879201',img:'assets/formats/12.jpg'},
+      {n:12,g:'Reaction + Demo',f:'Shock → public-record search',p:'602K views · 1.43% like rate',a:'@jadalynsmedia',id:'7649552141371051294',u:'https://www.tiktok.com/@jadalynsmedia/video/7649552141371051294',img:'assets/formats/13.jpg'},
+      {n:13,g:'Reaction + Demo',f:'Reaction → fast micro-tutorial',p:'444.2K views',a:'@guadaisinlove',id:'7643931949337283847',u:'https://www.tiktok.com/@guadaisinlove/video/7643931949337283847',img:'assets/inspo/6.jpg'},
+      {n:14,g:'True Wall of Text',f:'Identity belief over quiet B-roll',p:'1.45M views · 23% like rate',a:'@notesonhealingg',id:'7676829686986542350',u:'https://www.tiktok.com/@notesonhealingg/video/7676829686986542350',img:'assets/formats/14.jpg'},
+      {n:15,g:'True Wall of Text',f:'Therapist exchange over one shot',p:'1.76M views · 9.46% like rate',a:'@cat.naur',id:'7669281434133187870',u:'https://www.tiktok.com/@cat.naur/video/7669281434133187870',img:'assets/formats/15.jpg'},
+      {n:16,g:'True Wall of Text',f:'Film analysis over selfie footage',p:'703.2K views · 9.6% like rate',a:'@lizatokss',id:'7668457446305746206',u:'https://www.tiktok.com/@lizatokss/video/7668457446305746206',img:'assets/formats/16.jpg'},
+      {n:17,g:'True Wall of Text',f:'Long text-message story',p:'292.8K views · 5.31% like rate',a:'@christinakingston2',id:'7648416055743810846',u:'https://www.tiktok.com/@christinakingston2/video/7648416055743810846',img:'assets/formats/17.jpg'}
     ];
 
     const library = document.querySelector('#inspiration-library');
-    inspirationVideos.forEach(video => {
-      const card = document.createElement('article');
-      card.className = 'preview';
-      const visual = video.unavailable
-        ? `<div class="video-shell"><div class="video-unavailable"><span>Reference #${video.n}<br>Public preview unavailable</span></div></div>`
-        : `<div class="video-shell"><button class="video-poster" type="button" data-video-id="${video.id}" aria-label="Play inspiration ${video.n}"><img src="${video.img}" alt="Preview frame for inspiration ${video.n}"><span class="video-number">${video.n}</span><span class="play">Play example</span></button></div>`;
-      card.innerHTML = `${visual}<div class="preview-copy"><span class="tag">#${video.n} · ${video.f}</span><h3>${video.a}</h3><p>${video.p}</p><p><a href="${video.u}" target="_blank" rel="noopener">Open original ↗</a></p></div>`;
-      library.appendChild(card);
+    const groupNotes = {
+      'POV + Demo': 'A specific lived situation becomes visible product use and a result. The app is part of the scene, not a random reveal afterward.',
+      'Reaction + Demo': 'A clear reaction opens the video, the app appears within seconds, and the creator demonstrates one understandable flow.',
+      'True Wall of Text': 'A real paragraph stays on screen over simple footage. These prove the text structure only; adding an Auré demo remains an experimental hybrid.'
+    };
+    Object.keys(groupNotes).forEach(groupName => {
+      const section = document.createElement('section');
+      section.className = 'inspiration-group';
+      section.innerHTML = `<div class="inspiration-group-head"><h3>${groupName}</h3><p>${groupNotes[groupName]}</p></div><div class="preview-grid"></div>`;
+      const grid = section.querySelector('.preview-grid');
+      inspirationVideos.filter(video => video.g === groupName).forEach(video => {
+        const card = document.createElement('article');
+        card.className = 'preview';
+        card.innerHTML = `<div class="video-shell"><button class="video-poster" type="button" data-video-id="${video.id}" aria-label="Play inspiration ${video.n}"><img src="${video.img}" alt="Preview frame for inspiration ${video.n}"><span class="video-number">${video.n}</span><span class="play">Play #${video.n}</span></button></div><div class="preview-copy"><span class="tag">#${video.n} · ${video.f}</span><h3>${video.a}</h3><p>${video.p}</p><p><a href="${video.u}" target="_blank" rel="noopener">Open original ↗</a></p></div>`;
+        grid.appendChild(card);
+      });
+      library.appendChild(section);
     });
 
     document.addEventListener('click', event => {
